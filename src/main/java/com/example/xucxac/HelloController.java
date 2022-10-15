@@ -17,17 +17,14 @@ import java.util.Random;
 public class HelloController {
     @FXML
     private Label welcomeText;
-
     Random random = new Random();
     @FXML
     private ImageView diceImage;
     @FXML
     private Button rollButton;
-
     // label sau khi random
     @FXML
     private Label lblResult;
-
     @FXML
     private Label label1;
     @FXML
@@ -36,18 +33,14 @@ public class HelloController {
     private Label label3;
     @FXML
     private Label label4;
-
     @FXML
     private Label tai;
     @FXML
     private Label xiu;
-
     @FXML
     private Label Sum;
-
     @FXML
     private Label ResultGame;
-
     @FXML
     private Button button1;
     @FXML
@@ -57,32 +50,33 @@ public class HelloController {
     @FXML
     private Button button4;
     @FXML
+    private Button instruction;
+    @FXML
     private TextField myTextFieldSum;
-
     private int selectTaiXiu = 0;
     private int selectLabel1 = 0;
     private int selectLabel2 = 0;
     private int selectLabel3 = 0;
     private int selectLabel4 = 0;
-
     private int sumAccount = 0;
+    private int quayXucXac = 0;
 
     //Tổng tiền trong Account
     @FXML
-    protected void newButtonClick(ActionEvent event) {
+    protected void newAccount(ActionEvent event) {
         sumAccount = Integer.parseInt(myTextFieldSum.getText());
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("THÔNG BÁO");
         alert.setHeaderText("Nạp tiền thành công.");
-        alert.setContentText("Tiền trong tài khoản:" + sumAccount);
+        alert.setContentText("Tiền trong tài khoản: " + sumAccount);
         alert.show();
         System.out.println(sumAccount);
     }
 
     @FXML
     void roll(ActionEvent event) {
-        if (sumAccount >= 500) {
+        if (sumAccount >= 500 && (selectTaiXiu == 1 || selectTaiXiu == 2) && (selectLabel1 == 1 || selectLabel2 == 2 || selectLabel3 == 3 || selectLabel4 == 4)) {
             rollButton.setDisable(true);
             Thread theard = new Thread() {
                 @Override
@@ -122,91 +116,127 @@ public class HelloController {
                 }
             };
             theard.start();
+            quayXucXac = 1;
         } else {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("THÔNG BÁO");
-            alert.setHeaderText("Tiền trong tài khoản <500.");
+            alert.setHeaderText("Tiền trong tài khoản <500 hoặc chưa chọn 'Tài' 'Xỉu' hoặc chưa đặt cược.");
             alert.show();
         }
-    }
-
-    //==================================================================================================================
-
-    //    Đặt tiền "\$500"
-    @FXML
-    protected void onNumberClicked1(MouseEvent event) {
-        int value = Integer.parseInt(((Button) event.getSource()).getId().replace("button", ""));
-        String text;
-        if (Integer.parseInt(label1.getText()) == 0) {
-            text = String.valueOf((Integer) value);
-        } else {
-            Integer sum = Integer.parseInt(label1.getText()) * 10 + value;
-            text = String.valueOf(sum);
-        }
-        label1.setText(text);
-        selectLabel1 = 1;
-    }
-    //==================================================================================================================
-
-    //    Đặt tiền "\$1.000"
-    @FXML
-    protected void onNumberClicked2(MouseEvent event) {
-        int value = Integer.parseInt(((Button) event.getSource()).getId().replace("button", ""));
-        String text;
-        if (Integer.parseInt(label2.getText()) == 0) {
-            text = String.valueOf((Integer) value);
-        } else {
-            Integer sum = Integer.parseInt(label2.getText()) * 10 + value;
-            text = String.valueOf(sum);
-        }
-        label2.setText(text);
-        selectLabel2 = 2;
-    }
-    //==================================================================================================================
-
-    //    Đặt tiền "\$5.000"
-    @FXML
-    protected void onNumberClicked3(MouseEvent event) {
-        int value = Integer.parseInt(((Button) event.getSource()).getId().replace("button", ""));
-        String text;
-        if (Integer.parseInt(label3.getText()) == 0) {
-            text = String.valueOf((Integer) value);
-        } else {
-            Integer sum = Integer.parseInt(label3.getText()) * 10 + value;
-            text = String.valueOf(sum);
-        }
-        label3.setText(text);
-        selectLabel3 = 3;
-    }
-    //==================================================================================================================
-
-    // Đặt tiền "$10.000"
-    @FXML
-    protected void onNumberClicked4(MouseEvent event) {
-        int value = Integer.parseInt(((Button) event.getSource()).getId().replace("button", ""));
-        String text;
-        if (Integer.parseInt(label4.getText()) == 0) {
-            text = String.valueOf((Integer) value);
-        } else {
-            Integer sum = Integer.parseInt(label4.getText()) * 10 + value;
-            text = String.valueOf(sum);
-        }
-        label4.setText(text);
-        selectLabel4 = 4;
     }
     //==================================================================================================================
 
     // xử lí chọn tài hoặc xỉu
     @FXML
     protected void handleClicked2(MouseEvent event) {
-        Label selectedtLabel = (Label) event.getSource();
-        selectedtLabel.setStyle("-fx-border-color:red; -fx-background-color: blue;");
-        if (((Label) event.getSource()).getId().equals("tai")) {
-            this.xiu.setStyle("-fx-border-color:red; -fx-background-color: #d3d3d3;");
-            selectTaiXiu = 2;
+        if (sumAccount >= 500) {
+            Label selectedtLabel = (Label) event.getSource();
+            selectedtLabel.setStyle("-fx-border-color:red; -fx-background-color: blue;");
+            if (((Label) event.getSource()).getId().equals("tai")) {
+                this.xiu.setStyle("-fx-border-color:red; -fx-background-color: #d3d3d3;");
+                selectTaiXiu = 2;
+            } else {
+                this.tai.setStyle("-fx-border-color:red; -fx-background-color: #d3d3d3;");
+                selectTaiXiu = 1;
+            }
         } else {
-            this.tai.setStyle("-fx-border-color:red; -fx-background-color: #d3d3d3;");
-            selectTaiXiu = 1;
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("THÔNG BÁO");
+            alert.setHeaderText("Bạn chưa nạp tiền vào tài khoản...");
+            alert.show();
+        }
+    }
+
+
+    //==================================================================================================================
+    //    Đặt tiền "\$500"
+    @FXML
+    protected void onNumberClicked1(MouseEvent event) {
+        if ((selectTaiXiu == 1 || selectTaiXiu == 2) && sumAccount > 500) {
+            int value = Integer.parseInt(((Button) event.getSource()).getId().replace("button", ""));
+            String text;
+            if (Integer.parseInt(label1.getText()) == 0) {
+                text = String.valueOf((Integer) value);
+            } else {
+                Integer sum = Integer.parseInt(label1.getText()) * 10 + value;
+                text = String.valueOf(sum);
+            }
+            label1.setText(text);
+            selectLabel1 = 1;
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("THÔNG BÁO");
+            alert.setHeaderText("Hãy chọn 'TÀI' hoặc 'XỈU' trước khi đặt cược.\n"+"Tiền trong tài khoản <500.");
+            alert.show();
+        }
+    }
+    //==================================================================================================================
+
+    //    Đặt tiền "\$1.000"
+    @FXML
+    protected void onNumberClicked2(MouseEvent event) {
+        if ((selectTaiXiu == 1 || selectTaiXiu == 2)&& sumAccount > 1000) {
+            int value = Integer.parseInt(((Button) event.getSource()).getId().replace("button", ""));
+            String text;
+            if (Integer.parseInt(label2.getText()) == 0) {
+                text = String.valueOf((Integer) value);
+            } else {
+                Integer sum = Integer.parseInt(label2.getText()) * 10 + value;
+                text = String.valueOf(sum);
+            }
+            label2.setText(text);
+            selectLabel2 = 2;
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("THÔNG BÁO");
+            alert.setHeaderText("Hãy chọn 'TÀI' hoặc 'XỈU' trước khi đặt cược.\n"+"Tiền trong tài khoản <1000.");
+            alert.show();
+        }
+    }
+    //==================================================================================================================
+
+    //    Đặt tiền "\$5.000"
+    @FXML
+    protected void onNumberClicked3(MouseEvent event) {
+        if ((selectTaiXiu == 1 || selectTaiXiu == 2)&& sumAccount > 5000) {
+            int value = Integer.parseInt(((Button) event.getSource()).getId().replace("button", ""));
+            String text;
+            if (Integer.parseInt(label3.getText()) == 0) {
+                text = String.valueOf((Integer) value);
+            } else {
+                Integer sum = Integer.parseInt(label3.getText()) * 10 + value;
+                text = String.valueOf(sum);
+            }
+            label3.setText(text);
+            selectLabel3 = 3;
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("THÔNG BÁO");
+            alert.setHeaderText("Hãy chọn 'TÀI' hoặc 'XỈU' trước khi đặt cược.\n"+"Tiền trong tài khoản <5000.");
+            alert.show();
+        }
+    }
+    //==================================================================================================================
+
+    // Đặt tiền "$10.000"
+    @FXML
+    protected void onNumberClicked4(MouseEvent event) {
+        if ((selectTaiXiu == 1 || selectTaiXiu == 2)&& sumAccount > 10000) {
+            int value = Integer.parseInt(((Button) event.getSource()).getId().replace("button", ""));
+            String text;
+            if (Integer.parseInt(label4.getText()) == 0) {
+                text = String.valueOf((Integer) value);
+            } else {
+                Integer sum = Integer.parseInt(label4.getText()) * 10 + value;
+                text = String.valueOf(sum);
+            }
+            label4.setText(text);
+            selectLabel4 = 4;
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("THÔNG BÁO");
+            alert.setHeaderText("Hãy chọn 'TÀI' hoặc 'XỈU' trước khi đặt cược.\n"+"Tiền trong tài khoản <10000.");
+            alert.show();
         }
     }
 
@@ -235,53 +265,73 @@ public class HelloController {
 // xuất kết quả thắng thua
     @FXML
     protected void ResultGame(MouseEvent event) {
-        String getValue = lblResult.getText();
-        int numberOfButtons = Integer.parseInt(getValue);
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("KẾT QUẢ");
-        int value1, value2, value3, value4;
-        value1 = Integer.parseInt(label1.getText());
-        value2 = Integer.parseInt(label2.getText());
-        value3 = Integer.parseInt(label3.getText());
-        value4 = Integer.parseInt(label4.getText());
+        if (quayXucXac == 1) {
+            String getValue = lblResult.getText();
+            int numberOfButtons = Integer.parseInt(getValue);
+            Alert alert = new Alert(Alert.AlertType.NONE);
+            alert.setTitle("KẾT QUẢ");
+            int value1, value2, value3, value4;
+            value1 = Integer.parseInt(label1.getText());
+            value2 = Integer.parseInt(label2.getText());
+            value3 = Integer.parseInt(label3.getText());
+            value4 = Integer.parseInt(label4.getText());
 //        System.out.println(label1.getText());
-        if (numberOfButtons == 1 || numberOfButtons == 6) {
-            if (selectLabel1 == 1) {
-                sumAccount -= value1;
-            } else if (selectLabel2 == 2) {
-                sumAccount -= value2;
-            } else if (selectLabel3 == 3) {
-                sumAccount -= value3;
+            if (numberOfButtons == 1 || numberOfButtons == 6) {
+                if (selectLabel1 == 1) {
+                    sumAccount -= value1;
+                } else if (selectLabel2 == 2) {
+                    sumAccount -= value2;
+                } else if (selectLabel3 == 3) {
+                    sumAccount -= value3;
+                } else {
+                    sumAccount -= value4;
+                }
+                alert.setContentText("LOSE\n"+ "Account: " + sumAccount);
+            } else if (numberOfButtons <= 3 && selectTaiXiu == 2 || numberOfButtons > 3 && selectTaiXiu == 1) {
+                if (selectLabel1 == 1) {
+                    sumAccount -= value1;
+                } else if (selectLabel2 == 2) {
+                    sumAccount -= value2;
+                } else if (selectLabel3 == 3) {
+                    sumAccount -= value3;
+                } else {
+                    sumAccount -= value4;
+                }
+                alert.setContentText("LOSE\n"+ "Account: " + sumAccount);
             } else {
-                sumAccount -= value4;
+                if (selectLabel1 == 1) {
+                    sumAccount += value1;
+                } else if (selectLabel2 == 2) {
+                    sumAccount += value2;
+                } else if (selectLabel3 == 3) {
+                    sumAccount += value3;
+                } else {
+                    sumAccount += value4;
+                }
+                alert.setContentText("WIN\n"+ "Account: " + sumAccount);
             }
-            alert.setHeaderText("LOSE");
-        } else if (numberOfButtons <= 3 && selectTaiXiu == 2 || numberOfButtons > 3 && selectTaiXiu == 1) {
-            if (selectLabel1 == 1) {
-                sumAccount -= value1;
-            } else if (selectLabel2 == 2) {
-                sumAccount -= value2;
-            } else if (selectLabel3 == 3) {
-                sumAccount -= value3;
-            } else {
-                sumAccount -= value4;
-            }
-            alert.setHeaderText("LOSE");
+            alert.setHeaderText("Số nút là: " + getValue);
+            alert.show();
+            System.out.println(sumAccount);
+
         } else {
-            if (selectLabel1 == 1) {
-                sumAccount += value1;
-            } else if (selectLabel2 == 2) {
-                sumAccount += value2;
-            } else if (selectLabel3 == 3) {
-                sumAccount += value3;
-            } else {
-                sumAccount += value4;
-            }
-            alert.setHeaderText("WIN");
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("THÔNG BÁO");
+            alert.setHeaderText("Bạn chưa thực hiện đủ các bước.");
+            alert.show();
         }
-        alert.setContentText(getValue);
-        alert.show();
-        System.out.println(sumAccount);
     }
 
+    @FXML
+    protected void instruction(ActionEvent event) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("INSTRUCTION");
+        alert.setHeaderText("Hay làm theo thứ tự bên dưới:");
+        alert.setContentText("1.Bạn hay nạp tiền vào tài khoản.\n" +
+                "2.Bạn hãy chọn tài hoặc xỉu.\n" +
+                "3.Bạn hãy chọn mức đặt cược.\n" +
+                "4.Bạn hãy click vào 'CHỌN' để quay xúc xắc.\n" +
+                "5.Bạn Hãy click vào 'KẾT QUẢ' để nhận được kết quả.");
+        alert.show();
+    }
 }

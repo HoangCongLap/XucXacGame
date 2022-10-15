@@ -12,7 +12,7 @@
                 <Image url="@IMG/dice1.png" />
             </image>
         </ImageView>
-        <Button fx:id="rollButton" layoutX="272.0" layoutY="148.0" mnemonicParsing="false" onAction="#roll" prefHeight="43.0" prefWidth="66.0" text="chọn" />
+        <Button fx:id="rollButton" layoutX="273.0" layoutY="142.0" mnemonicParsing="false" onAction="#roll" prefHeight="43.0" prefWidth="66.0" text="chọn" />
 
         <Button id="button500" layoutX="119.0" layoutY="228.0" mnemonicParsing="false" onMouseClicked="#onNumberClicked1" text="\$500" />
         <Button id="button1000" layoutX="447.0" layoutY="228.0" mnemonicParsing="false" onMouseClicked="#onNumberClicked2" text="\$1.000" />
@@ -52,7 +52,8 @@
         </Label>
        <Label fx:id="lblResult" alignment="CENTER" layoutX="229.0" layoutY="6.0" prefHeight="19.0" prefWidth="142.0" style="-fx-background-color: #708090;" />
       <Label fx:id="resultGame" alignment="CENTER" layoutX="258.0" layoutY="207.0" onMouseClicked="#ResultGame" prefHeight="95.0" prefWidth="95.0" style="-fx-background-color: #FF0000;" text="15165123" />
-      <TextField fx:id="myTextFieldSum" layoutX="254.0" layoutY="372.0" onAction="#newButtonClick" prefHeight="19.0" prefWidth="104.0" style="-fx-background-color: #00BFFF;" />
-      <Label layoutX="244.0" layoutY="354.0" text="Nạp tiền vào tài khoản: " />
+      <TextField fx:id="myTextFieldSum" layoutX="255.0" layoutY="369.0" onAction="#newAccount" prefHeight="26.0" prefWidth="107.0" style="-fx-background-color: #00BFFF;" />
+      <Label layoutX="249.0" layoutY="351.0" text="Nạp tiền vào tài khoản: " />
+      <Button fx:id="instruction" layoutX="525.0" layoutY="372.0" onAction="#instruction" mnemonicParsing="false" style="-fx-background-color: #4682B4;" text="Hướng dẫn" />
     </children>
 </AnchorPane>

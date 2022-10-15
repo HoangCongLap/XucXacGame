@@ -51,8 +51,9 @@
             </font>
         </Label>
        <Label fx:id="lblResult" alignment="CENTER" layoutX="229.0" layoutY="6.0" prefHeight="19.0" prefWidth="142.0" style="-fx-background-color: #708090;" />
-      <Label fx:id="Summ" alignment="CENTER" layoutX="258.0" layoutY="354.0"  prefHeight="37.0" prefWidth="95.0" style="-fx-background-color: #708090;" text="55555555" />
       <Label fx:id="resultGame" alignment="CENTER" layoutX="258.0" layoutY="207.0" onMouseClicked="#ResultGame" prefHeight="95.0" prefWidth="95.0" style="-fx-background-color: #FF0000;" text="15165123" />
-      <TextField fx:id="myTextFieldSum" layoutX="269.0" layoutY="305.0" onAction="#newButtonClick" prefHeight="26.0" prefWidth="80.0" style="-fx-background-color: #00BFFF;" />
+      <TextField fx:id="myTextFieldSum" layoutX="255.0" layoutY="369.0" onAction="#newAccount" prefHeight="26.0" prefWidth="107.0" style="-fx-background-color: #00BFFF;" />
+      <Label layoutX="249.0" layoutY="351.0" text="Nạp tiền vào tài khoản: " />
+      <Button fx:id="instruction" layoutX="525.0" layoutY="372.0" onAction="#instruction" mnemonicParsing="false" style="-fx-background-color: #4682B4;" text="Hướng dẫn" />
     </children>
 </AnchorPane>
