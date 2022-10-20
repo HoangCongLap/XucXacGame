@@ -1,8 +1,12 @@
-package com.example.xucxac;
+package XucXac;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -10,11 +14,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Random;
 
-public class HelloController {
+public class Scene2Controller {
     @FXML
     private Label welcomeText;
     Random random = new Random();
@@ -53,6 +59,8 @@ public class HelloController {
     private Button instruction;
     @FXML
     private TextField myTextFieldSum;
+    @FXML
+    private Label resultAccountGame;
     private int finalIndex = 0;
     private int selectTaiXiu = 0;
     private int selectLabel1 = 0;
@@ -117,14 +125,20 @@ public class HelloController {
                             }
                         });
 //======================================================================================================================
+                        // xuất ra kết quả
                         Platform.runLater(new Runnable() {
                             @Override
                             public void run() {
                                 Result();
                             }
                         });
-
-
+// xuất ra tổng tiền ở Label
+                        Platform.runLater(new Runnable() {
+                            @Override
+                            public void run() {
+                                resultAccountGame.setText(String.valueOf(sumAccount));
+                            }
+                        });
 //==================================================================================================================
                         rollButton.setDisable(false);
                     } catch (InterruptedException e) {
@@ -261,8 +275,8 @@ public class HelloController {
     //==================================================================================================================
 
     // xuất kết quả thắng thua
-    @FXML
-    protected void ResultGame(MouseEvent event) {
+//    @FXML
+//    protected void ResultGame(MouseEvent event) {
 //        if (quayXucXac == 1) {
 //            String getValue = lblResult.getText();
 //            int numberOfButtons = Integer.parseInt(getValue);
@@ -318,7 +332,7 @@ public class HelloController {
 //            alert.setHeaderText("Bạn chưa thực hiện đủ các bước.");
 //            alert.show();
 //        }
-    }
+//    }
 
     @FXML
     protected void instruction(ActionEvent event) {
@@ -379,5 +393,21 @@ public class HelloController {
         alert.setHeaderText("Số nút là: " + finalIndex);
         alert.show();
         System.out.println(sumAccount);
+    }
+
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
+
+    public void backLogin(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("Scene1.fxml"));
+        root = loader.load();
+        Scene1Controller scene1Controller = loader.getController();
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+
+
     }
 }
