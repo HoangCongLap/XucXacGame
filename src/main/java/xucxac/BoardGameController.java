@@ -413,7 +413,7 @@ public class BoardGameController {
         }
         alert.setHeaderText("Số nút là: " + finalIndex);
 //        alert.show();
-        alert.getDialogPane().getButtonTypes().add(ButtonType.OK);
+        alert.getDialogPane().getButtonTypes().add(ButtonType.OK);//
         alert.setResizable(true);
         alert.showAndWait();
     }
