@@ -5,11 +5,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="398.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="XucXac.Scene2Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="398.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="xucxac.BoardGameController">
     <children>
         <ImageView fx:id="diceImage" fitHeight="95.0" fitWidth="114.0" layoutX="253.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@XucXac/IMG/dice1.png" />
+                <Image url="@xucxac/images/dice1.png" />
             </image>
         </ImageView>
         <Button fx:id="rollButton" layoutX="273.0" layoutY="142.0" mnemonicParsing="false" onAction="#roll" prefHeight="43.0" prefWidth="66.0" text="chọn" />

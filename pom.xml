@@ -7,7 +7,7 @@
     <groupId>com.example</groupId>
     <artifactId>XucXac</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>XucXac</name>
+    <name>xucxac</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -60,7 +60,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>com.example.xucxac/XucXac.Main</mainClass>
+                            <mainClass>com.example.xucxac/xucxac.Main</mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
                             <jlinkImageName>app</jlinkImageName>

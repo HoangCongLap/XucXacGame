@@ -1,4 +1,4 @@
-package XucXac;
+package xucxac;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -7,10 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -20,7 +17,10 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Random;
 
-public class Scene2Controller {
+import static xucxac.consts.BoardGameConsts.*;
+
+
+public class BoardGameController {
     @FXML
     private Label welcomeText;
     Random random = new Random();
@@ -70,6 +70,7 @@ public class Scene2Controller {
     private int sumAccount = 500;
     private int quayXucXac = 0;
 
+
     //Tổng tiền trong Account
     @FXML
     protected void newAccount(ActionEvent event) {
@@ -94,6 +95,7 @@ public class Scene2Controller {
     private void roll(ActionEvent event) {
         if (sumAccount >= 500 && (selectTaiXiu == 1 || selectTaiXiu == 2) && (selectLabel1 == 1 || selectLabel2 == 2 || selectLabel3 == 3 || selectLabel4 == 4)) {
             rollButton.setDisable(true);
+            System.getProperty("user.dir");
             Thread theard = new Thread() {
                 //            runOnUiThread(new Runnable() {
                 @Override
@@ -103,11 +105,11 @@ public class Scene2Controller {
                         int index = 1;
                         for (int i = 0; i < 15; i++) {
                             index = (random.nextInt(6) + 1);
-                            String path = "src/main/resources/com/example/xucxac/IMG/dice" + index + ".png";
-//                        String path = "src/main/resources/com/example/xucxac/IMG/dice" + ((i%6)+1) + ".png";
-//                        System.out.println("path = " + path);
+                            String path = PATHIMAGES + index + ".png";
+//                        String path = PATHIMAGES  + ((i%6)+1) + ".png";
+
                             File file = new File(path);
-//                        System.out.println(file.exists());
+//                            System.out.println(file.exists());
                             diceImage.setImage(new Image(file.toURI().toString()));
 //                        if (i <= 9) {
 //                            Thread.sleep(100);
@@ -165,10 +167,11 @@ public class Scene2Controller {
             Label selectedtLabel = (Label) event.getSource();
             selectedtLabel.setStyle("-fx-border-color:red; -fx-background-color: blue;");
             if (((Label) event.getSource()).getId().equals("tai")) {
-                this.xiu.setStyle("-fx-border-color:red; -fx-background-color: #d3d3d3;");
+//                this.xiu.setStyle("-fx-color:red-fx-border; -fx-background-color: #d3d3d3;");
+                this.xiu.setStyle(colorTaiXiu());
                 selectTaiXiu = 2;
             } else {
-                this.tai.setStyle("-fx-border-color:red; -fx-background-color: #d3d3d3;");
+                this.tai.setStyle(colorTaiXiu());
                 selectTaiXiu = 1;
             }
         } else {
@@ -349,60 +352,130 @@ public class Scene2Controller {
 
 
     public void Result() {
-        Alert alert = new Alert(Alert.AlertType.NONE);
-        alert.setTitle("KẾT QUẢ");
+//        Alert alert = new Alert(Alert.AlertType.NONE);
+//        alert.setTitle("KẾT QUẢ");
+//        int value1, value2, value3, value4;
+//        value1 = Integer.parseInt(label1.getText());
+//        value2 = Integer.parseInt(label2.getText());
+//        value3 = Integer.parseInt(label3.getText());
+//        value4 = Integer.parseInt(label4.getText());
+//        if (finalIndex == 1 || finalIndex == 6) {
+//
+//            if (selectLabel1 == 1) {
+//                sumAccount -= value1;
+//            } else if (selectLabel2 == 2) {
+//                sumAccount -= value2;
+//            } else if (selectLabel3 == 3) {
+//                sumAccount -= value3;
+//            } else {
+//                sumAccount -= value4;
+//            }
+//        } else if (finalIndex <= 3 && selectTaiXiu == 2 || finalIndex > 3 && selectTaiXiu == 1) {
+//
+//            if (selectLabel1 == 1) {
+//                sumAccount -= value1;
+//            } else if (selectLabel2 == 2) {
+//                sumAccount -= value2;
+//            } else if (selectLabel3 == 3) {
+//                sumAccount -= value3;
+//            } else {
+//                sumAccount -= value4;
+//            }
+//
+//        } else {
+//
+//            if (selectLabel1 == 1) {
+//                sumAccount += value1;
+//            } else if (selectLabel2 == 2) {
+//                sumAccount += value2;
+//            } else if (selectLabel3 == 3) {
+//                sumAccount += value3;
+//            } else {
+//                sumAccount += value4;
+//            }
+//        }
+//        alert.setHeaderText("Số nút là: " + finalIndex);
+//        alert.show();
         int value1, value2, value3, value4;
         value1 = Integer.parseInt(label1.getText());
         value2 = Integer.parseInt(label2.getText());
         value3 = Integer.parseInt(label3.getText());
         value4 = Integer.parseInt(label4.getText());
-        if (finalIndex == 1 || finalIndex == 6) {
-            if (selectLabel1 == 1) {
-                sumAccount -= value1;
-            } else if (selectLabel2 == 2) {
-                sumAccount -= value2;
-            } else if (selectLabel3 == 3) {
-                sumAccount -= value3;
-            } else {
-                sumAccount -= value4;
-            }
+        Alert alert = new Alert(Alert.AlertType.NONE);
+        alert.setTitle("KẾT QUẢ");
+        sumAccount = result(value1, value2, value3, value4, finalIndex, selectLabel1, sumAccount, selectLabel2, selectLabel3, selectTaiXiu);
+        if (Count1() == 1) {
             alert.setContentText("LOSE\n" + "Account: " + sumAccount);
-        } else if (finalIndex <= 3 && selectTaiXiu == 2 || finalIndex > 3 && selectTaiXiu == 1) {
-            if (selectLabel1 == 1) {
-                sumAccount -= value1;
-            } else if (selectLabel2 == 2) {
-                sumAccount -= value2;
-            } else if (selectLabel3 == 3) {
-                sumAccount -= value3;
-            } else {
-                sumAccount -= value4;
-            }
+        } else if (Count2() == 2) {
             alert.setContentText("LOSE\n" + "Account: " + sumAccount);
-        } else {
-            if (selectLabel1 == 1) {
-                sumAccount += value1;
-            } else if (selectLabel2 == 2) {
-                sumAccount += value2;
-            } else if (selectLabel3 == 3) {
-                sumAccount += value3;
-            } else {
-                sumAccount += value4;
-            }
-            alert.setContentText("WIN\n" + "Account: " + sumAccount);
+        } else if (Count3() == 3) {
+            alert.setContentText("LOSE\n" + "Account: " + sumAccount);
         }
         alert.setHeaderText("Số nút là: " + finalIndex);
-        alert.show();
-        System.out.println(sumAccount);
+//        alert.show();
+        alert.getDialogPane().getButtonTypes().add(ButtonType.OK);
+        alert.setResizable(true);
+        alert.showAndWait();
     }
+
+//    public void Result() {
+//        Alert alert = new Alert(Alert.AlertType.NONE);
+//        alert.setTitle("KẾT QUẢ");
+//        int value1, value2, value3, value4;
+//        value1 = Integer.parseInt(label1.getText());
+//        value2 = Integer.parseInt(label2.getText());
+//        value3 = Integer.parseInt(label3.getText());
+//        value4 = Integer.parseInt(label4.getText());
+//        if (finalIndex == 1 || finalIndex == 6) {
+//
+//            if (selectLabel1 == 1) {
+//                sumAccount -= value1;
+//            } else if (selectLabel2 == 2) {
+//                sumAccount -= value2;
+//            } else if (selectLabel3 == 3) {
+//                sumAccount -= value3;
+//            } else {
+//                sumAccount -= value4;
+//            }
+//        } else if (finalIndex <= 3 && selectTaiXiu == 2 || finalIndex > 3 && selectTaiXiu == 1) {
+//
+//            if (selectLabel1 == 1) {
+//                sumAccount -= value1;
+//            } else if (selectLabel2 == 2) {
+//                sumAccount -= value2;
+//            } else if (selectLabel3 == 3) {
+//                sumAccount -= value3;
+//            } else {
+//                sumAccount -= value4;
+//            }
+//
+//        } else {
+//
+//            if (selectLabel1 == 1) {
+//                sumAccount += value1;
+//            } else if (selectLabel2 == 2) {
+//                sumAccount += value2;
+//            } else if (selectLabel3 == 3) {
+//                sumAccount += value3;
+//            } else {
+//                sumAccount += value4;
+//            }
+//        }
+//        alert.setHeaderText("Số nút là: " + finalIndex);
+//        alert.show();
+//
+//        alert.setHeaderText("Số nút là: " + finalIndex);
+//        alert.show();
+//    }
 
     private Stage stage;
     private Scene scene;
     private Parent root;
 
     public void backLogin(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("Scene1.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("Login.fxml"));
         root = loader.load();
-        Scene1Controller scene1Controller = loader.getController();
+        LoginController scene1Controller = loader.getController();
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -410,4 +483,5 @@ public class Scene2Controller {
 
 
     }
+
 }

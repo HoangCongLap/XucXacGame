@@ -3,6 +3,6 @@ module com.example.xucxac {
     requires javafx.fxml;
 
 
-    opens XucXac to javafx.fxml;
-    exports XucXac;
+    opens xucxac to javafx.fxml;
+    exports xucxac;
 }
