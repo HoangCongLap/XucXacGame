@@ -128,6 +128,16 @@ public class BoardGameController {
                         });
 //======================================================================================================================
                         // xuất ra kết quả
+//                        Platform.runLater(new Runnable() {
+//                            @Override
+//                            public void run() {
+
+//                                getMessage(object)
+//                                alertNotification(message,);
+//                            }
+//                        });
+                        //=======================================
+                        // xuất ra kết quả
                         Platform.runLater(new Runnable() {
                             @Override
                             public void run() {
@@ -351,51 +361,10 @@ public class BoardGameController {
     }
 
 
+//    public void alertNotification(int value) {
+
     public void Result() {
-//        Alert alert = new Alert(Alert.AlertType.NONE);
-//        alert.setTitle("KẾT QUẢ");
-//        int value1, value2, value3, value4;
-//        value1 = Integer.parseInt(label1.getText());
-//        value2 = Integer.parseInt(label2.getText());
-//        value3 = Integer.parseInt(label3.getText());
-//        value4 = Integer.parseInt(label4.getText());
-//        if (finalIndex == 1 || finalIndex == 6) {
-//
-//            if (selectLabel1 == 1) {
-//                sumAccount -= value1;
-//            } else if (selectLabel2 == 2) {
-//                sumAccount -= value2;
-//            } else if (selectLabel3 == 3) {
-//                sumAccount -= value3;
-//            } else {
-//                sumAccount -= value4;
-//            }
-//        } else if (finalIndex <= 3 && selectTaiXiu == 2 || finalIndex > 3 && selectTaiXiu == 1) {
-//
-//            if (selectLabel1 == 1) {
-//                sumAccount -= value1;
-//            } else if (selectLabel2 == 2) {
-//                sumAccount -= value2;
-//            } else if (selectLabel3 == 3) {
-//                sumAccount -= value3;
-//            } else {
-//                sumAccount -= value4;
-//            }
-//
-//        } else {
-//
-//            if (selectLabel1 == 1) {
-//                sumAccount += value1;
-//            } else if (selectLabel2 == 2) {
-//                sumAccount += value2;
-//            } else if (selectLabel3 == 3) {
-//                sumAccount += value3;
-//            } else {
-//                sumAccount += value4;
-//            }
-//        }
-//        alert.setHeaderText("Số nút là: " + finalIndex);
-//        alert.show();
+        int s = 0;
         int value1, value2, value3, value4;
         value1 = Integer.parseInt(label1.getText());
         value2 = Integer.parseInt(label2.getText());
@@ -404,12 +373,12 @@ public class BoardGameController {
         Alert alert = new Alert(Alert.AlertType.NONE);
         alert.setTitle("KẾT QUẢ");
         sumAccount = result(value1, value2, value3, value4, finalIndex, selectLabel1, sumAccount, selectLabel2, selectLabel3, selectTaiXiu);
-        if (Count1() == 1) {
+        if (finalIndex == 1 || finalIndex == 6) {
             alert.setContentText("LOSE\n" + "Account: " + sumAccount);
-        } else if (Count2() == 2) {
+        } else if (finalIndex <= 3 && selectTaiXiu == 2 || finalIndex > 3 && selectTaiXiu == 1) {
             alert.setContentText("LOSE\n" + "Account: " + sumAccount);
-        } else if (Count3() == 3) {
-            alert.setContentText("LOSE\n" + "Account: " + sumAccount);
+        } else {
+            alert.setContentText("WIN\n" + "Account: " + sumAccount);
         }
         alert.setHeaderText("Số nút là: " + finalIndex);
 //        alert.show();
