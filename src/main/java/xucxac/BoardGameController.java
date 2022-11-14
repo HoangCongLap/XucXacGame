@@ -12,6 +12,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import xucxac.consts.BoardGameConsts;
 
 import java.io.File;
 import java.io.IOException;
@@ -67,7 +68,7 @@ public class BoardGameController {
     private int selectLabel2 = 0;
     private int selectLabel3 = 0;
     private int selectLabel4 = 0;
-    private int sumAccount = 500;
+    private int sumAccount = 0;
     private int quayXucXac = 0;
 
 
@@ -141,7 +142,7 @@ public class BoardGameController {
                         Platform.runLater(new Runnable() {
                             @Override
                             public void run() {
-                                Result();
+                                result();
                             }
                         });
 // xuất ra tổng tiền ở Label
@@ -197,13 +198,14 @@ public class BoardGameController {
     //    Đặt tiền "\$500"
     @FXML
     protected void onNumberClicked1(MouseEvent event) {
-        if ((selectTaiXiu == 1 || selectTaiXiu == 2) && sumAccount >= 500) {
+        int value1 = Integer.parseInt(label1.getText());
+        if ((selectTaiXiu == 1 || selectTaiXiu == 2) && sumAccount >= 500 && sumAccount - value1 > 500) {
             int value = Integer.parseInt(((Button) event.getSource()).getId().replace("button", ""));
-            String text;
+            String text = null;
             if (Integer.parseInt(label1.getText()) == 0) {
                 text = String.valueOf((Integer) value);
             } else {
-                Integer sum = Integer.parseInt(label1.getText()) * 10 + value;
+                Integer sum = Integer.parseInt(label1.getText()) + value;
                 text = String.valueOf(sum);
             }
             label1.setText(text);
@@ -214,19 +216,21 @@ public class BoardGameController {
             alert.setHeaderText("Hãy chọn 'TÀI' hoặc 'XỈU' trước khi đặt cược.\n" + "Tiền trong tài khoản <500.");
             alert.show();
         }
+
     }
     //==================================================================================================================
 
     //    Đặt tiền "\$1.000"
     @FXML
     protected void onNumberClicked2(MouseEvent event) {
-        if ((selectTaiXiu == 1 || selectTaiXiu == 2) && sumAccount >= 1000) {
+        int value2 = Integer.parseInt(label2.getText());
+        if ((selectTaiXiu == 1 || selectTaiXiu == 2) && sumAccount >= 1000 && sumAccount - value2 > 1000) {
             int value = Integer.parseInt(((Button) event.getSource()).getId().replace("button", ""));
             String text;
             if (Integer.parseInt(label2.getText()) == 0) {
                 text = String.valueOf((Integer) value);
             } else {
-                Integer sum = Integer.parseInt(label2.getText()) * 10 + value;
+                Integer sum = Integer.parseInt(label2.getText()) + value;
                 text = String.valueOf(sum);
             }
             label2.setText(text);
@@ -243,13 +247,14 @@ public class BoardGameController {
     //    Đặt tiền "\$5.000"
     @FXML
     protected void onNumberClicked3(MouseEvent event) {
-        if ((selectTaiXiu == 1 || selectTaiXiu == 2) && sumAccount >= 5000) {
+        int value3 = Integer.parseInt(label3.getText());
+        if ((selectTaiXiu == 1 || selectTaiXiu == 2) && sumAccount >= 5000 && sumAccount - value3 > 5000) {
             int value = Integer.parseInt(((Button) event.getSource()).getId().replace("button", ""));
             String text;
             if (Integer.parseInt(label3.getText()) == 0) {
                 text = String.valueOf((Integer) value);
             } else {
-                Integer sum = Integer.parseInt(label3.getText()) * 10 + value;
+                Integer sum = Integer.parseInt(label3.getText()) + value;
                 text = String.valueOf(sum);
             }
             label3.setText(text);
@@ -266,13 +271,14 @@ public class BoardGameController {
     // Đặt tiền "$10.000"
     @FXML
     protected void onNumberClicked4(MouseEvent event) {
-        if ((selectTaiXiu == 1 || selectTaiXiu == 2) && sumAccount >= 10000) {
+        int value4 = Integer.parseInt(label4.getText());
+        if ((selectTaiXiu == 1 || selectTaiXiu == 2) && sumAccount >= 10000 && sumAccount - value4 > 10000) {
             int value = Integer.parseInt(((Button) event.getSource()).getId().replace("button", ""));
             String text;
             if (Integer.parseInt(label4.getText()) == 0) {
                 text = String.valueOf((Integer) value);
             } else {
-                Integer sum = Integer.parseInt(label4.getText()) * 10 + value;
+                Integer sum = Integer.parseInt(label4.getText()) + value;
                 text = String.valueOf(sum);
             }
             label4.setText(text);
@@ -286,66 +292,6 @@ public class BoardGameController {
     }
 
     //==================================================================================================================
-
-    // xuất kết quả thắng thua
-//    @FXML
-//    protected void ResultGame(MouseEvent event) {
-//        if (quayXucXac == 1) {
-//            String getValue = lblResult.getText();
-//            int numberOfButtons = Integer.parseInt(getValue);
-//            Alert alert = new Alert(Alert.AlertType.NONE);
-//            alert.setTitle("KẾT QUẢ");
-//            int value1, value2, value3, value4;
-//            value1 = Integer.parseInt(label1.getText());
-//            value2 = Integer.parseInt(label2.getText());
-//            value3 = Integer.parseInt(label3.getText());
-//            value4 = Integer.parseInt(label4.getText());
-////        System.out.println(label1.getText());
-//            if (numberOfButtons == 1 || numberOfButtons == 6) {
-//                if (selectLabel1 == 1) {
-//                    sumAccount -= value1;
-//                } else if (selectLabel2 == 2) {
-//                    sumAccount -= value2;
-//                } else if (selectLabel3 == 3) {
-//                    sumAccount -= value3;
-//                } else {
-//                    sumAccount -= value4;
-//                }
-//                alert.setContentText("LOSE\n" + "Account: " + sumAccount);
-//            } else if (numberOfButtons <= 3 && selectTaiXiu == 2 || numberOfButtons > 3 && selectTaiXiu == 1) {
-//                if (selectLabel1 == 1) {
-//                    sumAccount -= value1;
-//                } else if (selectLabel2 == 2) {
-//                    sumAccount -= value2;
-//                } else if (selectLabel3 == 3) {
-//                    sumAccount -= value3;
-//                } else {
-//                    sumAccount -= value4;
-//                }
-//                alert.setContentText("LOSE\n" + "Account: " + sumAccount);
-//            } else {
-//                if (selectLabel1 == 1) {
-//                    sumAccount += value1;
-//                } else if (selectLabel2 == 2) {
-//                    sumAccount += value2;
-//                } else if (selectLabel3 == 3) {
-//                    sumAccount += value3;
-//                } else {
-//                    sumAccount += value4;
-//                }
-//                alert.setContentText("WIN\n" + "Account: " + sumAccount);
-//            }
-//            alert.setHeaderText("Số nút là: " + getValue);
-//            alert.show();
-//            System.out.println(sumAccount);
-//
-//        } else {
-//            Alert alert = new Alert(Alert.AlertType.WARNING);
-//            alert.setTitle("THÔNG BÁO");
-//            alert.setHeaderText("Bạn chưa thực hiện đủ các bước.");
-//            alert.show();
-//        }
-//    }
 
     @FXML
     protected void instruction(ActionEvent event) {
@@ -363,8 +309,8 @@ public class BoardGameController {
 
 //    public void alertNotification(int value) {
 
-    public void Result() {
-        int s = 0;
+    public void result() {
+
         int value1, value2, value3, value4;
         value1 = Integer.parseInt(label1.getText());
         value2 = Integer.parseInt(label2.getText());
@@ -372,7 +318,7 @@ public class BoardGameController {
         value4 = Integer.parseInt(label4.getText());
         Alert alert = new Alert(Alert.AlertType.NONE);
         alert.setTitle("KẾT QUẢ");
-        sumAccount = result(value1, value2, value3, value4, finalIndex, selectLabel1, sumAccount, selectLabel2, selectLabel3, selectTaiXiu);
+        sumAccount = BoardGameConsts.result(value1, value2, value3, value4, finalIndex, selectLabel1, sumAccount, selectLabel2, selectLabel3, selectTaiXiu);
         if (finalIndex == 1 || finalIndex == 6) {
             alert.setContentText("LOSE\n" + "Account: " + sumAccount);
         } else if (finalIndex <= 3 && selectTaiXiu == 2 || finalIndex > 3 && selectTaiXiu == 1) {
@@ -381,61 +327,10 @@ public class BoardGameController {
             alert.setContentText("WIN\n" + "Account: " + sumAccount);
         }
         alert.setHeaderText("Số nút là: " + finalIndex);
-//        alert.show();
-        alert.getDialogPane().getButtonTypes().add(ButtonType.OK);//
+        alert.getDialogPane().getButtonTypes().add(ButtonType.OK);
         alert.setResizable(true);
         alert.showAndWait();
     }
-
-//    public void Result() {
-//        Alert alert = new Alert(Alert.AlertType.NONE);
-//        alert.setTitle("KẾT QUẢ");
-//        int value1, value2, value3, value4;
-//        value1 = Integer.parseInt(label1.getText());
-//        value2 = Integer.parseInt(label2.getText());
-//        value3 = Integer.parseInt(label3.getText());
-//        value4 = Integer.parseInt(label4.getText());
-//        if (finalIndex == 1 || finalIndex == 6) {
-//
-//            if (selectLabel1 == 1) {
-//                sumAccount -= value1;
-//            } else if (selectLabel2 == 2) {
-//                sumAccount -= value2;
-//            } else if (selectLabel3 == 3) {
-//                sumAccount -= value3;
-//            } else {
-//                sumAccount -= value4;
-//            }
-//        } else if (finalIndex <= 3 && selectTaiXiu == 2 || finalIndex > 3 && selectTaiXiu == 1) {
-//
-//            if (selectLabel1 == 1) {
-//                sumAccount -= value1;
-//            } else if (selectLabel2 == 2) {
-//                sumAccount -= value2;
-//            } else if (selectLabel3 == 3) {
-//                sumAccount -= value3;
-//            } else {
-//                sumAccount -= value4;
-//            }
-//
-//        } else {
-//
-//            if (selectLabel1 == 1) {
-//                sumAccount += value1;
-//            } else if (selectLabel2 == 2) {
-//                sumAccount += value2;
-//            } else if (selectLabel3 == 3) {
-//                sumAccount += value3;
-//            } else {
-//                sumAccount += value4;
-//            }
-//        }
-//        alert.setHeaderText("Số nút là: " + finalIndex);
-//        alert.show();
-//
-//        alert.setHeaderText("Số nút là: " + finalIndex);
-//        alert.show();
-//    }
 
     private Stage stage;
     private Scene scene;
@@ -445,6 +340,7 @@ public class BoardGameController {
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("Login.fxml"));
         root = loader.load();
         LoginController scene1Controller = loader.getController();
+//        FXMLDocumentController scene1Controller = loader.getController();
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
