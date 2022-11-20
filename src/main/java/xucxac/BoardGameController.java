@@ -1,5 +1,6 @@
 package xucxac;
 
+
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -49,13 +50,13 @@ public class BoardGameController {
     @FXML
     private Label ResultGame;
     @FXML
-    private Button button1;
+    private Button topLeft;
     @FXML
-    private Button button2;
+    private Button topRight;
     @FXML
-    private Button button3;
+    private Button bottomLeft;
     @FXML
-    private Button button4;
+    private Button bottomRight;
     @FXML
     private Button instruction;
     @FXML
@@ -68,9 +69,12 @@ public class BoardGameController {
     private int selectLabel2 = 0;
     private int selectLabel3 = 0;
     private int selectLabel4 = 0;
-    private int sumAccount = 0;
+    private int sumAccount = 50000;
     private int quayXucXac = 0;
-
+    private int moneyTopLeft = 500;
+    private int moneyTopRight = 1000;
+    private int moneyBottomLeft = 5000;
+    private int moneyBottomRight = 10000;
 
     //Tổng tiền trong Account
     @FXML
@@ -200,16 +204,16 @@ public class BoardGameController {
     protected void onNumberClicked1(MouseEvent event) {
         int value1 = Integer.parseInt(label1.getText());
         if ((selectTaiXiu == 1 || selectTaiXiu == 2) && sumAccount >= 500 && sumAccount - value1 > 500) {
-            int value = Integer.parseInt(((Button) event.getSource()).getId().replace("button", ""));
-            String text = null;
+            String text;
             if (Integer.parseInt(label1.getText()) == 0) {
-                text = String.valueOf((Integer) value);
+                text = String.valueOf((Integer) moneyTopLeft);
             } else {
-                Integer sum = Integer.parseInt(label1.getText()) + value;
+                Integer sum = Integer.parseInt(label1.getText()) + moneyTopLeft;
                 text = String.valueOf(sum);
             }
             label1.setText(text);
             selectLabel1 = 1;
+            buttonDisabledTopLeft();
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("THÔNG BÁO");
@@ -225,16 +229,16 @@ public class BoardGameController {
     protected void onNumberClicked2(MouseEvent event) {
         int value2 = Integer.parseInt(label2.getText());
         if ((selectTaiXiu == 1 || selectTaiXiu == 2) && sumAccount >= 1000 && sumAccount - value2 > 1000) {
-            int value = Integer.parseInt(((Button) event.getSource()).getId().replace("button", ""));
             String text;
             if (Integer.parseInt(label2.getText()) == 0) {
-                text = String.valueOf((Integer) value);
+                text = String.valueOf((Integer) moneyTopRight);
             } else {
-                Integer sum = Integer.parseInt(label2.getText()) + value;
+                Integer sum = Integer.parseInt(label2.getText()) + moneyTopRight;
                 text = String.valueOf(sum);
             }
             label2.setText(text);
             selectLabel2 = 2;
+            buttonDisabledTopRight();
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("THÔNG BÁO");
@@ -249,16 +253,16 @@ public class BoardGameController {
     protected void onNumberClicked3(MouseEvent event) {
         int value3 = Integer.parseInt(label3.getText());
         if ((selectTaiXiu == 1 || selectTaiXiu == 2) && sumAccount >= 5000 && sumAccount - value3 > 5000) {
-            int value = Integer.parseInt(((Button) event.getSource()).getId().replace("button", ""));
             String text;
             if (Integer.parseInt(label3.getText()) == 0) {
-                text = String.valueOf((Integer) value);
+                text = String.valueOf((Integer) moneyBottomLeft);
             } else {
-                Integer sum = Integer.parseInt(label3.getText()) + value;
+                Integer sum = Integer.parseInt(label3.getText()) + moneyBottomLeft;
                 text = String.valueOf(sum);
             }
             label3.setText(text);
             selectLabel3 = 3;
+            buttonDisabledBottomLeft();
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("THÔNG BÁO");
@@ -273,16 +277,16 @@ public class BoardGameController {
     protected void onNumberClicked4(MouseEvent event) {
         int value4 = Integer.parseInt(label4.getText());
         if ((selectTaiXiu == 1 || selectTaiXiu == 2) && sumAccount >= 10000 && sumAccount - value4 > 10000) {
-            int value = Integer.parseInt(((Button) event.getSource()).getId().replace("button", ""));
             String text;
             if (Integer.parseInt(label4.getText()) == 0) {
-                text = String.valueOf((Integer) value);
+                text = String.valueOf((Integer) moneyBottomRight);
             } else {
-                Integer sum = Integer.parseInt(label4.getText()) + value;
+                Integer sum = Integer.parseInt(label4.getText()) + moneyBottomRight;
                 text = String.valueOf(sum);
             }
             label4.setText(text);
             selectLabel4 = 4;
+            buttonDisabledBottomRight();
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("THÔNG BÁO");
@@ -310,7 +314,6 @@ public class BoardGameController {
 //    public void alertNotification(int value) {
 
     public void result() {
-
         int value1, value2, value3, value4;
         value1 = Integer.parseInt(label1.getText());
         value2 = Integer.parseInt(label2.getText());
@@ -330,6 +333,7 @@ public class BoardGameController {
         alert.getDialogPane().getButtonTypes().add(ButtonType.OK);
         alert.setResizable(true);
         alert.showAndWait();
+//        allButtonNotDisable();
     }
 
     private Stage stage;
@@ -345,8 +349,36 @@ public class BoardGameController {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-
-
     }
+
+
+
+    public void buttonDisabledTopLeft() {
+        topRight.setDisable(true);
+        bottomLeft.setDisable(true);
+        bottomRight.setDisable(true);
+    }
+    public void buttonDisabledTopRight() {
+        topLeft.setDisable(true);
+        bottomLeft.setDisable(true);
+        bottomRight.setDisable(true);
+    }
+    public void buttonDisabledBottomLeft() {
+        topRight.setDisable(true);
+        topLeft.setDisable(true);
+        bottomRight.setDisable(true);
+    }
+    public void buttonDisabledBottomRight() {
+        topRight.setDisable(true);
+        topLeft.setDisable(true);
+        bottomLeft.setDisable(true);
+    }
+    public void allButtonNotDisable(){
+        topLeft.setDisable(false);
+        topRight.setDisable(false);
+        bottomLeft.setDisable(false);
+        bottomRight.setDisable(false);
+    }
+
 
 }

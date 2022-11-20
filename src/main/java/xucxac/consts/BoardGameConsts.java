@@ -1,6 +1,7 @@
 package xucxac.consts;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 public class BoardGameConsts {
@@ -14,6 +15,14 @@ public class BoardGameConsts {
     private static Label label3;
     @FXML
     private static Label label4;
+    @FXML
+    private static Button topLeft;
+    @FXML
+    private static Button topRight;
+    @FXML
+    private static Button bottomLeft;
+    @FXML
+    private static Button bottomRight;
 
     public static final String colorTaiXiu() {
         return "-fx-color:red-fx-border; -fx-background-color: #d3d3d3;";
@@ -67,5 +76,6 @@ public class BoardGameConsts {
         }
         return sumAccount;
     }
+
 
 }
