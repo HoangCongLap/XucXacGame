@@ -12,6 +12,8 @@ public class Main extends Application {
         try {
 
             Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Login.fxml"));
+//            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("BoardGame.fxml"));
+//            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("RoomCreate.fxml"));
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();

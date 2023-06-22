@@ -1,11 +1,16 @@
-package xucxac;
+package xucxac.database;
 
 
 import java.sql.*;
 import javax.swing.*;
 
+
 public class ConnectionUtil {
-    Connection conn = null;
+   public static Connection conn = null;
+
+   static {
+       conn=connectdb();
+   }
 
     public static Connection connectdb() {
 

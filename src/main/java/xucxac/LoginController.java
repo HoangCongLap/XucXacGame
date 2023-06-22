@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import xucxac.database.ConnectionUtil;
 
 import java.io.IOException;
 import java.net.URL;
@@ -18,9 +19,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ResourceBundle;
 
-
 public class LoginController implements Initializable {
-
+    static String id = null;
     @FXML
     private TextField userNameTextField;
 
@@ -32,19 +32,24 @@ public class LoginController implements Initializable {
 //    Stage dialogStage = new Stage();
 //    Scene scene;
 
+
     Connection connection = null;
     PreparedStatement preparedStatement = null;
     ResultSet resultSet = null;
+    ResultSet resultSett = null;
+    Boolean checkLogin=false;
 
     public LoginController() {
         connection = ConnectionUtil.connectdb();
     }
 
     public void login(ActionEvent event) throws IOException {
-        String userName = userNameTextField.getText();
-        String pass = passWordTextField.getText();
-//        String userName = "HoangCongLap";
-//        String pass = "123";
+        String username=null;
+        String password=null;
+//        String userName = userNameTextField.getText();
+//        String pass = passWordTextField.getText();
+        String userName = "HoangCongLap";
+        String pass = "123";
         String sql = "SELECT * FROM account WHERE username = ? and password = ?";
 
         try {
@@ -52,24 +57,29 @@ public class LoginController implements Initializable {
             preparedStatement.setString(1, userName);
             preparedStatement.setString(2, pass);
             resultSet = preparedStatement.executeQuery();
+
             if (!resultSet.next()) {
-                infoBox("Wrong user and password", "Failed", null);
+                infoBox("Wrong User and password", "Failed", null);
+
             } else {
 //                infoBox("Login Successfull", "Success", null);
-//
-                FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("InformationCustomer.fxml"));
+              username=resultSet.getString("username");
+              password=resultSet.getString("password");
+                FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("RoomCreate.fxml"));
                 root = loader.load();
-                InformationCustomer scene2Controller = loader.getController();
+                RoomCreateController scene2Controller = loader.getController();
                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();
             }
-
+            System.out.format("%s,%s",username,password);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
+
     @FXML
     public void signUpAtionLogin(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("SignUp.fxml"));

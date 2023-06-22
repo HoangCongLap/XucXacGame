@@ -5,24 +5,37 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import xucxac.consts.BoardGameConsts;
+import xucxac.database.ConnectionUtil;
 
+import javax.swing.*;
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
+import java.sql.*;
 import java.util.Random;
+import java.util.ResourceBundle;
 
 import static xucxac.consts.BoardGameConsts.*;
 
 
-public class BoardGameController {
+public class BoardGameController implements Initializable {
     @FXML
     private Label welcomeText;
     Random random = new Random();
@@ -60,9 +73,15 @@ public class BoardGameController {
     @FXML
     private Button instruction;
     @FXML
-    private TextField myTextFieldSum;
+    private TextField textCardMoney;
     @FXML
-    private Label resultAccountGame;
+    private Pane paneThongTinBan;
+    @FXML
+    private Label labIDPhong;
+
+
+    @FXML
+    private Label labMoneyTotal;
     private int finalIndex = 0;
     private int selectTaiXiu = 0;
     private int selectLabel1 = 0;
@@ -75,11 +94,53 @@ public class BoardGameController {
     private int moneyTopRight = 1000;
     private int moneyBottomLeft = 5000;
     private int moneyBottomRight = 10000;
+    ResultSet resultSet = null;
+    PreparedStatement preparedStatement = null;
+    Connection conn = ConnectionUtil.connectdb();
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        String cardMoney = null;
+        String moneyTotal = null;
+        String gender = null;
+
+        String sql = "SELECT * FROM customer";
+        try {
+            preparedStatement = conn.prepareStatement(sql);
+            resultSet = preparedStatement.executeQuery(sql);
+            while (resultSet.next()) {
+                gender = resultSet.getString("gender");
+                cardMoney = resultSet.getString("CardMoney");
+                moneyTotal = resultSet.getString("moneyTotal");
+            }
+            System.out.println("gender:" + gender);
+            System.out.println("card:" + cardMoney);
+            System.out.println("total:" + moneyTotal);
+            resultSet.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        newLabel();
+
+    }
+
+    public void newLabel() {
+
+        Label label = new Label();
+        label.setText("Hello, world!");
+        label.setStyle("-fx-font-size: 20px; -fx-text-fill: red;");
+        paneThongTinBan.getChildren().add(label);
+        System.out.println("hoang");
+    }
+
+
+
 
     //Tổng tiền trong Account
     @FXML
     protected void newAccount(ActionEvent event) {
-        sumAccount = Integer.parseInt(myTextFieldSum.getText());
+        sumAccount = Integer.parseInt(textCardMoney.getText());
         if (sumAccount >= 500) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("THÔNG BÁO");
@@ -100,7 +161,7 @@ public class BoardGameController {
     private void roll(ActionEvent event) {
         if (sumAccount >= 500 && (selectTaiXiu == 1 || selectTaiXiu == 2) && (selectLabel1 == 1 || selectLabel2 == 2 || selectLabel3 == 3 || selectLabel4 == 4)) {
             rollButton.setDisable(true);
-            System.getProperty("user.dir");
+            System.getProperty("User.dir");
             Thread theard = new Thread() {
                 //            runOnUiThread(new Runnable() {
                 @Override
@@ -153,7 +214,7 @@ public class BoardGameController {
                         Platform.runLater(new Runnable() {
                             @Override
                             public void run() {
-                                resultAccountGame.setText(String.valueOf(sumAccount));
+                                labMoneyTotal.setText(String.valueOf(sumAccount));
                             }
                         });
 //==================================================================================================================
@@ -352,28 +413,31 @@ public class BoardGameController {
     }
 
 
-
     public void buttonDisabledTopLeft() {
         topRight.setDisable(true);
         bottomLeft.setDisable(true);
         bottomRight.setDisable(true);
     }
+
     public void buttonDisabledTopRight() {
         topLeft.setDisable(true);
         bottomLeft.setDisable(true);
         bottomRight.setDisable(true);
     }
+
     public void buttonDisabledBottomLeft() {
         topRight.setDisable(true);
         topLeft.setDisable(true);
         bottomRight.setDisable(true);
     }
+
     public void buttonDisabledBottomRight() {
         topRight.setDisable(true);
         topLeft.setDisable(true);
         bottomLeft.setDisable(true);
     }
-    public void allButtonNotDisable(){
+
+    public void allButtonNotDisable() {
         topLeft.setDisable(false);
         topRight.setDisable(false);
         bottomLeft.setDisable(false);

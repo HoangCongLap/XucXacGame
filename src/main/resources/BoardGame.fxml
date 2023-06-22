@@ -1,60 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="398.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="xucxac.BoardGameController" >
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="490.0" prefWidth="763.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="xucxac.BoardGameController">
     <children>
-        <ImageView fx:id="diceImage" fitHeight="95.0" fitWidth="114.0" layoutX="253.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fx:id="diceImage" fitHeight="95.0" fitWidth="114.0" layoutX="253.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@xucxac/images/dice1.png" />
             </image>
         </ImageView>
-        <Button fx:id="rollButton" layoutX="273.0" layoutY="142.0" mnemonicParsing="false" onAction="#roll" prefHeight="43.0" prefWidth="66.0" text="chọn" />
+        <Button fx:id="rollButton" layoutX="272.0" layoutY="223.0" mnemonicParsing="false" onAction="#roll" prefHeight="43.0" prefWidth="66.0" text="chọn" />
 
-        <Button fx:id="topLeft" layoutX="119.0" layoutY="228.0" mnemonicParsing="false" onMouseClicked="#onNumberClicked1" text="\$500" />
-        <Button fx:id="topRight" layoutX="447.0" layoutY="228.0" mnemonicParsing="false" onMouseClicked="#onNumberClicked2" text="\$1.000" />
-        <Button fx:id="bottomLeft" layoutX="114.0" layoutY="347.0" mnemonicParsing="false" onMouseClicked="#onNumberClicked3" text="\$5.000" />
-        <Button fx:id="bottomRight" layoutX="445.0" layoutY="347.0" mnemonicParsing="false" onMouseClicked="#onNumberClicked4" text="\$10.000" />
+        <Button fx:id="topLeft" layoutX="116.0" layoutY="289.0" mnemonicParsing="false" onMouseClicked="#onNumberClicked1" text="\$500" />
+        <Button fx:id="topRight" layoutX="448.0" layoutY="289.0" mnemonicParsing="false" onMouseClicked="#onNumberClicked2" text="\$1.000" />
+        <Button fx:id="bottomLeft" layoutX="111.0" layoutY="408.0" mnemonicParsing="false" onMouseClicked="#onNumberClicked3" text="\$5.000" />
+        <Button fx:id="bottomRight" layoutX="445.0" layoutY="408.0" mnemonicParsing="false" onMouseClicked="#onNumberClicked4" text="\$10.000" />
 
-        <Label fx:id="label1" alignment="CENTER" layoutX="28.0" layoutY="148.0" prefHeight="76.0" prefWidth="222.0" style="-fx-background-color: #D3D3D3;" text="0">
+        <Label fx:id="label1" alignment="CENTER" layoutX="27.0" layoutY="203.0" prefHeight="76.0" prefWidth="222.0" style="-fx-background-color: #D3D3D3;" text="0">
             <font>
                 <Font name="Agency FB Bold" size="24.0" />
             </font>
         </Label>
-        <Label fx:id="label2" alignment="CENTER" layoutX="358.0" layoutY="148.0" prefHeight="76.0" prefWidth="222.0" style="-fx-background-color: #D3D3D3;" text="0" textAlignment="CENTER">
+        <Label fx:id="label2" alignment="CENTER" layoutX="362.0" layoutY="207.0" prefHeight="76.0" prefWidth="222.0" style="-fx-background-color: #D3D3D3;" text="0" textAlignment="CENTER">
             <font>
                 <Font name="Agency FB Bold" size="24.0" />
             </font>
         </Label>
-        <Label fx:id="label4" alignment="CENTER" layoutX="360.0" layoutY="267.0" prefHeight="76.0" prefWidth="222.0" style="-fx-background-color: #D3D3D3;" text="0" textAlignment="CENTER">
+        <Label fx:id="label4" alignment="CENTER" layoutX="363.0" layoutY="322.0" prefHeight="76.0" prefWidth="222.0" style="-fx-background-color: #D3D3D3;" text="0" textAlignment="CENTER">
             <font>
                 <Font name="Agency FB Bold" size="24.0" />
             </font>
         </Label>
-        <Label fx:id="label3" alignment="CENTER" layoutX="29.0" layoutY="267.0" prefHeight="76.0" prefWidth="222.0" style="-fx-background-color: #D3D3D3;" text="0" textAlignment="CENTER">
+        <Label fx:id="label3" alignment="CENTER" layoutX="27.0" layoutY="322.0" prefHeight="76.0" prefWidth="222.0" style="-fx-background-color: #D3D3D3;" text="0" textAlignment="CENTER">
             <font>
                 <Font name="Agency FB Bold" size="24.0" />
             </font>
         </Label>
 
-        <Label alignment="CENTER" layoutX="371.0" onMouseClicked="#handleClicked2" prefHeight="126.0" prefWidth="206.0" style="-fx-background-color: #D3D3D3;-fx-border-color:red;" text="XỈU" fx:id="xiu">
+        <Label alignment="CENTER" layoutX="371.0" layoutY="62.0" onMouseClicked="#handleClicked2" prefHeight="126.0" prefWidth="206.0" style="-fx-background-color: #D3D3D3;-fx-border-color:red;" text="XỈU" fx:id="xiu">
             <font>
                 <Font name="Arial Bold" size="27.0" />
             </font>
         </Label>
-        <Label fx:id="tai" alignment="CENTER" layoutX="23.0" onMouseClicked="#handleClicked2" prefHeight="126.0" prefWidth="206.0" style="-fx-background-color: #D3D3D3;-fx-border-color:red;" text="TÀI">
+        <Label fx:id="tai" alignment="CENTER" layoutX="27.0" layoutY="62.0" onMouseClicked="#handleClicked2" prefHeight="126.0" prefWidth="206.0" style="-fx-background-color: #D3D3D3;-fx-border-color:red;" text="TÀI">
             <font>
                 <Font name="Arial Bold" size="27.0" />
             </font>
         </Label>
-       <Label fx:id="lblResult" alignment="CENTER" layoutX="229.0" layoutY="6.0" prefHeight="19.0" prefWidth="142.0" style="-fx-background-color: #708090;" />
-      <Label fx:id="resultAccountGame" alignment="CENTER" layoutX="258.0" layoutY="207.0" prefHeight="95.0" prefWidth="95.0" style="-fx-background-color: #FF0000;" text="15165123" />
-      <TextField fx:id="myTextFieldSum" layoutX="255.0" layoutY="369.0" onAction="#newAccount" prefHeight="26.0" prefWidth="107.0" style="-fx-background-color: #00BFFF;" />
-      <Label layoutX="249.0" layoutY="351.0" text="Nạp tiền vào tài khoản: " />
-      <Button fx:id="instruction" layoutX="525.0" layoutY="372.0" mnemonicParsing="false" onAction="#instruction" style="-fx-background-color: #4682B4;" text="Hướng dẫn" />
-      <Button fx:id="btBackLogin" layoutX="-3.0" layoutY="372.0" mnemonicParsing="false" onAction="#backLogin" style="-fx-background-color: #4682B4;" text="Back Login" />
+       <Label fx:id="lblResult" alignment="CENTER" layoutX="234.0" layoutY="62.0" prefHeight="19.0" prefWidth="137.0" style="-fx-background-color: #708090;" />
+      <Label fx:id="labMoneyTotal" alignment="CENTER" layoutX="258.0" layoutY="312.0" prefHeight="95.0" prefWidth="95.0" style="-fx-background-color: #FF0000;" text="0" />
+      <TextField fx:id="textCardMoney" layoutX="252.0" layoutY="451.0" onAction="#newAccount" prefHeight="26.0" prefWidth="107.0" style="-fx-background-color: #00BFFF;" />
+      <Label layoutX="242.0" layoutY="425.0" text="Nạp tiền vào tài khoản: " />
+      <Button fx:id="instruction" layoutX="524.0" layoutY="464.0" mnemonicParsing="false" onAction="#instruction" style="-fx-background-color: #4682B4;" text="Hướng dẫn" />
+      <Button fx:id="btBackLogin" layoutY="464.0" mnemonicParsing="false" onAction="#backLogin" style="-fx-background-color: #4682B4;" text="Back Login" />
+      <Label alignment="CENTER" layoutY="-2.0" prefHeight="34.0" prefWidth="600.0" style="-fx-background-color: #3399FF;" text="BÀN CƯỢC ">
+         <font>
+            <Font name="System Bold" size="28.0" />
+         </font>
+      </Label>
+      <Pane fx:id="paneThongTinBan" layoutX="609.0" layoutY="-1.0" prefHeight="490.0" prefWidth="162.0" style="-fx-background-color: #CCCCCC;">
+         <children>
+            <Label layoutX="14.0" layoutY="111.0" text="S1:" />
+            <Label layoutX="14.0" layoutY="147.0" text="S2:" />
+            <Label layoutX="14.0" layoutY="183.0" text="S3:" />
+            <Label layoutX="14.0" layoutY="217.0" text="S4:" />
+            <Label fx:id="labS1" layoutX="52.0" layoutY="111.0" text="s1" />
+            <Label fx:id="labS2" layoutX="53.0" layoutY="152.0" text="s2" />
+            <Label fx:id="labS3" layoutX="53.0" layoutY="183.0" text="s3" />
+            <Label fx:id="labS4" layoutX="53.0" layoutY="217.0" text="s4" />
+            <Label layoutX="10.0" layoutY="21.0" text="ID phòng:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="labIDPhong" layoutX="82.0" layoutY="24.0" text="idPhong" />
+         </children>
+      </Pane>
     </children>
 </AnchorPane>

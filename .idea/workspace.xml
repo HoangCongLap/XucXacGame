@@ -5,14 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cacf39b1-ea4a-418f-8cdd-f85c2659a27c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/xucxac/InformationCustomer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/xucxac/SignUpController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/InformationCustomer.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_projectlombok_lombok_1_18_28.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/xucxac/RoomCreateController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/xucxac/mySql/MysqlConnectRoom.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/xucxac/users/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/RoomCreate.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/XucXac.iml" beforeDir="false" afterPath="$PROJECT_DIR$/XucXac.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/BoardGameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/BoardGameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/ConnectionUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/database/ConnectionUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/InformationCustomer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/InformationCustomer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Login.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/SignUp.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/SignUp.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/SignUpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/SignUpController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/BoardGame.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/BoardGame.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/swingapp.sql" beforeDir="false" afterPath="$PROJECT_DIR$/swingapp.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,9 +32,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="JavaFXApplication" />
+        <option value="Interface" />
         <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -65,7 +76,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/wordcount" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -76,6 +87,9 @@
     <option name="enabled" value="false" />
   </component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="xucxac" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\PROJECT\intellijTrainningCode\XucXacGame\src\main\resources" />
     </key>
@@ -181,6 +195,29 @@
           <url>file://$PROJECT_DIR$/src/main/java/xucxac/consts/BoardGameConsts.java</url>
           <line>75</line>
           <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/xucxac/users/User.java</url>
+          <line>7</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-field">
+          <url>file://$PROJECT_DIR$/src/main/java/xucxac/RoomCreateController.java</url>
+          <line>31</line>
+          <properties field="tableV_inforAca" class="xucxac.RoomCreateController" />
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-field">
+          <url>file://$PROJECT_DIR$/src/main/java/xucxac/RoomCreateController.java</url>
+          <line>34</line>
+          <properties field="col_IdPhong" class="xucxac.RoomCreateController" />
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-field">
+          <url>file://$PROJECT_DIR$/src/main/java/xucxac/RoomCreateController.java</url>
+          <line>40</line>
+          <properties field="col_SoNguoi" class="xucxac.RoomCreateController" />
+          <option name="timeStamp" value="22" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
