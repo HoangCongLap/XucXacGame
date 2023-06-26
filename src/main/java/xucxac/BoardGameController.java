@@ -17,14 +17,13 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import xucxac.data.CurrentRoom;
 import xucxac.consts.BoardGameConsts;
 import xucxac.database.ConnectionUtil;
+import xucxac.database.PlayerDatabase;
+import xucxac.database.entites.RoomUser;
 
-import javax.swing.*;
-import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -36,6 +35,8 @@ import static xucxac.consts.BoardGameConsts.*;
 
 
 public class BoardGameController implements Initializable {
+
+    private static final String ROOMCREATE_XML_FILE = "RoomCreate.fxml";
     @FXML
     private Label welcomeText;
     Random random = new Random();
@@ -75,9 +76,9 @@ public class BoardGameController implements Initializable {
     @FXML
     private TextField textCardMoney;
     @FXML
-    private Pane paneThongTinBan;
+    public Pane paneThongTinBan;
     @FXML
-    private Label labIDPhong;
+    public Label labIdPhong;
 
 
     @FXML
@@ -98,43 +99,33 @@ public class BoardGameController implements Initializable {
     PreparedStatement preparedStatement = null;
     Connection conn = ConnectionUtil.connectdb();
 
+    public BoardGameController() {
+    }
+
+    private RoomUser roomUser;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-        String cardMoney = null;
-        String moneyTotal = null;
-        String gender = null;
-
-        String sql = "SELECT * FROM customer";
-        try {
-            preparedStatement = conn.prepareStatement(sql);
-            resultSet = preparedStatement.executeQuery(sql);
-            while (resultSet.next()) {
-                gender = resultSet.getString("gender");
-                cardMoney = resultSet.getString("CardMoney");
-                moneyTotal = resultSet.getString("moneyTotal");
-            }
-            System.out.println("gender:" + gender);
-            System.out.println("card:" + cardMoney);
-            System.out.println("total:" + moneyTotal);
-            resultSet.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        PlayerDatabase.getPlayers(1);
+        System.out.println(PlayerDatabase.getPlayers(1).toString());
         newLabel();
 
     }
 
     public void newLabel() {
 
+        labIdPhong.setText(CurrentRoom.roomUser.getIdPhong());
+
         Label label = new Label();
         label.setText("Hello, world!");
-        label.setStyle("-fx-font-size: 20px; -fx-text-fill: red;");
+        label.setStyle("-fx-font-size: 10px; -fx-text-fill: red;");
         paneThongTinBan.getChildren().add(label);
         System.out.println("hoang");
     }
 
-
+//    public void initForm(User user) {
+//        labIdPhong.setText(user.getIdPhong());
+//    }
 
 
     //Tổng tiền trong Account
@@ -402,10 +393,9 @@ public class BoardGameController implements Initializable {
     private Parent root;
 
     public void backLogin(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("Login.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(ROOMCREATE_XML_FILE));
         root = loader.load();
-        LoginController scene1Controller = loader.getController();
-//        FXMLDocumentController scene1Controller = loader.getController();
+        RoomCreateController scene1Controller = loader.getController();
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

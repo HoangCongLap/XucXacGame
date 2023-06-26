@@ -11,5 +11,8 @@ module xucxac {
     exports xucxac;
     exports xucxac.database;
     opens xucxac.database to javafx.fxml;
-    exports xucxac.users;
+
+    exports xucxac.consts;
+    exports xucxac.data;
+    exports xucxac.database.entites;
 }

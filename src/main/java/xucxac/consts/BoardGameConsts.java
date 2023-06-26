@@ -4,6 +4,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
+import java.util.Random;
+
 public class BoardGameConsts {
 
     public static Object BettingValue;
@@ -76,6 +78,10 @@ public class BoardGameConsts {
         }
         return sumAccount;
     }
-
+    public static int ranDomIdPhong (){
+        Random ran = new Random();
+        int index = (ran.nextInt(100000,999999));
+        return index;
+    }
 
 }

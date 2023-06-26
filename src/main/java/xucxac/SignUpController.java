@@ -10,7 +10,9 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import xucxac.consts.BoardGameConsts;
 import xucxac.database.ConnectionUtil;
 
 import javax.swing.*;
@@ -20,7 +22,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 
 public class SignUpController extends Component {
-
+    private static final String INFORMATIONCUSTOMER_XML_FILE = "InformationCustomer.fxml";
+    private static final String LOGIN_XML_FILE = "Login.fxml";
+    public static int idAccount=BoardGameConsts.ranDomIdPhong();
     @FXML
     private Button SignUpButton;
 
@@ -38,14 +42,16 @@ public class SignUpController extends Component {
     private Parent root;
 
     @FXML
-    public void signUp() {
+    public void signUp( ActionEvent event) {
+
         Connection conn = ConnectionUtil.connectdb();
-        String sql = "INSERT INTO account(username, password) VALUES(?,?);\n";
+        String sql = "INSERT INTO account(username, password,id) VALUES(?,?,?);\n";
         StringBuilder sb = new StringBuilder();
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
             pst.setString(1, signUpUserName.getText());
             pst.setString(2, signUpPassWord.getText());
+            pst.setString(3, String.valueOf(idAccount));
 //  kiểm tra userName đã điền thông tin chưa
             if (signUpUserName.getText().equals("")) {
                 signUpUserName.setStyle("-fx-border-color: red;");
@@ -82,13 +88,15 @@ public class SignUpController extends Component {
             if (!signUpUserName.getText().equals("") && !signUpPassWord.getText().equals("") && !signUpComfirmPassWord.getText().equals("") && password.equals(confirm)) {
                 JOptionPane.showConfirmDialog(null, "succes");
                 pst.execute();
-            }
+                personalInformation( event);
 
+            }
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
     public static void showAlert(String infoMessage, String titleBar, String headerMessage) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(titleBar);
@@ -99,9 +107,21 @@ public class SignUpController extends Component {
 
     @FXML
     public void exitSignUp(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("Login.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(LOGIN_XML_FILE));
         root = loader.load();
         LoginController scene1Controller = loader.getController();
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+    public void personalInformation(ActionEvent event) {
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(INFORMATIONCUSTOMER_XML_FILE));
+        try {
+            root = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

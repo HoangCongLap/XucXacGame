@@ -12,8 +12,10 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import xucxac.database.ConnectionUtil;
+import xucxac.database.entites.Player;
 
 
+import javax.sound.midi.MidiDevice;
 import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
@@ -21,6 +23,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+
+import static xucxac.database.PlayerDatabase.insertCustomer;
 
 
 public class InformationCustomer implements Initializable {
@@ -46,30 +50,21 @@ public class InformationCustomer implements Initializable {
 
     @FXML
     public void OnActionInformationCustomer(ActionEvent event) throws IOException {
+        int idCustomer= Integer.parseInt(txtIdCustomer.getText());
+        String name= txtName.getText();
+        String gender= comboboxGender.getValue();
+        int cardMoney= Integer.parseInt(txtCardMoney.getText());
+        int idAccount= SignUpController.idAccount ;
+        Player player = new Player(idCustomer, name, gender, cardMoney, 0, idAccount);
+        insertCustomer(player);
 
-        Connection conn = ConnectionUtil.connectdb();
-        String sql = "INSERT INTO customer(idCustomer, name,gender,cardMoney) VALUES(?,?,?,?);\n";
-        StringBuilder sb = new StringBuilder();
-        try {
-            PreparedStatement pst = conn.prepareStatement(sql);
-            pst.setString(1, txtIdCustomer.getText());
-            pst.setString(2, txtName.getText());
-            pst.setString(3, comboboxGender.getValue());
-            pst.setString(4, txtCardMoney.getText());
-
-            JOptionPane.showConfirmDialog(null, "succes");
-            pst.execute();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("BoardGame.fxml"));
-        root = loader.load();
-        BoardGameController scene1Controller = loader.getController();
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+//        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("BoardGame.fxml"));
+//        root = loader.load();
+//        BoardGameController scene1Controller = loader.getController();
+//        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+//        scene = new Scene(root);
+//        stage.setScene(scene);
+//        stage.show();
 
     }
     @Override

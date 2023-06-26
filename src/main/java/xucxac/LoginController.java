@@ -20,6 +20,11 @@ import java.sql.ResultSet;
 import java.util.ResourceBundle;
 
 public class LoginController implements Initializable {
+
+    private static final String IFORMATIONCUSTOMER_XML_FILE = "InformationCustomer.fxml";
+    private static final String ROOMCREATE_XML_FILE = "RoomCreate.fxml";
+    private static final String SIGNUP_XML_FILE = "SignUp.fxml";
+
     static String id = null;
     @FXML
     private TextField userNameTextField;
@@ -65,9 +70,9 @@ public class LoginController implements Initializable {
 //                infoBox("Login Successfull", "Success", null);
               username=resultSet.getString("username");
               password=resultSet.getString("password");
-                FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("RoomCreate.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(ROOMCREATE_XML_FILE));
                 root = loader.load();
-                RoomCreateController scene2Controller = loader.getController();
+//                RoomCreateController scene2Controller = loader.getController();
                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 scene = new Scene(root);
                 stage.setScene(scene);
@@ -82,9 +87,9 @@ public class LoginController implements Initializable {
 
     @FXML
     public void signUpAtionLogin(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("SignUp.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(SIGNUP_XML_FILE));
         root = loader.load();
-        SignUpController scene1Controller = loader.getController();
+//        SignUpController scene1Controller = loader.getController();
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

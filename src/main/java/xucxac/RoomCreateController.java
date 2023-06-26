@@ -1,6 +1,8 @@
 package xucxac;
 
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -15,9 +17,12 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import xucxac.mySql.MysqlConnectRoom;
-import xucxac.users.User;
+import xucxac.data.CurrentRoom;
+import xucxac.data.RoomManage;
+import xucxac.mysql.MysqlConnectRoom;
+import xucxac.database.entites.RoomUser;
 
 import java.io.IOException;
 import java.net.URL;
@@ -25,20 +30,23 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import static xucxac.consts.BoardGameConsts.ranDomIdPhong;
 
 public class RoomCreateController implements Initializable {
 
+    private static final String BOARDGAME_XML_FILE = "BoardGame.fxml";
+    private static final String LOGIN_XML_FILE = "Login.fxml";
     @FXML
-    private TableView<User> tableV_inforAca;
+    private TableView<RoomUser> tableV_inforAca;
 
     @FXML
-    private TableColumn<User, String> col_IdPhong;
+    private TableColumn<RoomUser, String> col_IdPhong;
 
     @FXML
-    private TableColumn<User, String> col_TenPhong;
-
-    @FXML
-    private TableColumn<User, String> col_SoNguoi;
+    private TableColumn<RoomUser, String> col_SoNguoi;
 
 
     @FXML
@@ -46,13 +54,11 @@ public class RoomCreateController implements Initializable {
 
     @FXML
     private Button btnTaoPhong;
-
     @FXML
-    private Button btnTimPhong;
+    private AnchorPane anchorPane;
 
-
-    ObservableList<User> dataList;
-
+    ObservableList<RoomUser> dataList;
+    public static boolean check=false;
 
     int index = -1;
     Connection conn = null;
@@ -60,15 +66,19 @@ public class RoomCreateController implements Initializable {
     PreparedStatement pst = null;
 
 
+
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
+
     public void initialize(URL url, ResourceBundle rb) {
 
-       col_IdPhong.setCellValueFactory(new PropertyValueFactory<User, String>("idPhong"));
-        col_TenPhong.setCellValueFactory(new PropertyValueFactory<User, String>("tenPhong"));
-        col_SoNguoi.setCellValueFactory(new PropertyValueFactory<User, String>("soNguoi"));
+        col_IdPhong.setCellValueFactory(new PropertyValueFactory<RoomUser, String>("idPhong"));
+        col_SoNguoi.setCellValueFactory(new PropertyValueFactory<RoomUser, String>("soNguoi"));
 
         dataList = MysqlConnectRoom.getDataAllUsers();
+//        tableV_inforAca.setItems(RoomManage.rooms);
         tableV_inforAca.setItems(dataList);
-
 //        search_user();
 
         tableV_inforAca.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -76,30 +86,86 @@ public class RoomCreateController implements Initializable {
             public void handle(MouseEvent event) {
             }
         });
-
+        search_user();
     }
 
 
     @FXML
-    void search_user(ActionEvent event) {
+    void search_user() {
+        FilteredList<RoomUser> filteredData = new FilteredList<>(dataList, b -> true);
+        keyWordTextField.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredData.setPredicate(person -> {
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+                String lowerCaseFilter = newValue.toLowerCase();
+                if (person.getIdPhong().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;
+                }
+//                else if (person.getSoNguoi().contains(lowerCaseFilter))
+//                    return true;
+                else
+                    return false;
 
+            });
+        });
+        SortedList<RoomUser> sortedList = new SortedList<>(filteredData);
+        sortedList.comparatorProperty().bind(tableV_inforAca.comparatorProperty());
+        tableV_inforAca.setItems(sortedList);
     }
 
     @FXML
-    private TextField passWordTextField;
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
-
-    @FXML
-    public void onActionTaoPhong(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("BoardGame.fxml"));
+    public void exitRoomCreate(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(LOGIN_XML_FILE));
         root = loader.load();
-        BoardGameController scene1Controller = loader.getController();
+        LoginController scene1Controller = loader.getController();
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
+
+
+    @FXML
+    public void onActionTaoPhong(ActionEvent event) throws IOException {
+        String idPhong = String.valueOf(ranDomIdPhong());
+        int soNguoi=2;
+        RoomUser roomUser =new RoomUser(idPhong,soNguoi);
+        CurrentRoom.roomUser=roomUser;
+
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(BOARDGAME_XML_FILE));
+        root = loader.load();
+//        BoardGameController scene1Controller = loader.getController();
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+
+    }
+
+    public void handleVaoPhongClick(MouseEvent event) {
+
+        anchorPane.getScene().getWindow().focusedProperty().addListener(observable -> {
+            dataList = MysqlConnectRoom.getDataAllUsers();
+            tableV_inforAca.setItems(dataList);
+        });
+        TableView.TableViewSelectionModel<RoomUser> selectionModel = tableV_inforAca.getSelectionModel();
+        RoomUser selectedRoomUser = selectionModel.getSelectedItem();
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(BOARDGAME_XML_FILE));
+        CurrentRoom.roomUser=selectedRoomUser;
+        if (tableV_inforAca.getSelectionModel().getSelectedItem() != null) {
+            try {
+                root = loader.load();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+                Logger.getLogger(RoomCreateController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }
+    }
+
 
 }
