@@ -5,27 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cacf39b1-ea4a-418f-8cdd-f85c2659a27c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/xucxac/consts/RoomForm.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/xucxac/data/CurrentRoom.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/xucxac/data/CurrentUser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/xucxac/data/RoomManage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/xucxac/database/PlayerDatabase.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/xucxac/database/entites/Player.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/xucxac/database/entites/RoomUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/xucxac/NumberOfPlayers.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/NumberOfPlayers.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/BoardGameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/BoardGameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/InformationCustomer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/InformationCustomer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/RoomCreateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/RoomCreateController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/SignUpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/SignUpController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/consts/BoardGameConsts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/consts/BoardGameConsts.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/mySql/MysqlConnectRoom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/mysql/MysqlConnectRoom.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/users/User.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/BoardGame.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/BoardGame.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/RoomCreate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/RoomCreate.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

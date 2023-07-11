@@ -135,7 +135,6 @@ public class RoomCreateController implements Initializable {
 
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(BOARDGAME_XML_FILE));
         root = loader.load();
-//        BoardGameController scene1Controller = loader.getController();
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
