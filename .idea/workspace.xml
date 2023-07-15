@@ -5,10 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cacf39b1-ea4a-418f-8cdd-f85c2659a27c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/xucxac/NumberOfPlayers.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/NumberOfPlayers.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/BoardGameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/BoardGameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/NumberOfPlayers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/NumberOfPlayers.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/RoomCreateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/RoomCreateController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/BoardGame.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/BoardGame.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/NumberOfPlayers.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/NumberOfPlayers.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,6 +125,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="NumberOfPlayers" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="xucxac.NumberOfPlayers" />
+      <module name="XucXac" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="xucxac.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="PlayerDatabase" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="xucxac.database.PlayerDatabase" />
       <module name="XucXac" />
@@ -148,6 +164,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.NumberOfPlayers" />
         <item itemvalue="Application.PlayerDatabase" />
         <item itemvalue="Application.HelloApplication" />
       </list>
@@ -179,29 +196,14 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/xucxac/consts/BoardGameConsts.java</url>
-          <line>55</line>
-          <option name="timeStamp" value="9" />
+          <url>file://$PROJECT_DIR$/src/main/java/xucxac/RoomCreateController.java</url>
+          <line>138</line>
+          <option name="timeStamp" value="42" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/xucxac/consts/BoardGameConsts.java</url>
-          <line>68</line>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/xucxac/consts/BoardGameConsts.java</url>
-          <line>77</line>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/xucxac/database/entites/RoomUser.java</url>
-          <line>7</line>
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/xucxac/consts/BoardGameConsts.java</url>
-          <line>83</line>
-          <option name="timeStamp" value="25" />
+          <url>file://$PROJECT_DIR$/src/main/java/xucxac/RoomCreateController.java</url>
+          <line>141</line>
+          <option name="timeStamp" value="43" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-field">
           <url>file://$PROJECT_DIR$/src/main/java/xucxac/consts/RoomForm.java</url>

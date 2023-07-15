@@ -39,6 +39,7 @@ public class RoomCreateController implements Initializable {
 
     private static final String BOARDGAME_XML_FILE = "BoardGame.fxml";
     private static final String LOGIN_XML_FILE = "Login.fxml";
+    private static final String NUMBEROFPLAYERS = "NumberOfPlayers.fxml";
     @FXML
     private TableView<RoomUser> tableV_inforAca;
 
@@ -58,13 +59,12 @@ public class RoomCreateController implements Initializable {
     private AnchorPane anchorPane;
 
     ObservableList<RoomUser> dataList;
-    public static boolean check=false;
+    public static boolean check = false;
 
     int index = -1;
     Connection conn = null;
     ResultSet rs = null;
     PreparedStatement pst = null;
-
 
 
     private Stage stage;
@@ -128,18 +128,18 @@ public class RoomCreateController implements Initializable {
 
     @FXML
     public void onActionTaoPhong(ActionEvent event) throws IOException {
-        String idPhong = String.valueOf(ranDomIdPhong());
-        int soNguoi=2;
-        RoomUser roomUser =new RoomUser(idPhong,soNguoi);
-        CurrentRoom.roomUser=roomUser;
-
-        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(BOARDGAME_XML_FILE));
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(NUMBEROFPLAYERS));
         root = loader.load();
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-
+        String idPhong = String.valueOf(ranDomIdPhong());
+//        int soNguoi = NumberOfPlayers.limitPlayer1;
+        int soNguoi = NumberOfPlayers.hhh();
+                RoomUser roomUser = new RoomUser(idPhong, soNguoi);
+        CurrentRoom.roomUser = roomUser;
+        System.out.println("check:"+soNguoi);
     }
 
     public void handleVaoPhongClick(MouseEvent event) {
@@ -151,7 +151,7 @@ public class RoomCreateController implements Initializable {
         TableView.TableViewSelectionModel<RoomUser> selectionModel = tableV_inforAca.getSelectionModel();
         RoomUser selectedRoomUser = selectionModel.getSelectedItem();
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(BOARDGAME_XML_FILE));
-        CurrentRoom.roomUser=selectedRoomUser;
+        CurrentRoom.roomUser = selectedRoomUser;
         if (tableV_inforAca.getSelectionModel().getSelectedItem() != null) {
             try {
                 root = loader.load();

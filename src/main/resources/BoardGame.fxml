@@ -6,11 +6,10 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="490.0" prefWidth="763.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="xucxac.BoardGameController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="488.0" prefWidth="774.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="xucxac.BoardGameController">
     <children>
         <ImageView fx:id="diceImage" fitHeight="95.0" fitWidth="114.0" layoutX="253.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true">
             <image>
@@ -66,19 +65,26 @@
             <Font name="System Bold" size="28.0" />
          </font>
       </Label>
-      <Pane fx:id="paneThongTinBan" layoutX="609.0" layoutY="-1.0" prefHeight="490.0" prefWidth="162.0" style="-fx-background-color: #CCCCCC;">
-         <children>
-            <Label layoutX="10.0" layoutY="21.0" text="ID phòng:">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label fx:id="labIdPhong" layoutX="80.0" layoutY="23.0" text="idPhong">
-               <font>
-                  <Font size="14.0" />
-               </font></Label>
-            <VBox layoutX="11.0" layoutY="54.0" prefHeight="200.0" prefWidth="138.0" />
-         </children>
-      </Pane>
+      <Label layoutX="604.0" layoutY="10.0" text="ID PHÒNG:">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="labIdPhong" layoutX="680.0" layoutY="10.0" text="idPhong">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <VBox fx:id="vBoxThongTinBan" layoutX="604.0" layoutY="45.0" prefHeight="442.0" prefWidth="170.0" />
+      <Label layoutX="604.0" layoutY="28.0" text="Số Người Chơi:">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="labPlayerNumber" layoutX="708.0" layoutY="28.0" text="nguoiChoi">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>

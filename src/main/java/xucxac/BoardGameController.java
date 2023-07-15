@@ -16,7 +16,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import xucxac.data.CurrentRoom;
 import xucxac.consts.BoardGameConsts;
@@ -76,9 +76,11 @@ public class BoardGameController implements Initializable {
     @FXML
     private TextField textCardMoney;
     @FXML
-    public Pane paneThongTinBan;
+    public VBox vBoxThongTinBan;
     @FXML
     public Label labIdPhong;
+    @FXML
+    private Label labPlayerNumber;
 
 
     @FXML
@@ -108,18 +110,17 @@ public class BoardGameController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         PlayerDatabase.getPlayers(1);
         System.out.println(PlayerDatabase.getPlayers(1).toString());
-        newLabel();
+        newThongTinBanChoi();
 
     }
 
-    public void newLabel() {
-
+    public void newThongTinBanChoi() {
         labIdPhong.setText(CurrentRoom.roomUser.getIdPhong());
-
+        labPlayerNumber.setText(String.valueOf(CurrentRoom.roomUser.getSoNguoi()));
         Label label = new Label();
         label.setText("Hello, world!");
         label.setStyle("-fx-font-size: 10px; -fx-text-fill: red;");
-        paneThongTinBan.getChildren().add(label);
+        vBoxThongTinBan.getChildren().add(label);
         System.out.println("hoang");
     }
 
