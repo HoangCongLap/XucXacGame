@@ -78,7 +78,7 @@ public class LoginController implements Initializable {
                 stage.setScene(scene);
                 stage.show();
             }
-            System.out.format("%s,%s",username,password);
+//            System.out.format("%s,%s",username,password);
         } catch (Exception e) {
             e.printStackTrace();
         }

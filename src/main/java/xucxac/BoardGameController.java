@@ -20,9 +20,12 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import xucxac.data.CurrentRoom;
 import xucxac.consts.BoardGameConsts;
+import xucxac.data.CurrentUser;
 import xucxac.database.ConnectionUtil;
 import xucxac.database.PlayerDatabase;
+import xucxac.database.entites.Player;
 import xucxac.database.entites.RoomUser;
+import xucxac.mysql.InformationRoom;
 
 import java.io.File;
 import java.io.IOException;
@@ -118,10 +121,12 @@ public class BoardGameController implements Initializable {
         labIdPhong.setText(CurrentRoom.roomUser.getIdPhong());
         labPlayerNumber.setText(String.valueOf(CurrentRoom.roomUser.getSoNguoi()));
         Label label = new Label();
-        label.setText("Hello, world!");
+
+//        InformationRoom informationRoom=new InformationRoom();
+//        label.setText(CurrentRoom.informationInRoom.getIdcustomer().toString());
         label.setStyle("-fx-font-size: 10px; -fx-text-fill: red;");
         vBoxThongTinBan.getChildren().add(label);
-        System.out.println("hoang");
+//        System.out.println("hoang");
     }
 
 //    public void initForm(User user) {

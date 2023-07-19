@@ -20,8 +20,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import xucxac.data.CurrentRoom;
-import xucxac.data.RoomManage;
-import xucxac.mysql.MysqlConnectRoom;
+import xucxac.mysql.MysqlConnectRooms;
 import xucxac.database.entites.RoomUser;
 
 import java.io.IOException;
@@ -32,8 +31,6 @@ import java.sql.ResultSet;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import static xucxac.consts.BoardGameConsts.ranDomIdPhong;
 
 public class RoomCreateController implements Initializable {
 
@@ -76,7 +73,7 @@ public class RoomCreateController implements Initializable {
         col_IdPhong.setCellValueFactory(new PropertyValueFactory<RoomUser, String>("idPhong"));
         col_SoNguoi.setCellValueFactory(new PropertyValueFactory<RoomUser, String>("soNguoi"));
 
-        dataList = MysqlConnectRoom.getDataAllUsers();
+        dataList = MysqlConnectRooms.getDataAllRooms();
 //        tableV_inforAca.setItems(RoomManage.rooms);
         tableV_inforAca.setItems(dataList);
 //        search_user();
@@ -134,18 +131,12 @@ public class RoomCreateController implements Initializable {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-        String idPhong = String.valueOf(ranDomIdPhong());
-//        int soNguoi = NumberOfPlayers.limitPlayer1;
-        int soNguoi = NumberOfPlayers.hhh();
-                RoomUser roomUser = new RoomUser(idPhong, soNguoi);
-        CurrentRoom.roomUser = roomUser;
-        System.out.println("check:"+soNguoi);
+
     }
 
     public void handleVaoPhongClick(MouseEvent event) {
-
         anchorPane.getScene().getWindow().focusedProperty().addListener(observable -> {
-            dataList = MysqlConnectRoom.getDataAllUsers();
+            dataList = MysqlConnectRooms.getDataAllRooms();
             tableV_inforAca.setItems(dataList);
         });
         TableView.TableViewSelectionModel<RoomUser> selectionModel = tableV_inforAca.getSelectionModel();

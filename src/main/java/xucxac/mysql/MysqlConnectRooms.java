@@ -10,15 +10,16 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class MysqlConnectRoom {
-    public static ObservableList<RoomUser> getDataAllUsers() {
+public class MysqlConnectRooms {
+    public static ObservableList<RoomUser> getDataAllRooms() {
         Connection conn = ConnectionUtil.conn;
         ObservableList<RoomUser> list = FXCollections.observableArrayList();
         try {
             PreparedStatement ps = conn.prepareStatement("select * from rooms");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                list.add(new RoomUser(rs.getString("idPhong"),
+                list.add(new RoomUser(rs.getString("id"),
+                        rs.getInt("idcustomerOwner"),
                         rs.getInt("soNguoi")));
 
             }

@@ -75,7 +75,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <VBox fx:id="vBoxThongTinBan" layoutX="604.0" layoutY="45.0" prefHeight="442.0" prefWidth="170.0" />
+      <VBox fx:id="vBoxThongTinBan" layoutX="604.0" layoutY="52.0" prefHeight="435.0" prefWidth="170.0" />
       <Label layoutX="604.0" layoutY="28.0" text="Số Người Chơi:">
          <font>
             <Font name="System Bold" size="14.0" />

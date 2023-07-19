@@ -8,8 +8,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.RadioButton;
 import javafx.stage.Stage;
+import xucxac.data.CurrentRoom;
+import xucxac.database.entites.LimitPlayer;
+import xucxac.database.entites.RoomUser;
 
 import java.io.IOException;
+
+import static xucxac.consts.BoardGameConsts.ranDomIdPhong;
 
 public class NumberOfPlayers {
     private static final String BOARDGAME_XML_FILE = "BoardGame.fxml";
@@ -31,28 +36,37 @@ public class NumberOfPlayers {
     @FXML
     private RadioButton radiobtn6;
     @FXML
-    int limitPlayer=0;
-    static int sum=0;
+    int player=2;
     @FXML
     public void playerNumber(ActionEvent event) {
         if (radiobtn2.isSelected()) {
-             limitPlayer = 2;
+            player = 2;
         } else if (radiobtn3.isSelected()) {
-             limitPlayer= 3;
+            player= 3;
         } else if (radiobtn4.isSelected()) {
-             limitPlayer= 4;
+            player= 4;
         } else if (radiobtn5.isSelected()) {
-             limitPlayer= 5;
+            player= 5;
         } else if (radiobtn6.isSelected()) {
-             limitPlayer = 6;
+            player = 6;
         }
-        sum=limitPlayer;
-    }
-    public static int hhh(){
-        return sum;
+
     }
     @FXML
     public void successfulRoom(ActionEvent event) throws IOException {
+        LimitPlayer limitPlayer=new LimitPlayer(player);
+        CurrentRoom.limitPlayer=limitPlayer;
+//        System.out.println(CurrentRoom.limitPlayer.toString());
+
+        String idPhong = String.valueOf(ranDomIdPhong());
+        int limitPlayerInRoom =CurrentRoom.limitPlayer.getPlayer();
+
+// chưa làm được số người chơi trong 1 phòng
+        int soNguoi=limitPlayerInRoom;
+        RoomUser roomUser = new RoomUser(idPhong,03, soNguoi);
+        CurrentRoom.roomUser = roomUser;
+        System.out.println("check:" + soNguoi);
+
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(BOARDGAME_XML_FILE));
         root = loader.load();
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
