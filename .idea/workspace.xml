@@ -5,41 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cacf39b1-ea4a-418f-8cdd-f85c2659a27c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/xucxac/database/entites/InformationInRoom.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/xucxac/database/entites/LimitPlayer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/xucxac/mysql/InformationRoom.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/xucxac/mysql/MysqlConnectPlayer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/xucxac/mysql/PlayerListInformation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_protobuf_protobuf_java_3_6_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__mysql_mysql_connector_java_8_0_15.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apiguardian_apiguardian_api_1_1_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_api_5_8_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_engine_5_8_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_commons_1_8_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_engine_1_8_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_17_0_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_win_17_0_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_17_0_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_win_17_0_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_17_0_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_win_17_0_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_17_0_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_win_17_0_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_opentest4j_opentest4j_1_2_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_projectlombok_lombok_1_18_28.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/xucxac/mysql/BoardGameControllertest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/TestBoardGame.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/XucXac.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/BoardGameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/BoardGameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/LoginController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/NumberOfPlayers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/NumberOfPlayers.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/RoomCreateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/RoomCreateController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/data/CurrentRoom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/data/CurrentRoom.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/data/RoomManage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/data/RoomManage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/database/entites/RoomUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/database/entites/RoomUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/mysql/MysqlConnectRoom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/mysql/MysqlConnectRooms.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/database/PlayerDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/database/PlayerDatabase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/database/entites/InformationInRoom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/database/entites/InformationInRoom.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/mysql/PlayerListInformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/mysql/PlayerListInformation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/BoardGame.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/BoardGame.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -99,7 +73,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/PROJECT/intellijTrainningCode/API-scholarship-application-project/ProjectXinHocBong&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/PROJECT/intellijTrainningCode/XucXacGame/src/main/resources&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -129,6 +103,7 @@
       <recent name="xucxac" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="xucxac.mysql" />
       <recent name="xucxac" />
     </key>
   </component>
@@ -224,10 +199,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.PlayerDatabase" />
         <item itemvalue="Application.PlayerListInformation" />
         <item itemvalue="Application.InformationRoom" />
         <item itemvalue="Application.NumberOfPlayers" />
-        <item itemvalue="Application.PlayerDatabase" />
         <item itemvalue="Application.HelloApplication" />
       </list>
     </recent_temporary>
@@ -246,6 +221,9 @@
       <workItem from="1689590599369" duration="232000" />
       <workItem from="1689675102301" duration="2242000" />
       <workItem from="1689688135957" duration="5077000" />
+      <workItem from="1689911156078" duration="4618000" />
+      <workItem from="1689991650056" duration="2577000" />
+      <workItem from="1689995601204" duration="4022000" />
     </task>
     <servers />
   </component>
@@ -271,6 +249,11 @@
           <line>7</line>
           <properties field="labIdPhong" class="xucxac.consts.RoomForm" />
           <option name="timeStamp" value="26" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/xucxac/NumberOfPlayers.java</url>
+          <line>103</line>
+          <option name="timeStamp" value="31" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

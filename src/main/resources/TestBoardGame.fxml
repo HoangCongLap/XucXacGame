@@ -86,11 +86,11 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <TableView fx:id="table_information_board" layoutX="600.0" layoutY="53.0" prefHeight="435.0" prefWidth="174.0">
-         <columns>
-            <TableColumn fx:id="col_stt" prefWidth="39.2000732421875" text="STT" />
-            <TableColumn fx:id="col_id" prefWidth="160.0" text="ID" />
-         </columns>
+      <TableView fx:id="table_information_board" layoutX="600.0" layoutY="62.0" prefHeight="425.0" prefWidth="174.0">
+        <columns>
+          <TableColumn fx:id="col_stt" prefWidth="39.2000732421875" text="STT" />
+          <TableColumn fx:id="col_id" prefWidth="160.0" text="ID" />
+        </columns>
       </TableView>
     </children>
 </AnchorPane>

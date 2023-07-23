@@ -33,7 +33,7 @@ public class PlayerListInformation {
         return list;
     }
 
-//    public static void main(String[] args) {
-//        System.out.println(PlayerListInformation.getDataListPlayer(222));
-//    }
+    public static void main(String[] args) {
+        System.out.println(PlayerListInformation.getDataListPlayer(222));
+    }
 }

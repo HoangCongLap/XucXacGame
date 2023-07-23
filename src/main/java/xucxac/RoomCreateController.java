@@ -76,7 +76,6 @@ public class RoomCreateController implements Initializable {
         dataList = MysqlConnectRooms.getDataAllRooms();
 //        tableV_inforAca.setItems(RoomManage.rooms);
         tableV_inforAca.setItems(dataList);
-//        search_user();
 
         tableV_inforAca.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override

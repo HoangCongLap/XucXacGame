@@ -32,9 +32,6 @@ public class InformationInRoom {
 
     @Override
     public String toString() {
-        return "InformationInRoom{" +
-                "idPhong=" + idPhong +
-                ", idcustomer=" + idcustomer +
-                '}';
+        return "InformationInRoom{idPhong=%d, idcustomer=%s}".formatted(idPhong, idcustomer);
     }
 }

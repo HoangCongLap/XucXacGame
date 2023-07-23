@@ -2,6 +2,7 @@ package xucxac;
 
 
 import javafx.application.Platform;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +14,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -23,14 +25,18 @@ import xucxac.consts.BoardGameConsts;
 import xucxac.data.CurrentUser;
 import xucxac.database.ConnectionUtil;
 import xucxac.database.PlayerDatabase;
+import xucxac.database.entites.InformationInRoom;
 import xucxac.database.entites.Player;
 import xucxac.database.entites.RoomUser;
 import xucxac.mysql.InformationRoom;
+import xucxac.mysql.MysqlConnectRooms;
+import xucxac.mysql.PlayerListInformation;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
+import java.util.List;
 import java.util.Random;
 import java.util.ResourceBundle;
 
@@ -108,30 +114,53 @@ public class BoardGameController implements Initializable {
     }
 
     private RoomUser roomUser;
+    @FXML
+    private TableView<InformationInRoom> table_information_board;
+    //    @FXML
+//    private TableColumn<InformationInRoom, ?> col_stt;
+    @FXML
+    private TableColumn<InformationInRoom, List> col_id;
+
+
+    ObservableList<InformationInRoom> dataList;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        PlayerDatabase.getPlayers(1);
-        System.out.println(PlayerDatabase.getPlayers(1).toString());
+//        PlayerDatabase.getPlayers(205051944);
+//        System.out.println(PlayerDatabase.getPlayers(205051944).toString());
         newThongTinBanChoi();
-
+       int room= Integer.parseInt(CurrentRoom.roomUser.getIdPhong());
+        col_id.setCellValueFactory(new PropertyValueFactory<InformationInRoom, List>("idcustomer"));
+        dataList = PlayerListInformation.getDataListPlayer(room);
+        table_information_board.setItems(dataList);
     }
 
     public void newThongTinBanChoi() {
         labIdPhong.setText(CurrentRoom.roomUser.getIdPhong());
         labPlayerNumber.setText(String.valueOf(CurrentRoom.roomUser.getSoNguoi()));
-        Label label = new Label();
-
-//        InformationRoom informationRoom=new InformationRoom();
-//        label.setText(CurrentRoom.informationInRoom.getIdcustomer().toString());
-        label.setStyle("-fx-font-size: 10px; -fx-text-fill: red;");
-        vBoxThongTinBan.getChildren().add(label);
-//        System.out.println("hoang");
     }
 
-//    public void initForm(User user) {
-//        labIdPhong.setText(user.getIdPhong());
+
+//    public void newThongTinBanChoi() {
+//        labIdPhong.setText(CurrentRoom.roomUser.getIdPhong());
+//        labPlayerNumber.setText(String.valueOf(CurrentRoom.roomUser.getSoNguoi()));
+//
+//
+//
+//        Label label = new Label();
+//        String labell="hoang";
+//        dataList = PlayerListInformation.getDataListPlayer(222);
+////        vBoxThongTinBan.getChildren().add(labell);
+//
+////
+////        InformationRoom informationRoom=new InformationRoom();
+////        label.setText(CurrentRoom.informationInRoom.getIdcustomer().toString());
+//        label.setStyle("-fx-font-size: 10px; -fx-text-fill: red;");
+//        vBoxThongTinBan.getChildren().add(label);
+////        System.out.println("hoang");
 //    }
+
 
 
     //Tổng tiền trong Account
