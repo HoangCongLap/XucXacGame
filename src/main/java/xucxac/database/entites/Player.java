@@ -12,4 +12,5 @@ public class Player {
     private int cardMoney;
     private int moneyTotal;
     private int idAccount;
+
 }

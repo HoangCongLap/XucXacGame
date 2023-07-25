@@ -20,6 +20,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import xucxac.data.CurrentAccount;
 import xucxac.data.CurrentRoom;
 import xucxac.consts.BoardGameConsts;
 import xucxac.data.CurrentUser;
@@ -41,6 +42,8 @@ import java.util.Random;
 import java.util.ResourceBundle;
 
 import static xucxac.consts.BoardGameConsts.*;
+import static xucxac.database.PlayerDatabase.getPlayer;
+import static xucxac.database.PlayerDatabase.insertListPlayer;
 
 
 public class BoardGameController implements Initializable {
@@ -130,15 +133,18 @@ public class BoardGameController implements Initializable {
 //        PlayerDatabase.getPlayers(205051944);
 //        System.out.println(PlayerDatabase.getPlayers(205051944).toString());
         newThongTinBanChoi();
-       int room= Integer.parseInt(CurrentRoom.roomUser.getIdPhong());
+        int room = Integer.parseInt(CurrentRoom.roomUser.getIdPhong());
         col_id.setCellValueFactory(new PropertyValueFactory<InformationInRoom, List>("idcustomer"));
         dataList = PlayerListInformation.getDataListPlayer(room);
         table_information_board.setItems(dataList);
     }
 
     public void newThongTinBanChoi() {
-        labIdPhong.setText(CurrentRoom.roomUser.getIdPhong());
+        int idPhong = Integer.parseInt(CurrentRoom.roomUser.getIdPhong());
+        int idLogin = CurrentAccount.account.getId();
+        labIdPhong.setText(String.valueOf(idPhong));
         labPlayerNumber.setText(String.valueOf(CurrentRoom.roomUser.getSoNguoi()));
+        insertListPlayer(idPhong, getPlayer(idLogin).getId());
     }
 
 
@@ -160,7 +166,6 @@ public class BoardGameController implements Initializable {
 //        vBoxThongTinBan.getChildren().add(label);
 ////        System.out.println("hoang");
 //    }
-
 
 
     //Tổng tiền trong Account

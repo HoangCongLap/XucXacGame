@@ -3,6 +3,7 @@ package xucxac;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -18,13 +19,15 @@ import xucxac.database.ConnectionUtil;
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.util.ResourceBundle;
 
-public class SignUpController extends Component {
-    private static final String INFORMATIONCUSTOMER_XML_FILE = "InformationCustomer.fxml";
+public class SignUpController implements Initializable {
     private static final String LOGIN_XML_FILE = "Login.fxml";
-    public static int idAccount=BoardGameConsts.ranDomIdPhong();
+    private static final String INFORMATIONCUSTOMER_XML_FILE = "InformationCustomer.fxml";
+//    public static int idAccount=BoardGameConsts.ranDomIdPhong();
     @FXML
     private Button SignUpButton;
 
@@ -40,13 +43,18 @@ public class SignUpController extends Component {
     private Stage stage;
     private Scene scene;
     private Parent root;
+    static int idAccount=0;
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+       idAccount=BoardGameConsts.ranDomIdPhong();
+    }
 
     @FXML
     public void signUp( ActionEvent event) {
-
         Connection conn = ConnectionUtil.connectdb();
         String sql = "INSERT INTO account(username, password,id) VALUES(?,?,?);\n";
         StringBuilder sb = new StringBuilder();
+        System.out.println("id Account:"+idAccount);
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
             pst.setString(1, signUpUserName.getText());
@@ -86,7 +94,7 @@ public class SignUpController extends Component {
             }
 
             if (!signUpUserName.getText().equals("") && !signUpPassWord.getText().equals("") && !signUpComfirmPassWord.getText().equals("") && password.equals(confirm)) {
-                JOptionPane.showConfirmDialog(null, "succes");
+//                JOptionPane.showConfirmDialog(null, "succes");
                 pst.execute();
                 personalInformation( event);
 
@@ -127,4 +135,6 @@ public class SignUpController extends Component {
         stage.setScene(scene);
         stage.show();
     }
+
+
 }

@@ -29,6 +29,8 @@ public class MysqlConnectPlayer {
             e.printStackTrace();
         }
         return list;
-
+    }
+    public static void main(String[] args) {
+        System.out.println(getDataAllCustomer());
     }
 }

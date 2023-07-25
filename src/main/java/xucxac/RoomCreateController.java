@@ -32,6 +32,8 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import static xucxac.database.PlayerDatabase.insertListPlayer;
+
 public class RoomCreateController implements Initializable {
 
     private static final String BOARDGAME_XML_FILE = "BoardGame.fxml";
@@ -142,6 +144,7 @@ public class RoomCreateController implements Initializable {
         RoomUser selectedRoomUser = selectionModel.getSelectedItem();
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(BOARDGAME_XML_FILE));
         CurrentRoom.roomUser = selectedRoomUser;
+
         if (tableV_inforAca.getSelectionModel().getSelectedItem() != null) {
             try {
                 root = loader.load();
@@ -154,6 +157,7 @@ public class RoomCreateController implements Initializable {
             stage.setScene(scene);
             stage.show();
         }
+
     }
 
 

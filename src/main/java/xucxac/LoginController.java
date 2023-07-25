@@ -10,7 +10,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import xucxac.consts.BoardGameConsts;
+import xucxac.data.CurrentAccount;
+import xucxac.data.CurrentRoom;
 import xucxac.database.ConnectionUtil;
+import xucxac.database.entites.Account;
+import xucxac.database.entites.RoomUser;
 
 import java.io.IOException;
 import java.net.URL;
@@ -18,6 +23,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ResourceBundle;
+
+import static xucxac.database.PlayerDatabase.getPlayer;
+import static xucxac.mysql.MysqlConnectPlayer.getDataAllCustomer;
+import static xucxac.mysql.getInformationAccount.getAccount;
+import static xucxac.mysql.getPlayer.getPlayerId;
 
 public class LoginController implements Initializable {
 
@@ -51,25 +61,39 @@ public class LoginController implements Initializable {
     public void login(ActionEvent event) throws IOException {
         String username=null;
         String password=null;
-//        String userName = userNameTextField.getText();
-//        String pass = passWordTextField.getText();
-        String userName = "HoangCongLap";
-        String pass = "123";
+        String idAccount = null;
+        String userName = userNameTextField.getText();
+        String pass = passWordTextField.getText();
+//        String userName = "HoangCongLap";
+//        String pass = "123";
         String sql = "SELECT * FROM account WHERE username = ? and password = ?";
 
         try {
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, userName);
             preparedStatement.setString(2, pass);
-            resultSet = preparedStatement.executeQuery();
 
+//            preparedStatement.setString(3, idAccount);
+            resultSet = preparedStatement.executeQuery();
             if (!resultSet.next()) {
                 infoBox("Wrong User and password", "Failed", null);
 
             } else {
+                username=resultSet.getString("username");
+                password=resultSet.getString("password");
+                // có thông tin của tài khoản trong CurrentAccount
+                Account getAccount = getAccount(userName);
+                int idLogin= getAccount.getId();
+                Account account= new Account(idLogin,userName,password);
+                CurrentAccount.account=account;
+
+
+//             String l=resultSet.getString(idAccount);
+//                System.out.println("login:"+l);
+//                getPlayerId();
 //                infoBox("Login Successfull", "Success", null);
-              username=resultSet.getString("username");
-              password=resultSet.getString("password");
+//              username=resultSet.getString("username");
+//              password=resultSet.getString("password");
                 FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(ROOMCREATE_XML_FILE));
                 root = loader.load();
 //                RoomCreateController scene2Controller = loader.getController();

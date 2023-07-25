@@ -60,7 +60,7 @@
       <TextField fx:id="textCardMoney" layoutX="252.0" layoutY="451.0" onAction="#newAccount" prefHeight="26.0" prefWidth="107.0" style="-fx-background-color: #00BFFF;" />
       <Label layoutX="242.0" layoutY="425.0" text="Nạp tiền vào tài khoản: " />
       <Button fx:id="instruction" layoutX="524.0" layoutY="464.0" mnemonicParsing="false" onAction="#instruction" style="-fx-background-color: #4682B4;" text="Hướng dẫn" />
-      <Button fx:id="btBackLogin" layoutY="464.0" mnemonicParsing="false" onAction="#backLogin" style="-fx-background-color: #4682B4;" text="Back Login" />
+      <Button fx:id="btBackLogin" layoutY="464.0" mnemonicParsing="false" onAction="#backLogin" prefHeight="26.0" prefWidth="66.0" style="-fx-background-color: #4682B4;" text="Back" />
       <Label alignment="CENTER" layoutY="-2.0" prefHeight="34.0" prefWidth="600.0" style="-fx-background-color: #3399FF;" text="BÀN CƯỢC ">
          <font>
             <Font name="System Bold" size="28.0" />
@@ -76,21 +76,31 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="604.0" layoutY="28.0" text="Số Người Chơi:">
+      <Label layoutX="603.0" layoutY="52.0" text="Số Người Chơi:">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="labPlayerNumber" layoutX="708.0" layoutY="28.0" text="nguoiChoi">
+      <Label fx:id="labPlayerNumber" layoutX="701.0" layoutY="28.0" text="idChuPhong">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <TableView fx:id="table_information_board" layoutX="600.0" layoutY="53.0" prefHeight="435.0" prefWidth="174.0">
+      <TableView fx:id="table_information_board" layoutX="603.0" layoutY="77.0" prefHeight="411.0" prefWidth="170.0">
          <columns>
             <TableColumn fx:id="col_stt" prefWidth="39.2000732421875" text="STT" />
             <TableColumn fx:id="col_id" prefWidth="160.0" text="ID" />
          </columns>
       </TableView>
+      <Label layoutX="604.0" layoutY="28.0" text="ID Chủ Phòng:">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="labIdChuPhong" layoutX="706.0" layoutY="52.0" text="nguoiChoi">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>
