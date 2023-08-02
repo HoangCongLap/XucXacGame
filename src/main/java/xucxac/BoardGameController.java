@@ -2,6 +2,8 @@ package xucxac;
 
 
 import javafx.application.Platform;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,36 +16,28 @@ import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import xucxac.data.CurrentAccount;
 import xucxac.data.CurrentRoom;
 import xucxac.consts.BoardGameConsts;
 import xucxac.data.CurrentUser;
 import xucxac.database.ConnectionUtil;
-import xucxac.database.PlayerDatabase;
-import xucxac.database.entites.InformationInRoom;
-import xucxac.database.entites.Player;
 import xucxac.database.entites.RoomUser;
-import xucxac.mysql.InformationRoom;
-import xucxac.mysql.MysqlConnectRooms;
-import xucxac.mysql.PlayerListInformation;
+import xucxac.mysql.table.ListPlayers;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
-import java.util.List;
 import java.util.Random;
 import java.util.ResourceBundle;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import static xucxac.consts.BoardGameConsts.*;
-import static xucxac.database.PlayerDatabase.getPlayer;
-import static xucxac.database.PlayerDatabase.insertListPlayer;
 
 
 public class BoardGameController implements Initializable {
@@ -93,7 +87,8 @@ public class BoardGameController implements Initializable {
     public Label labIdPhong;
     @FXML
     private Label labPlayerNumber;
-
+    @FXML
+    private Label labIdChuPhong;
 
     @FXML
     private Label labMoneyTotal;
@@ -118,33 +113,46 @@ public class BoardGameController implements Initializable {
 
     private RoomUser roomUser;
     @FXML
-    private TableView<InformationInRoom> table_information_board;
+    private TableView<Integer> table_information_board;
     //    @FXML
 //    private TableColumn<InformationInRoom, ?> col_stt;
     @FXML
-    private TableColumn<InformationInRoom, List> col_id;
+    private TableColumn<Integer, Integer> col_id;
 
 
-    ObservableList<InformationInRoom> dataList;
-
+    static ObservableList<Integer> dataList;
+    private Timer timer;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 //        PlayerDatabase.getPlayers(205051944);
 //        System.out.println(PlayerDatabase.getPlayers(205051944).toString());
         newThongTinBanChoi();
-        int room = Integer.parseInt(CurrentRoom.roomUser.getIdPhong());
-        col_id.setCellValueFactory(new PropertyValueFactory<InformationInRoom, List>("idcustomer"));
-        dataList = PlayerListInformation.getDataListPlayer(room);
+//
+        int room = CurrentRoom.roomUser.getIdPhong();
+
+        col_id.setCellValueFactory(integerListCellDataFeatures -> new SimpleIntegerProperty(integerListCellDataFeatures.getValue()).asObject());
+//        dataList = PlayersInRoom.getDataListPlayer(room);
+        dataList = FXCollections.observableList(CurrentRoom.informationInRoom.getCustomerIds());
         table_information_board.setItems(dataList);
+
+        timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                table_information_board.refresh();
+            }
+        }, 5000, 2000);
+        //       goi();
     }
 
     public void newThongTinBanChoi() {
-        int idPhong = Integer.parseInt(CurrentRoom.roomUser.getIdPhong());
-        int idLogin = CurrentAccount.account.getId();
+        int idPhong = CurrentRoom.roomUser.getIdPhong();
+//        int idCustomerOwner = CurrentRoom.roomUser.getIdcustomer();
+//        labIdChuPhong.setText(String.valueOf(idCustomerOwner));
         labIdPhong.setText(String.valueOf(idPhong));
         labPlayerNumber.setText(String.valueOf(CurrentRoom.roomUser.getSoNguoi()));
-        insertListPlayer(idPhong, getPlayer(idLogin).getId());
+
     }
 
 
@@ -433,6 +441,7 @@ public class BoardGameController implements Initializable {
     private Parent root;
 
     public void backLogin(ActionEvent event) throws IOException {
+        ListPlayers.remove(CurrentUser.player.getId());
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(ROOMCREATE_XML_FILE));
         root = loader.load();
         RoomCreateController scene1Controller = loader.getController();

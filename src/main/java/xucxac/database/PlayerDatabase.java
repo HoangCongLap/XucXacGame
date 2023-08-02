@@ -1,14 +1,11 @@
 package xucxac.database;
 
-import xucxac.database.entites.InformationInRoom;
 import xucxac.database.entites.Player;
 
-import javax.swing.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Collections;
 
 import static xucxac.database.ConnectionUtil.conn;
 
@@ -62,21 +59,6 @@ public class PlayerDatabase {
         }
     }
 
-
-    // ghi xuống Dbase danh sách người chơi có trong 1 phòng
-    public static void insertListPlayer(int idPhong, int idcustomer) {
-        Connection conn = ConnectionUtil.connectdb();
-        String sql = "INSERT INTO listPlayers(idPhong, idcustomer) VALUES(?,?);\n";
-        try {
-            PreparedStatement pst = conn.prepareStatement(sql);
-            pst.setInt(1, idPhong);
-            pst.setInt(2, idcustomer);
-            pst.execute();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
 
 
 //    public static void main(String[] args) {

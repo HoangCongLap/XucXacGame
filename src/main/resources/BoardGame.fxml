@@ -81,7 +81,7 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="labPlayerNumber" layoutX="701.0" layoutY="28.0" text="idChuPhong">
+      <Label fx:id="labPlayerNumber" layoutX="705.0" layoutY="52.0" text="người chơi">
          <font>
             <Font size="14.0" />
          </font>
@@ -92,12 +92,12 @@
             <TableColumn fx:id="col_id" prefWidth="160.0" text="ID" />
          </columns>
       </TableView>
-      <Label layoutX="604.0" layoutY="28.0" text="ID Chủ Phòng:">
+      <Label layoutX="604.0" layoutY="30.0" text="ID Chủ Phòng:">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="labIdChuPhong" layoutX="706.0" layoutY="52.0" text="nguoiChoi">
+      <Label fx:id="labIdChuPhong" layoutX="700.0" layoutY="30.0" text="idChuPhong">
          <font>
             <Font size="14.0" />
          </font>

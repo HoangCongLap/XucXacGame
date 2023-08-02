@@ -5,15 +5,15 @@ import java.util.List;
 
 public class InformationInRoom {
     private int idPhong;
-   private List<Integer> idcustomer = new ArrayList<Integer>();
+    private List<Integer> customerIds = new ArrayList<Integer>();// customersId
 
 
     public int getIdPhong() {
         return idPhong;
     }
 
-    public List<Integer> getIdcustomer() {
-        return idcustomer;
+    public List<Integer> getCustomerIds() {
+        return customerIds;
     }
 
 
@@ -21,17 +21,23 @@ public class InformationInRoom {
         this.idPhong = idPhong;
     }
 
-    public void setIdcustomer(List<Integer> idcustomer) {
-        this.idcustomer = idcustomer;
+    public void setCustomerIds(List<Integer> customerIds) {
+        this.customerIds = customerIds;
     }
 
-    public InformationInRoom( int idPhong, List<Integer> idcustomer) {
+    public void refresh(List<Integer> customerIds) {
+        this.customerIds.clear();
+        this.customerIds.addAll(customerIds);
+    }
+
+
+    public InformationInRoom(int idPhong, List<Integer> idcustomer) {
         this.idPhong = idPhong;
-        this.idcustomer = idcustomer;
+        this.customerIds = idcustomer;
     }
 
     @Override
     public String toString() {
-        return "InformationInRoom{idPhong=%d, idcustomer=%s}".formatted(idPhong, idcustomer);
+        return "InformationInRoom{idPhong=%d, idcustomer=%s}".formatted(idPhong, customerIds);
     }
 }

@@ -20,8 +20,11 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import xucxac.data.CurrentRoom;
+import xucxac.data.CurrentUser;
+import xucxac.database.entites.InformationInRoom;
 import xucxac.mysql.MysqlConnectRooms;
 import xucxac.database.entites.RoomUser;
+import xucxac.mysql.table.ListPlayers;
 
 import java.io.IOException;
 import java.net.URL;
@@ -32,7 +35,6 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import static xucxac.database.PlayerDatabase.insertListPlayer;
 
 public class RoomCreateController implements Initializable {
 
@@ -97,7 +99,8 @@ public class RoomCreateController implements Initializable {
                     return true;
                 }
                 String lowerCaseFilter = newValue.toLowerCase();
-                if (person.getIdPhong().toLowerCase().contains(lowerCaseFilter)) {
+                String idPhongStr = String.valueOf(person.getIdPhong());
+                if (idPhongStr.contains(lowerCaseFilter)) {
                     return true;
                 }
 //                else if (person.getSoNguoi().contains(lowerCaseFilter))
@@ -143,7 +146,11 @@ public class RoomCreateController implements Initializable {
         TableView.TableViewSelectionModel<RoomUser> selectionModel = tableV_inforAca.getSelectionModel();
         RoomUser selectedRoomUser = selectionModel.getSelectedItem();
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(BOARDGAME_XML_FILE));
+
+        ListPlayers.insert(selectedRoomUser.getIdPhong(), CurrentUser.player.getId());
         CurrentRoom.roomUser = selectedRoomUser;
+        CurrentRoom.informationInRoom= new InformationInRoom(selectedRoomUser.getIdPhong(),
+                ListPlayers.getPlayersInRoom(selectedRoomUser.getIdPhong()));
 
         if (tableV_inforAca.getSelectionModel().getSelectedItem() != null) {
             try {

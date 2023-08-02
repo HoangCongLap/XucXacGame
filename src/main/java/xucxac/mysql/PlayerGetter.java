@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 import static xucxac.database.ConnectionUtil.conn;
 
-public class getPlayer {
+public class PlayerGetter {
     public static Player getPlayerId(int idAccount) {
         int id = 0;
         String name = null;

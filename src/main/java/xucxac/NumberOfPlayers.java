@@ -10,6 +10,7 @@ import javafx.scene.control.RadioButton;
 import javafx.stage.Stage;
 import xucxac.data.CurrentRoom;
 import xucxac.database.ConnectionUtil;
+import xucxac.database.entites.InformationInRoom;
 import xucxac.database.entites.LimitPlayer;
 import xucxac.database.entites.RoomUser;
 
@@ -17,6 +18,7 @@ import javax.swing.*;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.util.ArrayList;
 
 import static xucxac.consts.BoardGameConsts.ranDomIdPhong;
 
@@ -66,7 +68,7 @@ public class NumberOfPlayers {
         CurrentRoom.limitPlayer = limitPlayer;
 //        System.out.println(CurrentRoom.limitPlayer.toString());
 
-        String idPhong = String.valueOf(ranDomIdPhong());
+        int idPhong = ranDomIdPhong();
         int limitPlayerInRoom = CurrentRoom.limitPlayer.getPlayer();
 
 // chưa làm được số người chơi trong 1 phòng
@@ -74,8 +76,12 @@ public class NumberOfPlayers {
         RoomUser roomUser = new RoomUser(idPhong, 03, soNguoi);
         CurrentRoom.roomUser = roomUser;
         System.out.println("check:" + soNguoi);
+
+
+        CurrentRoom.informationInRoom= new InformationInRoom(idPhong,new ArrayList<>());
+
 /// tạo phòng và ghi xuống dbase
-        add_room(Integer.parseInt(idPhong),1212,soNguoi);
+        add_room(idPhong,1212,soNguoi);
 // add_room(idPhong,idCustomerOwner,limitPlayerInRoom);
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(BOARDGAME_XML_FILE));
         root = loader.load();

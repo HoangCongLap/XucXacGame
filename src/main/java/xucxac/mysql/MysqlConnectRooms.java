@@ -18,7 +18,7 @@ public class MysqlConnectRooms {
             PreparedStatement ps = conn.prepareStatement("select * from rooms");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                list.add(new RoomUser(rs.getString("id"),
+                list.add(new RoomUser(rs.getInt("id"),
                         rs.getInt("idcustomerOwner"),
                         rs.getInt("soNguoi")));
 

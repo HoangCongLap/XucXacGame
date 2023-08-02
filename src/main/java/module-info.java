@@ -15,4 +15,7 @@ module xucxac {
     exports xucxac.consts;
     exports xucxac.data;
     exports xucxac.database.entites;
+    requires jdk.unsupported;
+
+
 }

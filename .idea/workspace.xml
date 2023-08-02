@@ -5,21 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cacf39b1-ea4a-418f-8cdd-f85c2659a27c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/xucxac/data/CurrentAccount.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/xucxac/database/entites/Account.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/xucxac/mysql/getInformationAccount.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/xucxac/mysql/getPlayer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/xucxac/DataUpdateAction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/xucxac/Main2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/BoardGameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/BoardGameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/InformationCustomer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/InformationCustomer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/NumberOfPlayers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/NumberOfPlayers.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/RoomCreateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/RoomCreateController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/SignUpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/SignUpController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/database/PlayerDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/database/PlayerDatabase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/database/entites/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/database/entites/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/mysql/MysqlConnectPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/mysql/MysqlConnectPlayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/database/entites/InformationInRoom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/database/entites/InformationInRoom.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/database/entites/RoomUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/database/entites/RoomUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/mysql/InformationRoom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/mysql/table/Rooms.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/mysql/MysqlConnectRooms.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/mysql/MysqlConnectRooms.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/mysql/PlayerListInformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/mysql/table/ListPlayers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/mysql/getInformationAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/mysql/InformationAccountGetter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/mysql/getPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/mysql/PlayerGetter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/BoardGame.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/BoardGame.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/InformationCustomer.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/InformationCustomer.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,15 +81,16 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "D:/PROJECT/intellijTrainningCode/XucXacGame/src/main/resources",
+    "last_opened_file_path": "D:/PROJECT/intellijTrainningCode/XucXacGame",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "settings.editor.selected.configurable": "editor.preferences.fonts.default",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -114,12 +120,25 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.Main">
-    <configuration name="InformationRoom" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="xucxac.mysql.InformationRoom" />
+    <configuration name="DataUpdateAction" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="xucxac.DataUpdateAction" />
       <module name="XucXac" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="xucxac.mysql.*" />
+          <option name="PATTERN" value="xucxac.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="InformationAccountGetter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="xucxac.mysql.InformationAccountGetter" />
+      <module name="XucXac" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="xucxac.mysql.table.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -140,12 +159,25 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Main2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="xucxac.Main2" />
+      <module name="XucXac" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="xucxac.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="MysqlConnectPlayer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="xucxac.mysql.MysqlConnectPlayer" />
       <module name="XucXac" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="xucxac.mysql.*" />
+          <option name="PATTERN" value="xucxac.mysql.table.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -166,32 +198,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PlayerListInformation" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="xucxac.mysql.PlayerListInformation" />
-      <module name="XucXac" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="xucxac.mysql.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="getInformationAccount" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="xucxac.mysql.getInformationAccount" />
-      <module name="XucXac" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="xucxac.mysql.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <method v="2">
         <option name="Make" enabled="true" />
@@ -205,11 +211,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.getInformationAccount" />
+        <item itemvalue="Application.Main2" />
+        <item itemvalue="Application.DataUpdateAction" />
+        <item itemvalue="Application.InformationAccountGetter" />
         <item itemvalue="Application.MysqlConnectPlayer" />
         <item itemvalue="Application.PlayerDatabase" />
-        <item itemvalue="Application.PlayerListInformation" />
-        <item itemvalue="Application.InformationRoom" />
       </list>
     </recent_temporary>
   </component>
@@ -230,6 +236,9 @@
       <workItem from="1689911156078" duration="4618000" />
       <workItem from="1689991650056" duration="2577000" />
       <workItem from="1689995601204" duration="23519000" />
+      <workItem from="1690341842171" duration="3340000" />
+      <workItem from="1690345197508" duration="2467000" />
+      <workItem from="1690473573554" duration="13598000" />
     </task>
     <servers />
   </component>
@@ -257,19 +266,14 @@
           <option name="timeStamp" value="26" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/xucxac/NumberOfPlayers.java</url>
-          <line>103</line>
-          <option name="timeStamp" value="31" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/xucxac/BoardGameController.java</url>
-          <line>144</line>
-          <option name="timeStamp" value="52" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/xucxac/database/PlayerDatabase.java</url>
-          <line>22</line>
+          <line>19</line>
           <option name="timeStamp" value="53" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/xucxac/mysql/table/ListPlayers.java</url>
+          <line>53</line>
+          <option name="timeStamp" value="65" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

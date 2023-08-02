@@ -1,9 +1,8 @@
-package xucxac.mysql;
+package xucxac.mysql.table;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import xucxac.database.ConnectionUtil;
-import xucxac.database.entites.InformationInRoom;
 import xucxac.database.entites.RoomUser;
 
 import java.sql.Connection;
@@ -11,7 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class InformationRoom {
+public class Rooms {
     public static ObservableList<RoomUser> getDataAllRoom(int idPhong) {
         Connection conn = ConnectionUtil.conn;
         ObservableList<RoomUser> list = FXCollections.observableArrayList();
@@ -21,7 +20,7 @@ public class InformationRoom {
             ps.setString(1, String.valueOf(idPhong));
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                list.add(new RoomUser(rs.getString("id"),
+                list.add(new RoomUser(rs.getInt("id"),
                         rs.getInt("idcustomerOwner"),
                         rs.getInt("soNguoi")));
             }

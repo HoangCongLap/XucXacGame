@@ -10,12 +10,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import xucxac.consts.BoardGameConsts;
 import xucxac.data.CurrentAccount;
-import xucxac.data.CurrentRoom;
+import xucxac.data.CurrentUser;
 import xucxac.database.ConnectionUtil;
 import xucxac.database.entites.Account;
-import xucxac.database.entites.RoomUser;
+import xucxac.database.entites.Player;
+import xucxac.mysql.PlayerGetter;
 
 import java.io.IOException;
 import java.net.URL;
@@ -24,10 +24,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ResourceBundle;
 
-import static xucxac.database.PlayerDatabase.getPlayer;
-import static xucxac.mysql.MysqlConnectPlayer.getDataAllCustomer;
-import static xucxac.mysql.getInformationAccount.getAccount;
-import static xucxac.mysql.getPlayer.getPlayerId;
+import static xucxac.mysql.InformationAccountGetter.getAccount;
 
 public class LoginController implements Initializable {
 
@@ -84,8 +81,11 @@ public class LoginController implements Initializable {
                 // có thông tin của tài khoản trong CurrentAccount
                 Account getAccount = getAccount(userName);
                 int idLogin= getAccount.getId();
+                System.out.println("vaof:" +idLogin);
                 Account account= new Account(idLogin,userName,password);
                 CurrentAccount.account=account;
+                Player player= PlayerGetter.getPlayerId(idLogin);
+                CurrentUser.player =player;
 
 
 //             String l=resultSet.getString(idAccount);

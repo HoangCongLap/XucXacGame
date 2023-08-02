@@ -6,11 +6,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.sql.Time;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class Main extends Application {
-private    Timer timer ;
+public class Main2 extends Application {
+    private Timer timer;
 
     @Override
     public void start(Stage stage) {
@@ -25,14 +26,13 @@ private    Timer timer ;
             timer = new Timer();
             TimerTask CleanUpTimerTask = new DataUpdateAction();
             timer.schedule(CleanUpTimerTask, 5000, 5000);
-//            System.out.println("Timer has schedule the tasks...");
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
     public static void main(String[] args) {
         launch(args);
     }
 }
-
