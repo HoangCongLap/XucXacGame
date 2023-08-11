@@ -151,7 +151,7 @@ public class RoomCreateController implements Initializable {
 //            dataList = Rooms.getDataAll();
 //            tableV_inforAca.setItems(dataList);
 //        });
-        if(CurrentRoom.roomUser.getSoNguoi()){
+//        if(CurrentRoom.roomUser.getSoNguoi()){
             TableView.TableViewSelectionModel<RoomUser> selectionModel = tableV_inforAca.getSelectionModel();
             RoomUser selectedRoomUser = selectionModel.getSelectedItem();
             FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(BOARDGAME_XML_FILE));
@@ -172,9 +172,9 @@ public class RoomCreateController implements Initializable {
                 scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();
-        }else{
-
-            }
+//        }else{
+//
+//            }
 
         }
 
