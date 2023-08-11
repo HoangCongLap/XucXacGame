@@ -27,6 +27,7 @@ import xucxac.data.CurrentUser;
 import xucxac.database.ConnectionUtil;
 import xucxac.database.entites.RoomUser;
 import xucxac.mysql.table.ListPlayers;
+import xucxac.mysql.table.Rooms;
 
 import java.io.File;
 import java.io.IOException;
@@ -125,10 +126,7 @@ public class BoardGameController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-//        PlayerDatabase.getPlayers(205051944);
-//        System.out.println(PlayerDatabase.getPlayers(205051944).toString());
         newThongTinBanChoi();
-//
         int room = CurrentRoom.roomUser.getIdPhong();
 
         col_id.setCellValueFactory(integerListCellDataFeatures -> new SimpleIntegerProperty(integerListCellDataFeatures.getValue()).asObject());
@@ -143,7 +141,7 @@ public class BoardGameController implements Initializable {
                 table_information_board.refresh();
             }
         }, 5000, 2000);
-        //       goi();
+
     }
 
     public void newThongTinBanChoi() {
@@ -151,7 +149,9 @@ public class BoardGameController implements Initializable {
 //        int idCustomerOwner = CurrentRoom.roomUser.getIdcustomer();
 //        labIdChuPhong.setText(String.valueOf(idCustomerOwner));
         labIdPhong.setText(String.valueOf(idPhong));
+        labIdChuPhong.setText(String.valueOf(CurrentRoom.roomUser.getCustomerOwnerId()));
         labPlayerNumber.setText(String.valueOf(CurrentRoom.roomUser.getSoNguoi()));
+
 
     }
 
@@ -440,8 +440,9 @@ public class BoardGameController implements Initializable {
     private Scene scene;
     private Parent root;
 
-    public void backLogin(ActionEvent event) throws IOException {
+    public void back(ActionEvent event) throws IOException {
         ListPlayers.remove(CurrentUser.player.getId());
+        Rooms.remove(CurrentRoom.roomUser.getCustomerOwnerId());
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(ROOMCREATE_XML_FILE));
         root = loader.load();
         RoomCreateController scene1Controller = loader.getController();

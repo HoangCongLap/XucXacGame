@@ -1,12 +1,17 @@
 package xucxac.database.entites;
 
 
+import java.util.List;
+
 public class RoomUser {
     private int idPhong;
     private int customerOwnerId;
     private int soNguoi;
 
-    public int getIdPhong() {return idPhong; }
+
+    public int getIdPhong() {
+        return idPhong;
+    }
 
     public int getCustomerOwnerId() {
         return customerOwnerId;
@@ -28,9 +33,11 @@ public class RoomUser {
         this.soNguoi = soNguoi;
     }
 
-    public RoomUser(int idPhong,int idcustomer, int soNguoi) {
+
+
+    public RoomUser(int idPhong, int idcustomer, int soNguoi) {
         this.idPhong = idPhong;
-        this.customerOwnerId =idcustomer;
+        this.customerOwnerId = idcustomer;
         this.soNguoi = soNguoi;
     }
 
@@ -42,4 +49,6 @@ public class RoomUser {
                 ", soNguoi=" + soNguoi +
                 '}';
     }
+
+
 }

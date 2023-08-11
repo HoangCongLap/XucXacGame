@@ -58,6 +58,18 @@ public class ListPlayers {
             e.printStackTrace();
         }
     }
+    public static void removeAll(int idPhong) {
+        Connection conn = ConnectionUtil.connectdb();
+        String sql = "DELETE FROM listPlayers WHERE idPhong = ?";
+        try {
+            PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setInt(1, idPhong);
+            pst.execute();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
     public static void main(String[] args) {
         System.out.println(ListPlayers.getPlayersInRoom(222));
     }

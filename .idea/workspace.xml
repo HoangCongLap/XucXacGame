@@ -5,26 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cacf39b1-ea4a-418f-8cdd-f85c2659a27c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/xucxac/DataUpdateAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/xucxac/Main2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/xucxac/database/entites/ListRoom.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/xucxac/mysql/table/Accounts.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/xucxac/mysql/table/Customers.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/BoardGameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/BoardGameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/DataUpdateAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/DataUpdateAction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/NumberOfPlayers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/NumberOfPlayers.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/RoomCreateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/RoomCreateController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/database/PlayerDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/database/PlayerDatabase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/database/entites/InformationInRoom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/database/entites/InformationInRoom.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/data/CurrentRoom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/data/CurrentRoom.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/data/RoomManage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/data/RoomManage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/database/entites/RoomUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/database/entites/RoomUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/mysql/InformationRoom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/mysql/table/Rooms.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/mysql/InformationAccountGetter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/mysql/InformationAccountGetter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/mysql/MysqlConnectPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/mysql/MysqlConnectPlayer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/mysql/MysqlConnectRooms.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/mysql/MysqlConnectRooms.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/mysql/PlayerListInformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/mysql/table/ListPlayers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/mysql/getInformationAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/mysql/InformationAccountGetter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/mysql/getPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/mysql/PlayerGetter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/mysql/PlayerGetter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/mysql/PlayerGetter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/mysql/table/ListPlayers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/mysql/table/ListPlayers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/mysql/table/Rooms.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/mysql/table/Rooms.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/BoardGame.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/BoardGame.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/TestBoardGame.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/TestBoardGame.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,23 +77,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "D:/PROJECT/intellijTrainningCode/XucXacGame",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "editor.preferences.fonts.default",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/PROJECT/intellijTrainningCode/XucXacGame&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="ReaderModeSettings">
     <option name="enabled" value="false" />
   </component>
@@ -119,7 +119,7 @@
       <recent name="xucxac" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Application.Main2">
     <configuration name="DataUpdateAction" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="xucxac.DataUpdateAction" />
       <module name="XucXac" />
@@ -239,6 +239,8 @@
       <workItem from="1690341842171" duration="3340000" />
       <workItem from="1690345197508" duration="2467000" />
       <workItem from="1690473573554" duration="13598000" />
+      <workItem from="1690948291299" duration="3357000" />
+      <workItem from="1690965316838" duration="11773000" />
     </task>
     <servers />
   </component>
@@ -274,6 +276,31 @@
           <url>file://$PROJECT_DIR$/src/main/java/xucxac/mysql/table/ListPlayers.java</url>
           <line>53</line>
           <option name="timeStamp" value="65" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/xucxac/NumberOfPlayers.java</url>
+          <line>83</line>
+          <option name="timeStamp" value="66" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/xucxac/NumberOfPlayers.java</url>
+          <line>72</line>
+          <option name="timeStamp" value="68" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/xucxac/NumberOfPlayers.java</url>
+          <line>75</line>
+          <option name="timeStamp" value="69" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/xucxac/DataUpdateAction.java</url>
+          <line>20</line>
+          <option name="timeStamp" value="71" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/xucxac/DataUpdateAction.java</url>
+          <line>19</line>
+          <option name="timeStamp" value="72" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

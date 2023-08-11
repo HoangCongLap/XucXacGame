@@ -12,10 +12,14 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import xucxac.data.CurrentAccount;
 import xucxac.data.CurrentUser;
+import xucxac.data.RoomManage;
 import xucxac.database.ConnectionUtil;
 import xucxac.database.entites.Account;
+import xucxac.database.entites.ListRoom;
 import xucxac.database.entites.Player;
-import xucxac.mysql.PlayerGetter;
+import xucxac.database.entites.RoomUser;
+import xucxac.mysql.table.Customers;
+import xucxac.mysql.table.Rooms;
 
 import java.io.IOException;
 import java.net.URL;
@@ -24,7 +28,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ResourceBundle;
 
-import static xucxac.mysql.InformationAccountGetter.getAccount;
+import static xucxac.mysql.table.Accounts.getAccount;
+
 
 public class LoginController implements Initializable {
 
@@ -81,11 +86,13 @@ public class LoginController implements Initializable {
                 // có thông tin của tài khoản trong CurrentAccount
                 Account getAccount = getAccount(userName);
                 int idLogin= getAccount.getId();
-                System.out.println("vaof:" +idLogin);
+
                 Account account= new Account(idLogin,userName,password);
                 CurrentAccount.account=account;
-                Player player= PlayerGetter.getPlayerId(idLogin);
+                Player player= Customers.getPlayerId(idLogin);
                 CurrentUser.player =player;
+
+
 
 
 //             String l=resultSet.getString(idAccount);
@@ -94,6 +101,9 @@ public class LoginController implements Initializable {
 //                infoBox("Login Successfull", "Success", null);
 //              username=resultSet.getString("username");
 //              password=resultSet.getString("password");
+                RoomManage.listRoom= new ListRoom(Rooms.getDataAll());
+
+
                 FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(ROOMCREATE_XML_FILE));
                 root = loader.load();
 //                RoomCreateController scene2Controller = loader.getController();

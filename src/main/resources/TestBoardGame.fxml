@@ -60,7 +60,7 @@
       <TextField fx:id="textCardMoney" layoutX="252.0" layoutY="451.0" onAction="#newAccount" prefHeight="26.0" prefWidth="107.0" style="-fx-background-color: #00BFFF;" />
       <Label layoutX="242.0" layoutY="425.0" text="Nạp tiền vào tài khoản: " />
       <Button fx:id="instruction" layoutX="524.0" layoutY="464.0" mnemonicParsing="false" onAction="#instruction" style="-fx-background-color: #4682B4;" text="Hướng dẫn" />
-      <Button fx:id="btBackLogin" layoutY="464.0" mnemonicParsing="false" onAction="#backLogin" style="-fx-background-color: #4682B4;" text="Back Login" />
+      <Button fx:id="btBackLogin" layoutY="464.0" mnemonicParsing="false" onAction="#back" style="-fx-background-color: #4682B4;" text="Back Login" />
       <Label alignment="CENTER" layoutY="-2.0" prefHeight="34.0" prefWidth="600.0" style="-fx-background-color: #3399FF;" text="BÀN CƯỢC ">
          <font>
             <Font name="System Bold" size="28.0" />

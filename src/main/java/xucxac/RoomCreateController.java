@@ -1,5 +1,6 @@
 package xucxac;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
@@ -21,10 +22,12 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import xucxac.data.CurrentRoom;
 import xucxac.data.CurrentUser;
+import xucxac.data.RoomManage;
 import xucxac.database.entites.InformationInRoom;
-import xucxac.mysql.MysqlConnectRooms;
+
 import xucxac.database.entites.RoomUser;
 import xucxac.mysql.table.ListPlayers;
+import xucxac.mysql.table.Rooms;
 
 import java.io.IOException;
 import java.net.URL;
@@ -32,6 +35,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ResourceBundle;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -71,21 +76,24 @@ public class RoomCreateController implements Initializable {
     private Stage stage;
     private Scene scene;
     private Parent root;
-
+    private Timer timer;
     public void initialize(URL url, ResourceBundle rb) {
 
         col_IdPhong.setCellValueFactory(new PropertyValueFactory<RoomUser, String>("idPhong"));
         col_SoNguoi.setCellValueFactory(new PropertyValueFactory<RoomUser, String>("soNguoi"));
 
-        dataList = MysqlConnectRooms.getDataAllRooms();
+//        dataList = Rooms.getDataAll();
+        dataList = FXCollections.observableList(RoomManage.listRoom.getRoomUsers());
 //        tableV_inforAca.setItems(RoomManage.rooms);
         tableV_inforAca.setItems(dataList);
 
-        tableV_inforAca.setOnMouseClicked(new EventHandler<MouseEvent>() {
+        timer = new Timer();
+        timer.schedule(new TimerTask() {
             @Override
-            public void handle(MouseEvent event) {
+            public void run() {
+                tableV_inforAca.refresh();
             }
-        });
+        }, 5000, 2000);
         search_user();
     }
 
@@ -139,30 +147,35 @@ public class RoomCreateController implements Initializable {
     }
 
     public void handleVaoPhongClick(MouseEvent event) {
-        anchorPane.getScene().getWindow().focusedProperty().addListener(observable -> {
-            dataList = MysqlConnectRooms.getDataAllRooms();
-            tableV_inforAca.setItems(dataList);
-        });
-        TableView.TableViewSelectionModel<RoomUser> selectionModel = tableV_inforAca.getSelectionModel();
-        RoomUser selectedRoomUser = selectionModel.getSelectedItem();
-        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(BOARDGAME_XML_FILE));
+//        anchorPane.getScene().getWindow().focusedProperty().addListener(observable -> {
+//            dataList = Rooms.getDataAll();
+//            tableV_inforAca.setItems(dataList);
+//        });
+        if(CurrentRoom.roomUser.getSoNguoi()){
+            TableView.TableViewSelectionModel<RoomUser> selectionModel = tableV_inforAca.getSelectionModel();
+            RoomUser selectedRoomUser = selectionModel.getSelectedItem();
+            FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(BOARDGAME_XML_FILE));
 
-        ListPlayers.insert(selectedRoomUser.getIdPhong(), CurrentUser.player.getId());
-        CurrentRoom.roomUser = selectedRoomUser;
-        CurrentRoom.informationInRoom= new InformationInRoom(selectedRoomUser.getIdPhong(),
-                ListPlayers.getPlayersInRoom(selectedRoomUser.getIdPhong()));
+            ListPlayers.insert(selectedRoomUser.getIdPhong(), CurrentUser.player.getId());
+            CurrentRoom.roomUser = selectedRoomUser;
+            CurrentRoom.informationInRoom= new InformationInRoom(selectedRoomUser.getIdPhong(),
+                    ListPlayers.getPlayersInRoom(selectedRoomUser.getIdPhong()));
 
-        if (tableV_inforAca.getSelectionModel().getSelectedItem() != null) {
-            try {
-                root = loader.load();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-                Logger.getLogger(RoomCreateController.class.getName()).log(Level.SEVERE, null, ex);
+            if (tableV_inforAca.getSelectionModel().getSelectedItem() != null) {
+                try {
+                    root = loader.load();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                    Logger.getLogger(RoomCreateController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+        }else{
+
             }
-            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
+
         }
 
     }

@@ -9,15 +9,15 @@ import javafx.scene.Scene;
 import javafx.scene.control.RadioButton;
 import javafx.stage.Stage;
 import xucxac.data.CurrentRoom;
+import xucxac.data.CurrentUser;
 import xucxac.database.ConnectionUtil;
 import xucxac.database.entites.InformationInRoom;
 import xucxac.database.entites.LimitPlayer;
 import xucxac.database.entites.RoomUser;
+import xucxac.mysql.table.Rooms;
 
-import javax.swing.*;
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.util.ArrayList;
 
 import static xucxac.consts.BoardGameConsts.ranDomIdPhong;
@@ -70,18 +70,18 @@ public class NumberOfPlayers {
 
         int idPhong = ranDomIdPhong();
         int limitPlayerInRoom = CurrentRoom.limitPlayer.getPlayer();
-
+        int ownerRoomId= CurrentUser.player.getId();
 // chưa làm được số người chơi trong 1 phòng
         int soNguoi = limitPlayerInRoom;
-        RoomUser roomUser = new RoomUser(idPhong, 03, soNguoi);
+        RoomUser roomUser = new RoomUser(idPhong, ownerRoomId, soNguoi);
+
         CurrentRoom.roomUser = roomUser;
         System.out.println("check:" + soNguoi);
-
-
         CurrentRoom.informationInRoom= new InformationInRoom(idPhong,new ArrayList<>());
 
 /// tạo phòng và ghi xuống dbase
-        add_room(idPhong,1212,soNguoi);
+
+        Rooms.add(idPhong,CurrentRoom.roomUser.getCustomerOwnerId(),soNguoi);
 // add_room(idPhong,idCustomerOwner,limitPlayerInRoom);
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(BOARDGAME_XML_FILE));
         root = loader.load();
@@ -91,27 +91,6 @@ public class NumberOfPlayers {
         stage.show();
     }
 
-    @FXML
-    public void add_room(int idPhong, int idCustomerOwner,int limitPlayerInRoom) {
-        String sql = "INSERT INTO rooms(id, idcustomerOwner, soNguoi) VALUES(?,?,?);\n";
-        try {
-            PreparedStatement pst = conn.prepareStatement(sql);
-            pst.setInt(1, idPhong);
-            pst.setInt(2, idCustomerOwner);
-            pst.setInt(3, limitPlayerInRoom);
-
-//            if (text_IdOrganization.getText().equals("") || text_toChucOrganization.getText().equals("")) {
-//                check();
-//                showAlert("You missed some field!\n", "", null);
-//            } else {
-//                JOptionPane.showMessageDialog(null, "Create room success");
-//                AddOrganizationControllerApi.saveDataOrganization(text_IdOrganization.getText(), text_toChucOrganization.getText());
-//            }
-            pst.execute();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
 }
 
