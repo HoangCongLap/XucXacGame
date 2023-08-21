@@ -18,7 +18,7 @@ import static xucxac.database.ConnectionUtil.conn;
 public class Rooms {
     public static List<RoomUser> getDataAll() {
         Connection conn = ConnectionUtil.conn;
-        List<RoomUser> list =new ArrayList<>();
+        List<RoomUser> list = new ArrayList<>();
         try {
             PreparedStatement ps = conn.prepareStatement("SELECT * FROM  rooms\n");
             ResultSet rs = ps.executeQuery();
@@ -45,6 +45,7 @@ public class Rooms {
             e.printStackTrace();
         }
     }
+
     public static void remove(int idcustomerOwner) {
         Connection conn = ConnectionUtil.connectdb();
         String sql = "DELETE FROM rooms WHERE idcustomerOwner = ?";
@@ -57,10 +58,11 @@ public class Rooms {
             e.printStackTrace();
         }
     }
+
     public static RoomUser getRooms() {
         int id = 0;
         int idCustomerOwner = 0;
-        int soNguoi=0;
+        int soNguoi = 0;
         String sql = "SELECT * FROM rooms";
         try {
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
@@ -81,10 +83,30 @@ public class Rooms {
 
         return null;
     }
-}
 
 
-//    public static void main(String[] args) {
+    public static Integer getLimitPlayer(int idPhong) {
+        Connection conn = ConnectionUtil.conn;
+        int limitPlayer = 0;
+        try {
+            PreparedStatement ps = conn.prepareStatement("SELECT * FROM  rooms\n" +
+                    " where rooms.id=?\n");
+            ps.setString(1, String.valueOf(idPhong));
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                limitPlayer = rs.getInt("soNguoi");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return limitPlayer;
+    }
+
+
+    public static void main(String[] args) {
 //        InformationRoom.getDataAllRoom(222);
 //        System.out.println(InformationRoom.getDataAllRoom(222));
-//    }
+        System.out.println(getLimitPlayer(972302));
+    }
+}

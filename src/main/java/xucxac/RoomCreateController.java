@@ -12,14 +12,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import xucxac.data.CurrentAccount;
 import xucxac.data.CurrentRoom;
 import xucxac.data.CurrentUser;
 import xucxac.data.RoomManage;
@@ -77,6 +75,7 @@ public class RoomCreateController implements Initializable {
     private Scene scene;
     private Parent root;
     private Timer timer;
+
     public void initialize(URL url, ResourceBundle rb) {
 
         col_IdPhong.setCellValueFactory(new PropertyValueFactory<RoomUser, String>("idPhong"));
@@ -147,20 +146,30 @@ public class RoomCreateController implements Initializable {
     }
 
     public void handleVaoPhongClick(MouseEvent event) {
-//        anchorPane.getScene().getWindow().focusedProperty().addListener(observable -> {
-//            dataList = Rooms.getDataAll();
-//            tableV_inforAca.setItems(dataList);
-//        });
-//        if(CurrentRoom.roomUser.getSoNguoi()){
-            TableView.TableViewSelectionModel<RoomUser> selectionModel = tableV_inforAca.getSelectionModel();
-            RoomUser selectedRoomUser = selectionModel.getSelectedItem();
-            FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(BOARDGAME_XML_FILE));
 
-            ListPlayers.insert(selectedRoomUser.getIdPhong(), CurrentUser.player.getId());
+        System.out.println("id người chơi" + CurrentUser.player.getId());
+
+        System.out.println("id người chủ" + Rooms.getRooms().getCustomerOwnerId());
+
+
+        TableView.TableViewSelectionModel<RoomUser> selectionModel = tableV_inforAca.getSelectionModel();
+        RoomUser selectedRoomUser = selectionModel.getSelectedItem();
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(BOARDGAME_XML_FILE));
+        int roomId = selectedRoomUser.getIdPhong();
+        int limitPlayer = Rooms.getLimitPlayer(roomId);
+        System.out.println("so nguowi " + limitPlayer);
+//  KIỂM TRA GIỚI HẠN NGƯỜI CHƠI VÀO PHÒNG
+        if (ListPlayers.getNumberOfPlayersInRoom(roomId) < limitPlayer) {
+            int playerId = CurrentUser.player.getId();
+            int ownerId = Rooms.getRooms().getCustomerOwnerId();
+//  chưa làm được nếu có trong danh sách rồi thì ko insert vào nữa
+            if (playerId != ownerId) {
+                ListPlayers.insert(selectedRoomUser.getIdPhong(), CurrentUser.player.getId());
+
+            }
             CurrentRoom.roomUser = selectedRoomUser;
-            CurrentRoom.informationInRoom= new InformationInRoom(selectedRoomUser.getIdPhong(),
+            CurrentRoom.informationInRoom = new InformationInRoom(selectedRoomUser.getIdPhong(),
                     ListPlayers.getPlayersInRoom(selectedRoomUser.getIdPhong()));
-
             if (tableV_inforAca.getSelectionModel().getSelectedItem() != null) {
                 try {
                     root = loader.load();
@@ -172,13 +181,13 @@ public class RoomCreateController implements Initializable {
                 scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();
-//        }else{
-//
-//            }
-
+            }
+        }else{
+            Alert alert= new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("WARNING");
+            alert.setHeaderText("FULL PLAYER");
+            alert.show();
         }
 
     }
-
-
 }

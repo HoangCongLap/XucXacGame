@@ -124,6 +124,7 @@ public class BoardGameController implements Initializable {
     static ObservableList<Integer> dataList;
     private Timer timer;
 
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         newThongTinBanChoi();
@@ -141,6 +142,8 @@ public class BoardGameController implements Initializable {
                 table_information_board.refresh();
             }
         }, 5000, 2000);
+
+
 
     }
 
@@ -440,12 +443,16 @@ public class BoardGameController implements Initializable {
     private Scene scene;
     private Parent root;
 
+    // xóa phòng
     public void back(ActionEvent event) throws IOException {
         ListPlayers.remove(CurrentUser.player.getId());
-        Rooms.remove(CurrentRoom.roomUser.getCustomerOwnerId());
+        if (CurrentUser.player.getId() == CurrentRoom.roomUser.getCustomerOwnerId()) {
+            Rooms.remove(CurrentRoom.roomUser.getCustomerOwnerId());
+            ListPlayers.removeAll(CurrentRoom.roomUser.getIdPhong());
+
+        }
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(ROOMCREATE_XML_FILE));
         root = loader.load();
-        RoomCreateController scene1Controller = loader.getController();
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

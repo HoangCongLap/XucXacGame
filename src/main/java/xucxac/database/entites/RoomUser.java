@@ -41,6 +41,7 @@ public class RoomUser {
         this.soNguoi = soNguoi;
     }
 
+
     @Override
     public String toString() {
         return "RoomUser{" +

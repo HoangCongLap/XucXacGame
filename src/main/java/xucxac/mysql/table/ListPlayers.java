@@ -22,7 +22,6 @@ public class ListPlayers {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 list.add(rs.getInt("idcustomer"));
-
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -70,7 +69,25 @@ public class ListPlayers {
             e.printStackTrace();
         }
     }
+    public static int getNumberOfPlayersInRoom(int idPhong) {
+        Connection conn = ConnectionUtil.conn;
+        List<Integer> list = new ArrayList<>();
+        try {
+            PreparedStatement ps = conn.prepareStatement("SELECT * FROM  listPlayers\n" +
+                    " where listPlayers.idPhong=?\n");
+            ps.setString(1, String.valueOf(idPhong));
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(rs.getInt("idcustomer"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list.size();
+    }
     public static void main(String[] args) {
-        System.out.println(ListPlayers.getPlayersInRoom(222));
+        System.out.println(ListPlayers.getNumberOfPlayersInRoom(972302));
+//        ListPlayers.removeAll(373105);
+
     }
 }

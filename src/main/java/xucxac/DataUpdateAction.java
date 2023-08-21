@@ -23,7 +23,8 @@ public class DataUpdateAction extends TimerTask {
     }
 
     public static void main(String[] args) {
-//        ListPlayers.insert(310873,22);
-        Rooms.add(10275, 22, 6);
+//            ListPlayers.insert(139489,55);
+        ListPlayers.insert(381934,30);
+//        Rooms.add(14, 22, 6);
     }
 }

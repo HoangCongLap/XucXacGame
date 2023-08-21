@@ -25,7 +25,7 @@ public class Main2 extends Application {
             stage.show();
             timer = new Timer();
             TimerTask CleanUpTimerTask = new DataUpdateAction();
-            timer.schedule(CleanUpTimerTask, 5000, 5000);
+            timer.schedule(CleanUpTimerTask, 5000, 3000);
 
         } catch (Exception e) {
             e.printStackTrace();

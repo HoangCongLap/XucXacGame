@@ -24,7 +24,7 @@ private    Timer timer ;
             stage.show();
             timer = new Timer();
             TimerTask CleanUpTimerTask = new DataUpdateAction();
-            timer.schedule(CleanUpTimerTask, 5000, 5000);
+            timer.schedule(CleanUpTimerTask, 5000, 3000);
 //            System.out.println("Timer has schedule the tasks...");
 
         } catch (Exception e) {
