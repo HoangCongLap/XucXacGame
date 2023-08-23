@@ -16,6 +16,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import xucxac.data.CurrentAccount;
 import xucxac.data.CurrentRoom;
@@ -94,6 +95,23 @@ public class RoomCreateController implements Initializable {
             }
         }, 5000, 2000);
         search_user();
+
+//        sửa
+        tableV_inforAca.setRowFactory(tv -> new TableRow<RoomUser>() {
+            @Override
+            public void updateItem(RoomUser item, boolean empty) {
+                super.updateItem(item, empty) ;
+                if (item == null) {
+                    setStyle("");
+//                } else if (item.getSoNguoi()==ListPlayers.getNumberOfPlayersInRoom()) {
+                } else if (item.getSoNguoi()==2) {
+                    setStyle("-fx-background-color: red;");
+                } else {
+                    setStyle("");
+                }
+            }
+        });
+
     }
 
 
@@ -182,8 +200,8 @@ public class RoomCreateController implements Initializable {
                 stage.setScene(scene);
                 stage.show();
             }
-        }else{
-            Alert alert= new Alert(Alert.AlertType.WARNING);
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("WARNING");
             alert.setHeaderText("FULL PLAYER");
             alert.show();

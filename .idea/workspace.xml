@@ -6,14 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="cacf39b1-ea4a-418f-8cdd-f85c2659a27c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/BoardGameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/BoardGameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/DataUpdateAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/DataUpdateAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/Main2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/Main2.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/RoomCreateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/RoomCreateController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/database/entites/RoomUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/database/entites/RoomUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/mysql/table/ListPlayers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/mysql/table/ListPlayers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/mysql/table/Rooms.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/mysql/table/Rooms.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -200,9 +193,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main2" />
         <item itemvalue="Application.Rooms" />
         <item itemvalue="Application.ListPlayers" />
-        <item itemvalue="Application.Main2" />
         <item itemvalue="Application.DataUpdateAction" />
         <item itemvalue="Application.InformationAccountGetter" />
       </list>
@@ -238,7 +231,8 @@
       <workItem from="1692521578895" duration="103000" />
       <workItem from="1692521718851" duration="1156000" />
       <workItem from="1692523812300" duration="10847000" />
-      <workItem from="1692587899924" duration="925000" />
+      <workItem from="1692587899924" duration="2684000" />
+      <workItem from="1692798217549" duration="3501000" />
     </task>
     <servers />
   </component>
@@ -272,8 +266,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/xucxac/RoomCreateController.java</url>
-          <line>161</line>
+          <line>179</line>
           <option name="timeStamp" value="71" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/xucxac/RoomCreateController.java</url>
+          <line>105</line>
+          <option name="timeStamp" value="80" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
