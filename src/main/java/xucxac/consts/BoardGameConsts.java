@@ -40,14 +40,15 @@ public class BoardGameConsts {
     }
 
     public static final int result(int value1, int value2, int value3, int value4, int finalIndex,
-                                   int selectLabel1, int sumAccount, int selectLabel2, int selectLabel3, int selectTaiXiu) {
+                                   int selectLabelTopLeft, int sumAccount, int selectLabelTopRight,
+                                   int selectLabelBottomLeft, int selectTaiXiu) {
         if (finalIndex == 1 || finalIndex == 6) {
 
-            if (selectLabel1 == 1) {
+            if (selectLabelTopLeft == 1) {
                 sumAccount -= value1;
-            } else if (selectLabel2 == 2) {
+            } else if (selectLabelTopRight == 2) {
                 sumAccount -= value2;
-            } else if (selectLabel3 == 3) {
+            } else if (selectLabelBottomLeft == 3) {
                 sumAccount -= value3;
             } else {
                 sumAccount -= value4;
@@ -55,22 +56,22 @@ public class BoardGameConsts {
 //
         } else if (finalIndex <= 3 && selectTaiXiu == 2 || finalIndex > 3 && selectTaiXiu == 1) {
 
-            if (selectLabel1 == 1) {
+            if (selectLabelTopLeft == 1) {
                 sumAccount -= value1;
-            } else if (selectLabel2 == 2) {
+            } else if (selectLabelTopRight == 2) {
                 sumAccount -= value2;
-            } else if (selectLabel3 == 3) {
+            } else if (selectLabelBottomLeft == 3) {
                 sumAccount -= value3;
             } else {
                 sumAccount -= value4;
             }
 //
         } else {
-            if (selectLabel1 == 1) {
+            if (selectLabelTopLeft == 1) {
                 sumAccount += value1;
-            } else if (selectLabel2 == 2) {
+            } else if (selectLabelTopRight == 2) {
                 sumAccount += value2;
-            } else if (selectLabel3 == 3) {
+            } else if (selectLabelBottomLeft == 3) {
                 sumAccount += value3;
             } else {
                 sumAccount += value4;

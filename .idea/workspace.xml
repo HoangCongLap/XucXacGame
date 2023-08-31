@@ -6,7 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="cacf39b1-ea4a-418f-8cdd-f85c2659a27c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/RoomCreateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/RoomCreateController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/BoardGameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/BoardGameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/consts/BoardGameConsts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/consts/BoardGameConsts.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/BoardGame.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/BoardGame.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/TestBoardGame.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/TestBoardGame.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,7 +105,7 @@
       <recent name="xucxac" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Application.Main2">
     <configuration name="DataUpdateAction" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="xucxac.DataUpdateAction" />
       <module name="XucXac" />
@@ -232,7 +236,9 @@
       <workItem from="1692521718851" duration="1156000" />
       <workItem from="1692523812300" duration="10847000" />
       <workItem from="1692587899924" duration="2684000" />
-      <workItem from="1692798217549" duration="3501000" />
+      <workItem from="1692798217549" duration="4354000" />
+      <workItem from="1692881153751" duration="3498000" />
+      <workItem from="1693180017661" duration="16006000" />
     </task>
     <servers />
   </component>
@@ -265,14 +271,14 @@
           <option name="timeStamp" value="53" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/xucxac/RoomCreateController.java</url>
-          <line>179</line>
-          <option name="timeStamp" value="71" />
+          <url>file://$PROJECT_DIR$/src/main/java/xucxac/BoardGameController.java</url>
+          <line>542</line>
+          <option name="timeStamp" value="85" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/xucxac/RoomCreateController.java</url>
-          <line>105</line>
-          <option name="timeStamp" value="80" />
+          <url>file://$PROJECT_DIR$/src/main/java/xucxac/BoardGameController.java</url>
+          <line>549</line>
+          <option name="timeStamp" value="86" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

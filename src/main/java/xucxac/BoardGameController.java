@@ -20,6 +20,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import xucxac.data.CurrentRoom;
 import xucxac.consts.BoardGameConsts;
@@ -55,13 +56,13 @@ public class BoardGameController implements Initializable {
     @FXML
     private Label lblResult;
     @FXML
-    private Label label1;
+    private Label labTopLeft;
     @FXML
-    private Label label2;
+    private Label labTopRight;
     @FXML
-    private Label label3;
+    private Label labBottomLeft;
     @FXML
-    private Label label4;
+    private Label labBottomRight;
     @FXML
     private Label tai;
     @FXML
@@ -93,12 +94,63 @@ public class BoardGameController implements Initializable {
 
     @FXML
     private Label labMoneyTotal;
+
+    @FXML
+    private Text txtDataTopLeft1;
+    @FXML
+    private Text txtDataTopLeft2;
+    @FXML
+    private Text txtDataTopLeft3;
+    @FXML
+    private Text txtDataTopLeft4;
+    @FXML
+    private Text txtDataTopLeft5;
+    @FXML
+    private Text txtDataTopLeft6;
+    @FXML
+    private Text txtDataTopRight1;
+    @FXML
+    private Text txtDataTopRight2;
+    @FXML
+    private Text txtDataTopRight3;
+    @FXML
+    private Text txtDataTopRight4;
+    @FXML
+    private Text txtDataTopRight5;
+    @FXML
+    private Text txtDataTopRight6;
+    @FXML
+    private Text txtDataBottomLeft1;
+    @FXML
+    private Text txtDataBottomLeft2;
+    @FXML
+    private Text txtDataBottomLeft3;
+    @FXML
+    private Text txtDataBottomLeft4;
+    @FXML
+    private Text txtDataBottomLeft5;
+    @FXML
+    private Text txtDataBottomLeft6;
+    @FXML
+    private Text txtDataBottomRight1;
+    @FXML
+    private Text txtDataBottomRight2;
+    @FXML
+    private Text txtDataBottomRight3;
+    @FXML
+    private Text txtDataBottomRight4;
+    @FXML
+    private Text txtDataBottomRight5;
+    @FXML
+    private Text txtDataBottomRight6;
+
+
     private int finalIndex = 0;
     private int selectTaiXiu = 0;
-    private int selectLabel1 = 0;
-    private int selectLabel2 = 0;
-    private int selectLabel3 = 0;
-    private int selectLabel4 = 0;
+    private int selectLabelTopLeft = 0;
+    private int selectLabelTopRight = 0;
+    private int selectLabelBottomLeft = 0;
+    private int selectLabelBottomRight = 0;
     private int sumAccount = 50000;
     private int quayXucXac = 0;
     private int moneyTopLeft = 500;
@@ -142,7 +194,6 @@ public class BoardGameController implements Initializable {
                 table_information_board.refresh();
             }
         }, 5000, 2000);
-
 
 
     }
@@ -201,7 +252,7 @@ public class BoardGameController implements Initializable {
 
     @FXML
     private void roll(ActionEvent event) {
-        if (sumAccount >= 500 && (selectTaiXiu == 1 || selectTaiXiu == 2) && (selectLabel1 == 1 || selectLabel2 == 2 || selectLabel3 == 3 || selectLabel4 == 4)) {
+        if (sumAccount >= 500 && (selectTaiXiu == 1 || selectTaiXiu == 2) && (selectLabelTopLeft == 1 || selectLabelTopRight == 2 || selectLabelBottomLeft == 3 || selectLabelBottomRight == 4)) {
             rollButton.setDisable(true);
             System.getProperty("User.dir");
             Thread theard = new Thread() {
@@ -280,7 +331,7 @@ public class BoardGameController implements Initializable {
 
     // xử lí chọn tài hoặc xỉu
     @FXML
-    protected void handleClicked2(MouseEvent event) {
+    protected void handleClickedTaiXiu(MouseEvent event) {
         if (sumAccount >= 500) {
             Label selectedtLabel = (Label) event.getSource();
             selectedtLabel.setStyle("-fx-border-color:red; -fx-background-color: blue;");
@@ -303,19 +354,49 @@ public class BoardGameController implements Initializable {
 
     //==================================================================================================================
     //    Đặt tiền "\$500"
+    int count = 0;
+
     @FXML
-    protected void onNumberClicked1(MouseEvent event) {
-        int value1 = Integer.parseInt(label1.getText());
-        if ((selectTaiXiu == 1 || selectTaiXiu == 2) && sumAccount >= 500 && sumAccount - value1 > 500) {
+    protected void clickTopLeft(MouseEvent event) {
+        int valueMoneyTopLeft = Integer.parseInt(labTopLeft.getText());
+        if ((selectTaiXiu == 1 || selectTaiXiu == 2) && sumAccount >= 500 && sumAccount-valueMoneyTopLeft  > 500) {
+            if (txtDataTopLeft1.getText().isEmpty()) {
+                txtDataTopLeft1.setText(String.valueOf(CurrentUser.player.getId()));
+                count = count + 1;
+            } else if (!txtDataTopLeft1.getText().isEmpty() && txtDataTopLeft2.getText().isEmpty()) {
+                txtDataTopLeft2.setText(String.valueOf(CurrentUser.player.getId()));
+                count = count + 1;
+            } else if (!txtDataTopLeft1.getText().isEmpty() && !txtDataTopLeft2.getText().isEmpty() && txtDataTopLeft3.getText().isEmpty()) {
+                txtDataTopLeft3.setText(String.valueOf(CurrentUser.player.getId()));
+                count = count + 1;
+            } else if (!txtDataTopLeft1.getText().isEmpty() && !txtDataTopLeft2.getText().isEmpty()
+                    && !txtDataTopLeft3.getText().isEmpty() && txtDataTopLeft4.getText().isEmpty()) {
+                txtDataTopLeft4.setText(String.valueOf(CurrentUser.player.getId()));
+                count = count + 1;
+            } else if (!txtDataTopLeft1.getText().isEmpty() && !txtDataTopLeft2.getText().isEmpty()
+                    && !txtDataTopLeft3.getText().isEmpty()
+                    && !txtDataTopLeft4.getText().isEmpty() && txtDataTopLeft5.getText().isEmpty()) {
+                txtDataTopLeft5.setText(String.valueOf(CurrentUser.player.getId()));
+                count = count + 1;
+            } else if (!txtDataTopLeft1.getText().isEmpty() && !txtDataTopLeft2.getText().isEmpty()
+                    && !txtDataTopLeft3.getText().isEmpty() && !txtDataTopLeft4.getText().isEmpty()
+                    && !txtDataTopLeft5.getText().isEmpty()
+                    && txtDataTopLeft6.getText().isEmpty()) {
+                txtDataTopLeft6.setText(String.valueOf(CurrentUser.player.getId()));
+                count = count + 1;
+            } else {
+                topLeft.setDisable(true);
+            }
+
             String text;
-            if (Integer.parseInt(label1.getText()) == 0) {
+            if (labTopLeft.getText().isEmpty()) {
                 text = String.valueOf((Integer) moneyTopLeft);
             } else {
-                Integer sum = Integer.parseInt(label1.getText()) + moneyTopLeft;
+                Integer sum = Integer.parseInt(labTopLeft.getText()) + moneyTopLeft;
                 text = String.valueOf(sum);
             }
-            label1.setText(text);
-            selectLabel1 = 1;
+            labTopLeft.setText(text);
+            selectLabelTopLeft = 1;
             buttonDisabledTopLeft();
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -329,18 +410,46 @@ public class BoardGameController implements Initializable {
 
     //    Đặt tiền "\$1.000"
     @FXML
-    protected void onNumberClicked2(MouseEvent event) {
-        int value2 = Integer.parseInt(label2.getText());
-        if ((selectTaiXiu == 1 || selectTaiXiu == 2) && sumAccount >= 1000 && sumAccount - value2 > 1000) {
+    protected void clickTopRight(MouseEvent event) {
+
+        int valueMoneyTopRight = Integer.parseInt(labTopRight.getText());
+        if ((selectTaiXiu == 1 || selectTaiXiu == 2) && sumAccount >= 1000 && sumAccount - valueMoneyTopRight > 1000) {
+            if (txtDataTopRight1.getText().isEmpty()) {
+                txtDataTopRight1.setText(String.valueOf(CurrentUser.player.getId()));
+                count = count + 1;
+            } else if (!txtDataTopRight1.getText().isEmpty() && txtDataTopRight2.getText().isEmpty()) {
+                txtDataTopRight2.setText(String.valueOf(CurrentUser.player.getId()));
+                count = count + 1;
+            } else if (!txtDataTopRight1.getText().isEmpty() && !txtDataTopRight2.getText().isEmpty() && txtDataTopRight3.getText().isEmpty()) {
+                txtDataTopRight3.setText(String.valueOf(CurrentUser.player.getId()));
+                count = count + 1;
+            } else if (!txtDataTopRight1.getText().isEmpty() && !txtDataTopRight2.getText().isEmpty()
+                    && !txtDataTopRight3.getText().isEmpty() && txtDataTopRight4.getText().isEmpty()) {
+                txtDataTopRight4.setText(String.valueOf(CurrentUser.player.getId()));
+                count = count + 1;
+            } else if (!txtDataTopRight1.getText().isEmpty() && !txtDataTopRight2.getText().isEmpty()
+                    && !txtDataTopRight3.getText().isEmpty()
+                    && !txtDataTopRight4.getText().isEmpty() && txtDataTopRight5.getText().isEmpty()) {
+                txtDataTopRight5.setText(String.valueOf(CurrentUser.player.getId()));
+                count = count + 1;
+            } else if (!txtDataTopRight1.getText().isEmpty() && !txtDataTopRight2.getText().isEmpty()
+                    && !txtDataTopRight3.getText().isEmpty() && !txtDataTopRight4.getText().isEmpty()
+                    && !txtDataTopRight5.getText().isEmpty()
+                    && txtDataTopRight6.getText().isEmpty()) {
+                txtDataTopRight6.setText(String.valueOf(CurrentUser.player.getId()));
+                count = count + 1;
+            } else {
+                topRight.setDisable(true);
+            }
             String text;
-            if (Integer.parseInt(label2.getText()) == 0) {
+            if (Integer.parseInt(labTopRight.getText()) == 0) {
                 text = String.valueOf((Integer) moneyTopRight);
             } else {
-                Integer sum = Integer.parseInt(label2.getText()) + moneyTopRight;
+                Integer sum = Integer.parseInt(labTopRight.getText()) + moneyTopRight;
                 text = String.valueOf(sum);
             }
-            label2.setText(text);
-            selectLabel2 = 2;
+            labTopRight.setText(text);
+            selectLabelTopRight = 2;
             buttonDisabledTopRight();
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -353,18 +462,45 @@ public class BoardGameController implements Initializable {
 
     //    Đặt tiền "\$5.000"
     @FXML
-    protected void onNumberClicked3(MouseEvent event) {
-        int value3 = Integer.parseInt(label3.getText());
-        if ((selectTaiXiu == 1 || selectTaiXiu == 2) && sumAccount >= 5000 && sumAccount - value3 > 5000) {
+    protected void clickBottomLeft(MouseEvent event) {
+        int valueMoneyBottomLeft = Integer.parseInt(labBottomLeft.getText());
+        if ((selectTaiXiu == 1 || selectTaiXiu == 2) && sumAccount >= 5000 && sumAccount - valueMoneyBottomLeft > 5000) {
+            if (txtDataBottomLeft1.getText().isEmpty()) {
+                txtDataBottomLeft1.setText(String.valueOf(CurrentUser.player.getId()));
+                count = count + 1;
+            } else if (!txtDataBottomLeft1.getText().isEmpty() && txtDataBottomLeft2.getText().isEmpty()) {
+                txtDataBottomLeft2.setText(String.valueOf(CurrentUser.player.getId()));
+                count = count + 1;
+            } else if (!txtDataBottomLeft1.getText().isEmpty() && !txtDataBottomLeft2.getText().isEmpty() && txtDataBottomLeft3.getText().isEmpty()) {
+                txtDataBottomLeft3.setText(String.valueOf(CurrentUser.player.getId()));
+                count = count + 1;
+            } else if (!txtDataBottomLeft1.getText().isEmpty() && !txtDataBottomLeft2.getText().isEmpty()
+                    && !txtDataBottomLeft3.getText().isEmpty() && txtDataBottomLeft4.getText().isEmpty()) {
+                txtDataBottomLeft4.setText(String.valueOf(CurrentUser.player.getId()));
+                count = count + 1;
+            } else if (!txtDataBottomLeft1.getText().isEmpty() && !txtDataBottomLeft2.getText().isEmpty()
+                    && !txtDataBottomLeft3.getText().isEmpty()
+                    && !txtDataBottomLeft4.getText().isEmpty() && txtDataBottomLeft5.getText().isEmpty()) {
+                txtDataBottomLeft5.setText(String.valueOf(CurrentUser.player.getId()));
+                count = count + 1;
+            } else if (!txtDataBottomLeft1.getText().isEmpty() && !txtDataBottomLeft2.getText().isEmpty()
+                    && !txtDataBottomLeft3.getText().isEmpty() && !txtDataBottomLeft4.getText().isEmpty()
+                    && !txtDataBottomLeft5.getText().isEmpty()
+                    && txtDataBottomLeft6.getText().isEmpty()) {
+                txtDataBottomLeft6.setText(String.valueOf(CurrentUser.player.getId()));
+                count = count + 1;
+            } else {
+                bottomLeft.setDisable(true);
+            }
             String text;
-            if (Integer.parseInt(label3.getText()) == 0) {
+            if (Integer.parseInt(labBottomLeft.getText()) == 0) {
                 text = String.valueOf((Integer) moneyBottomLeft);
             } else {
-                Integer sum = Integer.parseInt(label3.getText()) + moneyBottomLeft;
+                Integer sum = Integer.parseInt(labBottomLeft.getText()) + moneyBottomLeft;
                 text = String.valueOf(sum);
             }
-            label3.setText(text);
-            selectLabel3 = 3;
+            labBottomLeft.setText(text);
+            selectLabelBottomLeft = 3;
             buttonDisabledBottomLeft();
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -377,18 +513,45 @@ public class BoardGameController implements Initializable {
 
     // Đặt tiền "$10.000"
     @FXML
-    protected void onNumberClicked4(MouseEvent event) {
-        int value4 = Integer.parseInt(label4.getText());
-        if ((selectTaiXiu == 1 || selectTaiXiu == 2) && sumAccount >= 10000 && sumAccount - value4 > 10000) {
+    protected void clickBottomRight(MouseEvent event) {
+        int valueMoneyBottomRight = Integer.parseInt(labBottomRight.getText());
+        if ((selectTaiXiu == 1 || selectTaiXiu == 2) && sumAccount >= 10000 && sumAccount - valueMoneyBottomRight > 10000) {
+        if (txtDataBottomRight1.getText().isEmpty()) {
+            txtDataBottomRight1.setText(String.valueOf(CurrentUser.player.getId()));
+            count = count + 1;
+        } else if (!txtDataBottomRight1.getText().isEmpty() && txtDataBottomRight2.getText().isEmpty()) {
+            txtDataBottomRight2.setText(String.valueOf(CurrentUser.player.getId()));
+            count = count + 1;
+        } else if (!txtDataBottomRight1.getText().isEmpty() && !txtDataBottomRight2.getText().isEmpty() && txtDataBottomRight3.getText().isEmpty()) {
+            txtDataBottomRight3.setText(String.valueOf(CurrentUser.player.getId()));
+            count = count + 1;
+        } else if (!txtDataBottomRight1.getText().isEmpty() && !txtDataBottomRight2.getText().isEmpty()
+                && !txtDataBottomRight3.getText().isEmpty() && txtDataBottomRight4.getText().isEmpty()) {
+            txtDataBottomRight4.setText(String.valueOf(CurrentUser.player.getId()));
+            count = count + 1;
+        } else if (!txtDataBottomRight1.getText().isEmpty() && !txtDataBottomRight2.getText().isEmpty()
+                && !txtDataBottomRight3.getText().isEmpty()
+                && !txtDataBottomRight4.getText().isEmpty() && txtDataBottomRight5.getText().isEmpty()) {
+            txtDataBottomRight5.setText(String.valueOf(CurrentUser.player.getId()));
+            count = count + 1;
+        } else if (!txtDataBottomRight1.getText().isEmpty() && !txtDataBottomRight2.getText().isEmpty()
+                && !txtDataBottomRight3.getText().isEmpty() && !txtDataBottomRight4.getText().isEmpty()
+                && !txtDataBottomRight5.getText().isEmpty()
+                && txtDataBottomRight6.getText().isEmpty()) {
+            txtDataBottomRight6.setText(String.valueOf(CurrentUser.player.getId()));
+            count = count + 1;
+        } else {
+            bottomRight.setDisable(true);
+        }
             String text;
-            if (Integer.parseInt(label4.getText()) == 0) {
+            if (Integer.parseInt(labBottomRight.getText()) == 0) {
                 text = String.valueOf((Integer) moneyBottomRight);
             } else {
-                Integer sum = Integer.parseInt(label4.getText()) + moneyBottomRight;
+                Integer sum = Integer.parseInt(labBottomRight.getText()) + moneyBottomRight;
                 text = String.valueOf(sum);
             }
-            label4.setText(text);
-            selectLabel4 = 4;
+            labBottomRight.setText(text);
+            selectLabelBottomRight = 4;
             buttonDisabledBottomRight();
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -418,13 +581,13 @@ public class BoardGameController implements Initializable {
 
     public void result() {
         int value1, value2, value3, value4;
-        value1 = Integer.parseInt(label1.getText());
-        value2 = Integer.parseInt(label2.getText());
-        value3 = Integer.parseInt(label3.getText());
-        value4 = Integer.parseInt(label4.getText());
+        value1 = Integer.parseInt(labTopLeft.getText());
+        value2 = Integer.parseInt(labTopRight.getText());
+        value3 = Integer.parseInt(labBottomLeft.getText());
+        value4 = Integer.parseInt(labBottomRight.getText());
         Alert alert = new Alert(Alert.AlertType.NONE);
         alert.setTitle("KẾT QUẢ");
-        sumAccount = BoardGameConsts.result(value1, value2, value3, value4, finalIndex, selectLabel1, sumAccount, selectLabel2, selectLabel3, selectTaiXiu);
+        sumAccount = BoardGameConsts.result(value1, value2, value3, value4, finalIndex, selectLabelTopLeft, sumAccount, selectLabelTopRight, selectLabelBottomLeft, selectTaiXiu);
         if (finalIndex == 1 || finalIndex == 6) {
             alert.setContentText("LOSE\n" + "Account: " + sumAccount);
         } else if (finalIndex <= 3 && selectTaiXiu == 2 || finalIndex > 3 && selectTaiXiu == 1) {
