@@ -21,7 +21,7 @@ public class ListRoom {
         this.roomUsers.addAll(roomUsers);
     }
 
-    public ListRoom(List<RoomUser> roomUsers) {
+            public ListRoom(List<RoomUser> roomUsers) {
         this.roomUsers = roomUsers;
     }
 }

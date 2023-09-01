@@ -37,7 +37,7 @@
         </Label>
        <Label fx:id="lblResult" alignment="CENTER" layoutX="234.0" layoutY="62.0" prefHeight="19.0" prefWidth="137.0" style="-fx-background-color: #708090;" />
       <Label fx:id="labMoneyTotal" alignment="CENTER" layoutX="258.0" layoutY="312.0" prefHeight="95.0" prefWidth="95.0" style="-fx-background-color: #FF0000;" text="0" />
-      <TextField fx:id="textCardMoney" layoutX="252.0" layoutY="451.0" onAction="#newAccount" prefHeight="26.0" prefWidth="107.0" style="-fx-background-color: #00BFFF;" />
+      <TextField fx:id="textCardMoney" alignment="CENTER" layoutX="130.0" layoutY="450.0" onAction="#newAccount" prefHeight="26.0" prefWidth="107.0" style="-fx-background-color: #00BFFF;" />
       <Label layoutX="242.0" layoutY="425.0" text="Nạp tiền vào tài khoản: " />
       <Button fx:id="instruction" layoutX="524.0" layoutY="464.0" mnemonicParsing="false" onAction="#instruction" style="-fx-background-color: #4682B4;" text="Hướng dẫn" />
       <Button fx:id="btBackLogin" layoutY="464.0" mnemonicParsing="false" onAction="#back" prefHeight="26.0" prefWidth="66.0" style="-fx-background-color: #4682B4;" text="Back" />
@@ -207,5 +207,6 @@
             <Font size="18.0" />
          </font>
       </Text>
+      <Label fx:id="labCardMoney" alignment="CENTER" layoutX="252.0" layoutY="451.0" prefHeight="26.0" prefWidth="107.0" style="-fx-background-color: #00BFFF;" text="0" />
     </children>
 </AnchorPane>

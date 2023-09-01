@@ -4,35 +4,40 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="anchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="xucxac.RoomCreateController">
-   <children>
-      <Label alignment="CENTER" contentDisplay="RIGHT" layoutX="-7.0" layoutY="-2.0" prefHeight="38.0" prefWidth="618.0" style="-fx-background-color: #3399FF;" text="TẠO PHÒNG CHƠI">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </Label>
-      <Button fx:id="btnTaoPhong" layoutX="171.0" layoutY="75.0" mnemonicParsing="false" onAction="#onActionTaoPhong" prefHeight="38.0" prefWidth="120.0" text="Tạo Phòng">
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-      </Button>
-      <Button mnemonicParsing="false" onAction="#exitRoomCreate" prefHeight="9.0" prefWidth="66.0" text="Back" />
-      <TableView fx:id="tableV_inforAca" layoutY="117.0" prefHeight="282.0" prefWidth="611.0">
-        <columns>
-          <TableColumn fx:id="col_IdPhong" prefWidth="293.20001220703125" text="ID Phòng" />
-            <TableColumn fx:id="col_SoNguoi" prefWidth="315.199951171875" text="Số Người " />
-        </columns>
-      </TableView>
-      <TextField fx:id="keyWordTextField" layoutX="168.0" layoutY="42.0" onAction="#search_user" prefHeight="26.0" prefWidth="246.0" promptText="Key Words...." />
-      <Label layoutX="96.0" layoutY="46.0" text="ID Phòng:">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-      </Label>
-      <Button fx:id="btnVaoPhong" layoutX="302.0" layoutY="75.0" mnemonicParsing="false" onMouseClicked="#handleVaoPhongClick" prefHeight="38.0" prefWidth="120.0" text="Vào Phòng">
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-      </Button>
-   </children>
+<AnchorPane fx:id="anchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="xucxac.RoomCreateController">
+    <children>
+        <Label alignment="CENTER" contentDisplay="RIGHT" layoutX="-7.0" layoutY="-2.0" prefHeight="38.0"
+               prefWidth="618.0" style="-fx-background-color: #3399FF;" text="TẠO PHÒNG CHƠI">
+            <font>
+                <Font name="System Bold" size="18.0"/>
+            </font>
+        </Label>
+        <Button fx:id="btnTaoPhong" layoutX="171.0" layoutY="75.0" mnemonicParsing="false" onAction="#onActionTaoPhong"
+                prefHeight="38.0" prefWidth="120.0" text="Tạo Phòng">
+            <font>
+                <Font name="System Bold" size="13.0"/>
+            </font>
+        </Button>
+        <Button mnemonicParsing="false" onAction="#exitRoomCreate" prefHeight="9.0" prefWidth="66.0" text="Back"/>
+        <TableView fx:id="tableV_inforAca" layoutY="117.0" prefHeight="282.0" prefWidth="611.0">
+            <columns>
+                <TableColumn fx:id="col_IdPhong" prefWidth="293.20001220703125" text="ID Phòng"/>
+                <TableColumn fx:id="col_SoNguoi" prefWidth="315.199951171875" text="Số Người "/>
+            </columns>
+        </TableView>
+        <TextField fx:id="keyWordTextField" layoutX="168.0" layoutY="42.0" onAction="#search_user" prefHeight="26.0"
+                   prefWidth="246.0" promptText="Key Words...."/>
+        <Label layoutX="96.0" layoutY="46.0" text="ID Phòng:">
+            <font>
+                <Font name="System Bold" size="14.0"/>
+            </font>
+        </Label>
+        <Button fx:id="btnVaoPhong" layoutX="302.0" layoutY="75.0" mnemonicParsing="false"
+                onMouseClicked="#handleVaoPhongClick" prefHeight="38.0" prefWidth="120.0" text="Vào Phòng">
+            <font>
+                <Font name="System Bold" size="13.0"/>
+            </font>
+        </Button>
+    </children>
 </AnchorPane>

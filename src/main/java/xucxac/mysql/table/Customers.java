@@ -35,7 +35,18 @@ public class Customers {
                 SQLException e) {
             e.printStackTrace();
         }
-
         return null;
+    }
+
+
+    public static void saveMoneyTotal(int moneyTotal) {
+        String sql = "INSERT INTO customer(moneyTotal) VALUES(?);\n";
+        try {
+            PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setInt(1, moneyTotal);
+            pst.execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -27,6 +27,7 @@ import xucxac.consts.BoardGameConsts;
 import xucxac.data.CurrentUser;
 import xucxac.database.ConnectionUtil;
 import xucxac.database.entites.RoomUser;
+import xucxac.mysql.table.Customers;
 import xucxac.mysql.table.ListPlayers;
 import xucxac.mysql.table.Rooms;
 
@@ -91,7 +92,8 @@ public class BoardGameController implements Initializable {
     private Label labPlayerNumber;
     @FXML
     private Label labIdChuPhong;
-
+    @FXML
+    private Label labCardMoney;
     @FXML
     private Label labMoneyTotal;
 
@@ -151,7 +153,7 @@ public class BoardGameController implements Initializable {
     private int selectLabelTopRight = 0;
     private int selectLabelBottomLeft = 0;
     private int selectLabelBottomRight = 0;
-    private int sumAccount = 50000;
+    private int sumAccount = 0;
     private int quayXucXac = 0;
     private int moneyTopLeft = 500;
     private int moneyTopRight = 1000;
@@ -191,11 +193,13 @@ public class BoardGameController implements Initializable {
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
+
                 table_information_board.refresh();
             }
         }, 5000, 2000);
 
-
+       labCardMoney.setText(String.valueOf(CurrentUser.player.getCardMoney()));
+       sumAccount= Integer.parseInt(labCardMoney.getText());
     }
 
     public void newThongTinBanChoi() {
@@ -210,44 +214,25 @@ public class BoardGameController implements Initializable {
     }
 
 
-//    public void newThongTinBanChoi() {
-//        labIdPhong.setText(CurrentRoom.roomUser.getIdPhong());
-//        labPlayerNumber.setText(String.valueOf(CurrentRoom.roomUser.getSoNguoi()));
-//
-//
-//
-//        Label label = new Label();
-//        String labell="hoang";
-//        dataList = PlayerListInformation.getDataListPlayer(222);
-////        vBoxThongTinBan.getChildren().add(labell);
-//
-////
-////        InformationRoom informationRoom=new InformationRoom();
-////        label.setText(CurrentRoom.informationInRoom.getIdcustomer().toString());
-//        label.setStyle("-fx-font-size: 10px; -fx-text-fill: red;");
-//        vBoxThongTinBan.getChildren().add(label);
-////        System.out.println("hoang");
-//    }
-
 
     //Tổng tiền trong Account
     @FXML
     protected void newAccount(ActionEvent event) {
-        sumAccount = Integer.parseInt(textCardMoney.getText());
-        if (sumAccount >= 500) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("THÔNG BÁO");
-            alert.setHeaderText("Nạp tiền thành công.");
-            alert.setContentText("Tiền trong tài khoản: " + sumAccount);
-            alert.show();
-            System.out.println(sumAccount);
-        } else {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("THÔNG BÁO");
-            alert.setHeaderText("Nạp tiền không thành công.");
-            alert.setContentText("Hãy Nạp lại tiền >= 500\n ");
-            alert.show();
-        }
+//        sumAccount = Integer.parseInt(textCardMoney.getText());
+//        if (sumAccount >= 500) {
+//            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+//            alert.setTitle("THÔNG BÁO");
+//            alert.setHeaderText("Nạp tiền thành công.");
+//            alert.setContentText("Tiền trong tài khoản: " + sumAccount);
+//            alert.show();
+//            System.out.println(sumAccount);
+//        } else {
+//            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+//            alert.setTitle("THÔNG BÁO");
+//            alert.setHeaderText("Nạp tiền không thành công.");
+//            alert.setContentText("Hãy Nạp lại tiền >= 500\n ");
+//            alert.show();
+//        }
     }
 
     @FXML
@@ -259,7 +244,7 @@ public class BoardGameController implements Initializable {
                 //            runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    System.out.println("Thread Running");
+//                    System.out.println("Thread Running");
                     try {
                         int index = 1;
                         for (int i = 0; i < 15; i++) {
@@ -279,12 +264,12 @@ public class BoardGameController implements Initializable {
                         }
 //======================================================================================================================
                         finalIndex = index;
-                        Platform.runLater(new Runnable() {
-                            @Override
-                            public void run() {
-                                lblResult.setText(String.valueOf(finalIndex));
-                            }
-                        });
+//                        Platform.runLater(new Runnable() {
+//                            @Override
+//                            public void run() {
+//                                lblResult.setText(String.valueOf(finalIndex));
+//                            }
+//                        });
 //======================================================================================================================
                         // xuất ra kết quả
 //                        Platform.runLater(new Runnable() {
@@ -319,7 +304,7 @@ public class BoardGameController implements Initializable {
             };
             theard.start();
             // quayXucXac = 1;
-            System.out.println(sumAccount);
+//            System.out.println(sumAccount);
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("THÔNG BÁO");
@@ -346,7 +331,7 @@ public class BoardGameController implements Initializable {
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("THÔNG BÁO");
-            alert.setHeaderText("Bạn chưa nạp tiền vào tài khoản...");
+            alert.setHeaderText("Tiền trong tài khoản < 500");
             alert.show();
         }
     }
@@ -359,7 +344,7 @@ public class BoardGameController implements Initializable {
     @FXML
     protected void clickTopLeft(MouseEvent event) {
         int valueMoneyTopLeft = Integer.parseInt(labTopLeft.getText());
-        if ((selectTaiXiu == 1 || selectTaiXiu == 2) && sumAccount >= 500 && sumAccount-valueMoneyTopLeft  > 500) {
+        if ((selectTaiXiu == 1 || selectTaiXiu == 2) && sumAccount >= 500 && sumAccount - valueMoneyTopLeft > 500) {
             if (txtDataTopLeft1.getText().isEmpty()) {
                 txtDataTopLeft1.setText(String.valueOf(CurrentUser.player.getId()));
                 count = count + 1;
@@ -516,33 +501,33 @@ public class BoardGameController implements Initializable {
     protected void clickBottomRight(MouseEvent event) {
         int valueMoneyBottomRight = Integer.parseInt(labBottomRight.getText());
         if ((selectTaiXiu == 1 || selectTaiXiu == 2) && sumAccount >= 10000 && sumAccount - valueMoneyBottomRight > 10000) {
-        if (txtDataBottomRight1.getText().isEmpty()) {
-            txtDataBottomRight1.setText(String.valueOf(CurrentUser.player.getId()));
-            count = count + 1;
-        } else if (!txtDataBottomRight1.getText().isEmpty() && txtDataBottomRight2.getText().isEmpty()) {
-            txtDataBottomRight2.setText(String.valueOf(CurrentUser.player.getId()));
-            count = count + 1;
-        } else if (!txtDataBottomRight1.getText().isEmpty() && !txtDataBottomRight2.getText().isEmpty() && txtDataBottomRight3.getText().isEmpty()) {
-            txtDataBottomRight3.setText(String.valueOf(CurrentUser.player.getId()));
-            count = count + 1;
-        } else if (!txtDataBottomRight1.getText().isEmpty() && !txtDataBottomRight2.getText().isEmpty()
-                && !txtDataBottomRight3.getText().isEmpty() && txtDataBottomRight4.getText().isEmpty()) {
-            txtDataBottomRight4.setText(String.valueOf(CurrentUser.player.getId()));
-            count = count + 1;
-        } else if (!txtDataBottomRight1.getText().isEmpty() && !txtDataBottomRight2.getText().isEmpty()
-                && !txtDataBottomRight3.getText().isEmpty()
-                && !txtDataBottomRight4.getText().isEmpty() && txtDataBottomRight5.getText().isEmpty()) {
-            txtDataBottomRight5.setText(String.valueOf(CurrentUser.player.getId()));
-            count = count + 1;
-        } else if (!txtDataBottomRight1.getText().isEmpty() && !txtDataBottomRight2.getText().isEmpty()
-                && !txtDataBottomRight3.getText().isEmpty() && !txtDataBottomRight4.getText().isEmpty()
-                && !txtDataBottomRight5.getText().isEmpty()
-                && txtDataBottomRight6.getText().isEmpty()) {
-            txtDataBottomRight6.setText(String.valueOf(CurrentUser.player.getId()));
-            count = count + 1;
-        } else {
-            bottomRight.setDisable(true);
-        }
+            if (txtDataBottomRight1.getText().isEmpty()) {
+                txtDataBottomRight1.setText(String.valueOf(CurrentUser.player.getId()));
+                count = count + 1;
+            } else if (!txtDataBottomRight1.getText().isEmpty() && txtDataBottomRight2.getText().isEmpty()) {
+                txtDataBottomRight2.setText(String.valueOf(CurrentUser.player.getId()));
+                count = count + 1;
+            } else if (!txtDataBottomRight1.getText().isEmpty() && !txtDataBottomRight2.getText().isEmpty() && txtDataBottomRight3.getText().isEmpty()) {
+                txtDataBottomRight3.setText(String.valueOf(CurrentUser.player.getId()));
+                count = count + 1;
+            } else if (!txtDataBottomRight1.getText().isEmpty() && !txtDataBottomRight2.getText().isEmpty()
+                    && !txtDataBottomRight3.getText().isEmpty() && txtDataBottomRight4.getText().isEmpty()) {
+                txtDataBottomRight4.setText(String.valueOf(CurrentUser.player.getId()));
+                count = count + 1;
+            } else if (!txtDataBottomRight1.getText().isEmpty() && !txtDataBottomRight2.getText().isEmpty()
+                    && !txtDataBottomRight3.getText().isEmpty()
+                    && !txtDataBottomRight4.getText().isEmpty() && txtDataBottomRight5.getText().isEmpty()) {
+                txtDataBottomRight5.setText(String.valueOf(CurrentUser.player.getId()));
+                count = count + 1;
+            } else if (!txtDataBottomRight1.getText().isEmpty() && !txtDataBottomRight2.getText().isEmpty()
+                    && !txtDataBottomRight3.getText().isEmpty() && !txtDataBottomRight4.getText().isEmpty()
+                    && !txtDataBottomRight5.getText().isEmpty()
+                    && txtDataBottomRight6.getText().isEmpty()) {
+                txtDataBottomRight6.setText(String.valueOf(CurrentUser.player.getId()));
+                count = count + 1;
+            } else {
+                bottomRight.setDisable(true);
+            }
             String text;
             if (Integer.parseInt(labBottomRight.getText()) == 0) {
                 text = String.valueOf((Integer) moneyBottomRight);
@@ -588,6 +573,10 @@ public class BoardGameController implements Initializable {
         Alert alert = new Alert(Alert.AlertType.NONE);
         alert.setTitle("KẾT QUẢ");
         sumAccount = BoardGameConsts.result(value1, value2, value3, value4, finalIndex, selectLabelTopLeft, sumAccount, selectLabelTopRight, selectLabelBottomLeft, selectTaiXiu);
+        System.out.println("tien"+ sumAccount);
+        Customers.saveMoneyTotal(sumAccount);
+
+
         if (finalIndex == 1 || finalIndex == 6) {
             alert.setContentText("LOSE\n" + "Account: " + sumAccount);
         } else if (finalIndex <= 3 && selectTaiXiu == 2 || finalIndex > 3 && selectTaiXiu == 1) {

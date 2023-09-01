@@ -1,5 +1,6 @@
 package xucxac;
 
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -78,19 +79,17 @@ public class RoomCreateController implements Initializable {
     private Timer timer;
 
     public void initialize(URL url, ResourceBundle rb) {
-
         col_IdPhong.setCellValueFactory(new PropertyValueFactory<RoomUser, String>("idPhong"));
         col_SoNguoi.setCellValueFactory(new PropertyValueFactory<RoomUser, String>("soNguoi"));
-
 //        dataList = Rooms.getDataAll();
         dataList = FXCollections.observableList(RoomManage.listRoom.getRoomUsers());
 //        tableV_inforAca.setItems(RoomManage.rooms);
         tableV_inforAca.setItems(dataList);
-
         timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
+                tableV_inforAca.setItems(dataList);
                 tableV_inforAca.refresh();
             }
         }, 5000, 2000);
@@ -100,11 +99,11 @@ public class RoomCreateController implements Initializable {
         tableV_inforAca.setRowFactory(tv -> new TableRow<RoomUser>() {
             @Override
             public void updateItem(RoomUser item, boolean empty) {
-                super.updateItem(item, empty) ;
+                super.updateItem(item, empty);
                 if (item == null) {
                     setStyle("");
 //                } else if (item.getSoNguoi()==ListPlayers.getNumberOfPlayersInRoom()) {
-                } else if (item.getSoNguoi()==2) {
+                } else if (item.getSoNguoi() == 2) {
                     setStyle("-fx-background-color: red;");
                 } else {
                     setStyle("");
