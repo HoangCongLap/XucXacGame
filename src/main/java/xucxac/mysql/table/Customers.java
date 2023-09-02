@@ -1,7 +1,9 @@
 package xucxac.mysql.table;
 
+import xucxac.database.ConnectionUtil;
 import xucxac.database.entites.Player;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -39,11 +41,13 @@ public class Customers {
     }
 
 
-    public static void saveMoneyTotal(int moneyTotal) {
-        String sql = "INSERT INTO customer(moneyTotal) VALUES(?);\n";
+    public static void updateMoneyTotal(int idCustomer,int moneyTotal) {
+        Connection conn = ConnectionUtil.connectdb();
+        String sql = "UPDATE customer SET moneyTotal = ? WHERE id = ?";
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
             pst.setInt(1, moneyTotal);
+            pst.setInt(2, idCustomer);
             pst.execute();
         } catch (Exception e) {
             e.printStackTrace();

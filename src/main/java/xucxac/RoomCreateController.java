@@ -164,11 +164,9 @@ public class RoomCreateController implements Initializable {
 
     public void handleVaoPhongClick(MouseEvent event) {
 
-        System.out.println("id người chơi" + CurrentUser.player.getId());
-
-        System.out.println("id người chủ" + Rooms.getRooms().getCustomerOwnerId());
-
-
+//        System.out.println("id người chơi" + CurrentUser.player.getId());
+//
+//        System.out.println("id người chủ" + Rooms.getRooms().getCustomerOwnerId());
         TableView.TableViewSelectionModel<RoomUser> selectionModel = tableV_inforAca.getSelectionModel();
         RoomUser selectedRoomUser = selectionModel.getSelectedItem();
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(BOARDGAME_XML_FILE));

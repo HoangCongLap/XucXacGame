@@ -198,8 +198,8 @@ public class BoardGameController implements Initializable {
             }
         }, 5000, 2000);
 
-       labCardMoney.setText(String.valueOf(CurrentUser.player.getCardMoney()));
-       sumAccount= Integer.parseInt(labCardMoney.getText());
+       labMoneyTotal.setText(String.valueOf(CurrentUser.player.getMoneyTotal()));
+       sumAccount= Integer.parseInt(labMoneyTotal.getText());
     }
 
     public void newThongTinBanChoi() {
@@ -574,7 +574,7 @@ public class BoardGameController implements Initializable {
         alert.setTitle("KẾT QUẢ");
         sumAccount = BoardGameConsts.result(value1, value2, value3, value4, finalIndex, selectLabelTopLeft, sumAccount, selectLabelTopRight, selectLabelBottomLeft, selectTaiXiu);
         System.out.println("tien"+ sumAccount);
-        Customers.saveMoneyTotal(sumAccount);
+        Customers.updateMoneyTotal(CurrentUser.player.getId(),sumAccount);
 
 
         if (finalIndex == 1 || finalIndex == 6) {
