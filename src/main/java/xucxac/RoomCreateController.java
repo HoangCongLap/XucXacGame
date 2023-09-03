@@ -102,9 +102,9 @@ public class RoomCreateController implements Initializable {
                 super.updateItem(item, empty);
                 if (item == null) {
                     setStyle("");
-//                } else if (item.getSoNguoi()==ListPlayers.getNumberOfPlayersInRoom()) {
+//                } else if (item.getSoNguoi()==ListPlayers.getPlayersInRoom().size()) {
                 } else if (item.getSoNguoi() == 2) {
-                    setStyle("-fx-background-color: red;");
+//                    setStyle("-fx-background-color: red;");
                 } else {
                     setStyle("");
                 }

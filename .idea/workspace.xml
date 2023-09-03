@@ -8,7 +8,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/BoardGameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/BoardGameController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/RoomCreateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/RoomCreateController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/mysql/table/Customers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/mysql/table/Customers.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -237,7 +236,7 @@
       <workItem from="1692798217549" duration="4354000" />
       <workItem from="1692881153751" duration="3498000" />
       <workItem from="1693180017661" duration="16006000" />
-      <workItem from="1693568608859" duration="11704000" />
+      <workItem from="1693568608859" duration="14823000" />
     </task>
     <servers />
   </component>
@@ -271,22 +270,8 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/xucxac/BoardGameController.java</url>
-          <line>290</line>
+          <line>293</line>
           <option name="timeStamp" value="87" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/xucxac/BoardGameController.java</url>
-          <line>576</line>
-          <option name="timeStamp" value="98" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/xucxac/mysql/table/Customers.java</url>
-          <line>43</line>
-          <properties class="xucxac.mysql.table.Customers" method="updateMoneyTotal">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="96" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

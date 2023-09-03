@@ -22,10 +22,12 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import xucxac.data.CurrentAccount;
 import xucxac.data.CurrentRoom;
 import xucxac.consts.BoardGameConsts;
 import xucxac.data.CurrentUser;
 import xucxac.database.ConnectionUtil;
+import xucxac.database.entites.Player;
 import xucxac.database.entites.RoomUser;
 import xucxac.mysql.table.Customers;
 import xucxac.mysql.table.ListPlayers;
@@ -198,8 +200,10 @@ public class BoardGameController implements Initializable {
             }
         }, 5000, 2000);
 
-       labMoneyTotal.setText(String.valueOf(CurrentUser.player.getMoneyTotal()));
-       sumAccount= Integer.parseInt(labMoneyTotal.getText());
+        Player player = Customers.getPlayerId(CurrentAccount.account.getId());
+        CurrentUser.player = player;
+        labMoneyTotal.setText(String.valueOf(CurrentUser.player.getMoneyTotal()));
+        sumAccount = Integer.parseInt(String.valueOf(CurrentUser.player.getMoneyTotal()));
     }
 
     public void newThongTinBanChoi() {
@@ -212,7 +216,6 @@ public class BoardGameController implements Initializable {
 
 
     }
-
 
 
     //Tổng tiền trong Account
@@ -573,8 +576,8 @@ public class BoardGameController implements Initializable {
         Alert alert = new Alert(Alert.AlertType.NONE);
         alert.setTitle("KẾT QUẢ");
         sumAccount = BoardGameConsts.result(value1, value2, value3, value4, finalIndex, selectLabelTopLeft, sumAccount, selectLabelTopRight, selectLabelBottomLeft, selectTaiXiu);
-        System.out.println("tien"+ sumAccount);
-        Customers.updateMoneyTotal(CurrentUser.player.getId(),sumAccount);
+        System.out.println("tien" + sumAccount);
+        Customers.updateMoneyTotal(CurrentUser.player.getId(), sumAccount);
 
 
         if (finalIndex == 1 || finalIndex == 6) {
