@@ -85,9 +85,11 @@ public class ListPlayers {
         }
         return list.size();
     }
+
     public static void main(String[] args) {
-        System.out.println(ListPlayers.getNumberOfPlayersInRoom(972302));
+//        System.out.println(ListPlayers.getNumberOfPlayersInRoom(972302));
 //        ListPlayers.removeAll(373105);
+
 
     }
 }

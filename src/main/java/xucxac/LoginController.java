@@ -12,13 +12,16 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import xucxac.data.CurrentAccount;
 import xucxac.data.CurrentUser;
+import xucxac.data.PutMoneyInBoard;
 import xucxac.data.RoomManage;
 import xucxac.database.ConnectionUtil;
 import xucxac.database.entites.Account;
+import xucxac.database.entites.ListPutMoney;
 import xucxac.database.entites.ListRoom;
 import xucxac.database.entites.Player;
-import xucxac.database.entites.RoomUser;
+
 import xucxac.mysql.table.Customers;
+import xucxac.mysql.table.MoneyPuts;
 import xucxac.mysql.table.Rooms;
 
 import java.io.IOException;
@@ -102,6 +105,7 @@ public class LoginController implements Initializable {
 //              username=resultSet.getString("username");
 //              password=resultSet.getString("password");
                 RoomManage.listRoom= new ListRoom(Rooms.getDataAll());
+                PutMoneyInBoard.listPutMoney= new ListPutMoney(MoneyPuts.getDataAll());
 
 
                 FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(ROOMCREATE_XML_FILE));

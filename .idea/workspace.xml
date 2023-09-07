@@ -5,9 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cacf39b1-ea4a-418f-8cdd-f85c2659a27c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/xucxac/data/CurrentPutMoney.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/xucxac/data/PutMoneyInBoard.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/xucxac/database/entites/ListPutMoney.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/xucxac/database/entites/PutMoney.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/xucxac/mysql/BoardGameControlleetest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/xucxac/mysql/table/MoneyPuts.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/BoardGameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/BoardGameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/DataUpdateAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/DataUpdateAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/NumberOfPlayers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/NumberOfPlayers.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/RoomCreateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/RoomCreateController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/data/CurrentRoom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/data/CurrentRoom.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/database/entites/ListRoom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/database/entites/ListRoom.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/mysql/BoardGameControllertest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/mysql/table/ListPlayers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/mysql/table/ListPlayers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/BoardGame.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/BoardGame.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,26 +116,13 @@
       <recent name="xucxac" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Application.Main2">
     <configuration name="DataUpdateAction" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="xucxac.DataUpdateAction" />
       <module name="XucXac" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="xucxac.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="InformationAccountGetter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="xucxac.mysql.InformationAccountGetter" />
-      <module name="XucXac" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="xucxac.mysql.table.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -168,6 +169,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MoneyPuts" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="xucxac.mysql.table.MoneyPuts" />
+      <module name="XucXac" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="xucxac.mysql.table.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Rooms" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="xucxac.mysql.table.Rooms" />
       <module name="XucXac" />
@@ -195,10 +209,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main2" />
-        <item itemvalue="Application.Rooms" />
+        <item itemvalue="Application.MoneyPuts" />
         <item itemvalue="Application.ListPlayers" />
+        <item itemvalue="Application.Rooms" />
         <item itemvalue="Application.DataUpdateAction" />
-        <item itemvalue="Application.InformationAccountGetter" />
       </list>
     </recent_temporary>
   </component>
@@ -236,7 +250,9 @@
       <workItem from="1692798217549" duration="4354000" />
       <workItem from="1692881153751" duration="3498000" />
       <workItem from="1693180017661" duration="16006000" />
-      <workItem from="1693568608859" duration="14823000" />
+      <workItem from="1693568608859" duration="16407000" />
+      <workItem from="1693893244447" duration="810000" />
+      <workItem from="1693906168015" duration="31635000" />
     </task>
     <servers />
   </component>
@@ -267,11 +283,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/xucxac/database/PlayerDatabase.java</url>
           <line>19</line>
           <option name="timeStamp" value="53" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/xucxac/BoardGameController.java</url>
-          <line>293</line>
-          <option name="timeStamp" value="87" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

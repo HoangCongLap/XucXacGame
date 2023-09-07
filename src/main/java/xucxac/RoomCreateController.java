@@ -90,7 +90,7 @@ public class RoomCreateController implements Initializable {
             @Override
             public void run() {
                 tableV_inforAca.setItems(dataList);
-                tableV_inforAca.refresh();
+//                tableV_inforAca.refresh();
             }
         }, 5000, 2000);
         search_user();
@@ -172,7 +172,7 @@ public class RoomCreateController implements Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(BOARDGAME_XML_FILE));
         int roomId = selectedRoomUser.getIdPhong();
         int limitPlayer = Rooms.getLimitPlayer(roomId);
-        System.out.println("so nguowi " + limitPlayer);
+//        System.out.println("so nguowi " + limitPlayer);
 //  KIỂM TRA GIỚI HẠN NGƯỜI CHƠI VÀO PHÒNG
         if (ListPlayers.getNumberOfPlayersInRoom(roomId) < limitPlayer) {
             int playerId = CurrentUser.player.getId();

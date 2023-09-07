@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ListRoom {
-    private List<RoomUser> roomUsers= new ArrayList<>();
+    private List<RoomUser> roomUsers = new ArrayList<>();
 
     public List<RoomUser> getRoomUsers() {
         return roomUsers;
@@ -21,7 +21,7 @@ public class ListRoom {
         this.roomUsers.addAll(roomUsers);
     }
 
-            public ListRoom(List<RoomUser> roomUsers) {
+    public ListRoom(List<RoomUser> roomUsers) {
         this.roomUsers = roomUsers;
     }
 }

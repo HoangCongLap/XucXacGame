@@ -1,10 +1,12 @@
 package xucxac;
 
 import xucxac.data.CurrentRoom;
+import xucxac.data.PutMoneyInBoard;
 import xucxac.data.RoomManage;
-import xucxac.database.entites.ListRoom;
+import xucxac.database.entites.PutMoney;
 import xucxac.database.entites.RoomUser;
 import xucxac.mysql.table.ListPlayers;
+import xucxac.mysql.table.MoneyPuts;
 import xucxac.mysql.table.Rooms;
 
 import java.util.List;
@@ -20,11 +22,16 @@ public class DataUpdateAction extends TimerTask {
             List<RoomUser> roomNumber = Rooms.getDataAll();
             RoomManage.listRoom.refresh(roomNumber);
         }
+        if (PutMoneyInBoard.listPutMoney != null) {
+            List<PutMoney> putMoneyInBoard = MoneyPuts.getDataAll();
+            PutMoneyInBoard.listPutMoney.refresh(putMoneyInBoard);
+        }
     }
 
     public static void main(String[] args) {
 //            ListPlayers.insert(139489,55);
-        ListPlayers.insert(381934,30);
+//        ListPlayers.insert(381934,30);
 //        Rooms.add(14, 22, 6);
+        MoneyPuts.add(1, 292865, 44);
     }
 }

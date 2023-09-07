@@ -74,7 +74,6 @@ public class NumberOfPlayers {
 // chưa làm được số người chơi trong 1 phòng
         int soNguoi = limitPlayerInRoom;
         RoomUser roomUser = new RoomUser(idPhong, ownerRoomId, soNguoi);
-
         CurrentRoom.roomUser = roomUser;
         System.out.println("check:" + soNguoi);
         CurrentRoom.informationInRoom= new InformationInRoom(idPhong,new ArrayList<>());
