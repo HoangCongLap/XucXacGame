@@ -222,19 +222,33 @@ public class BoardGameController implements Initializable {
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
+                if()
                 textDataTopLeft.setText(PutMoneyInBoardList.toString());
-                System.out.println("lap");
                 if (PutMoneyInBoard.listPutMoney.getMoneyPuts().size() > 8) {
                     topLeft.setDisable(true);
                 }
             }
-        }, 5000, 1000);
+        }, 5000, 2000);
 
         Player player = Customers.getPlayerId(CurrentAccount.account.getId());
         CurrentUser.player = player;
         labMoneyTotal.setText(String.valueOf(CurrentUser.player.getMoneyTotal()));
         sumAccount = Integer.parseInt(String.valueOf(CurrentUser.player.getMoneyTotal()));
+        CheckPlayerInformation();
 
+
+    }
+
+    public void CheckPlayerInformation() {
+        if (CurrentUser.player.getId() != CurrentRoom.roomUser.getCustomerOwnerId()) {
+            rollButton.setVisible(false);
+        } else {
+//        System.out.println(CurrentRoom.roomUser.getCustomerOwnerId());
+//        System.out.println(CurrentUser.player.getId());
+//        if (CurrentUser.player.getId() == CurrentRoom.roomUser.getCustomerOwnerId()) {
+//            topLeft.setVisible(false);
+            allButtonNotVisible();
+        }
 
     }
 
@@ -379,6 +393,8 @@ public class BoardGameController implements Initializable {
 
     @FXML
     protected void clickTopLeft(MouseEvent event) {
+
+
         count = count + 1;
         int valueMoneyTopLeft = Integer.parseInt(labTopLeft.getText());
         if ((selectTaiXiu == 1 || selectTaiXiu == 2) && sumAccount >= 500 && sumAccount - valueMoneyTopLeft > 500) {
@@ -609,6 +625,13 @@ public class BoardGameController implements Initializable {
         topRight.setDisable(false);
         bottomLeft.setDisable(false);
         bottomRight.setDisable(false);
+    }
+
+    public void allButtonNotVisible() {
+        topLeft.setVisible(false);
+        topRight.setVisible(false);
+        bottomLeft.setVisible(false);
+        bottomRight.setVisible(false);
     }
 
 

@@ -5,23 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cacf39b1-ea4a-418f-8cdd-f85c2659a27c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/xucxac/data/CurrentPutMoney.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/xucxac/data/PutMoneyInBoard.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/xucxac/database/entites/ListPutMoney.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/xucxac/database/entites/PutMoney.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/xucxac/mysql/BoardGameControlleetest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/xucxac/mysql/table/MoneyPuts.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/BoardGameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/BoardGameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/DataUpdateAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/DataUpdateAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/NumberOfPlayers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/NumberOfPlayers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/RoomCreateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/RoomCreateController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/data/CurrentRoom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/data/CurrentRoom.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/database/entites/ListRoom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/database/entites/ListRoom.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/mysql/BoardGameControllertest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/mysql/table/ListPlayers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/mysql/table/ListPlayers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/BoardGame.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/BoardGame.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -253,6 +238,7 @@
       <workItem from="1693568608859" duration="16407000" />
       <workItem from="1693893244447" duration="810000" />
       <workItem from="1693906168015" duration="31635000" />
+      <workItem from="1694240656381" duration="3355000" />
     </task>
     <servers />
   </component>
