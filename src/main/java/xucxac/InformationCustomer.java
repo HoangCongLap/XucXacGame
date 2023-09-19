@@ -28,7 +28,6 @@ import static xucxac.database.PlayerDatabase.insertCustomer;
 
 
 public class InformationCustomer implements Initializable {
-    private static final String ROOMCREATE_XML_FILE = "RoomCreate.fxml";
     private static final String LOGIN_XML_FILE = "Login.fxml";
     private Stage stage;
     private Scene scene;
@@ -64,18 +63,6 @@ public class InformationCustomer implements Initializable {
         Player player = new Player(idCustomer, name, gender, cardMoney, 0, idAccount);
         insertCustomer(player);
 
-        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(ROOMCREATE_XML_FILE));
-        root = loader.load();
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-
-    }
-
-
-    @FXML
-    public void exiActionInformationCustomer(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(LOGIN_XML_FILE));
         root = loader.load();
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -84,4 +71,5 @@ public class InformationCustomer implements Initializable {
         stage.show();
 
     }
+
 }

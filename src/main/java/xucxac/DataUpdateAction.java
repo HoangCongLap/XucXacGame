@@ -23,7 +23,8 @@ public class DataUpdateAction extends TimerTask {
             RoomManage.listRoom.refresh(roomNumber);
         }
         if (PutMoneyInBoard.listPutMoney != null) {
-            List<PutMoney> putMoneyInBoard = MoneyPuts.getDataAll();
+//            List<PutMoney> putMoneyInBoard = MoneyPuts.getDataAll();
+            List<PutMoney> putMoneyInBoard = MoneyPuts.getDataInPutMoney(CurrentRoom.informationInRoom.getIdPhong());
             PutMoneyInBoard.listPutMoney.refresh(putMoneyInBoard);
         }
     }

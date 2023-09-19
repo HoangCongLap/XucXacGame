@@ -85,12 +85,13 @@ public class RoomCreateController implements Initializable {
         dataList = FXCollections.observableList(RoomManage.listRoom.getRoomUsers());
 //        tableV_inforAca.setItems(RoomManage.rooms);
         tableV_inforAca.setItems(dataList);
+//        REFRESH PHÒNG CHƠI
         timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
                 tableV_inforAca.setItems(dataList);
-//                tableV_inforAca.refresh();
+                tableV_inforAca.refresh();
             }
         }, 5000, 2000);
         search_user();

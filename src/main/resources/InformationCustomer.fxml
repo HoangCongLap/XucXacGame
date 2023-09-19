@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="542.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="xucxac.InformationCustomer">
+<AnchorPane prefHeight="400.0" prefWidth="513.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="xucxac.InformationCustomer">
    <children>
       <Label layoutX="100.0" layoutY="109.0" text="ID">
          <font>
@@ -37,8 +37,7 @@
       </Label>
       <TextField fx:id="txtCardMoney" layoutX="207.0" layoutY="301.0" prefHeight="26.0" prefWidth="210.0" promptText="Enter Card Money" />
       <TextField fx:id="txtName" layoutX="207.0" layoutY="168.0" prefHeight="26.0" prefWidth="210.0" promptText="Enter Name" />
-      <Button fx:id="bntInformationCustomer" layoutX="373.0" layoutY="351.0" mnemonicParsing="false" onAction="#OnActionInformationCustomer" prefHeight="26.0" prefWidth="66.0" text="OK" />
+      <Button fx:id="bntInformationCustomer" layoutX="417.0" layoutY="349.0" mnemonicParsing="false" onAction="#OnActionInformationCustomer" prefHeight="26.0" prefWidth="82.0" text="OK" />
       <ComboBox fx:id="comboboxGender" layoutX="207.0" layoutY="234.0" prefHeight="26.0" prefWidth="210.0" promptText="Nam" />
-      <Button fx:id="bntInformationCustomer1" layoutX="462.0" layoutY="351.0" mnemonicParsing="false" onAction="#exiActionInformationCustomer" prefHeight="26.0" prefWidth="66.0" text="BACK" />
    </children>
 </AnchorPane>

@@ -88,24 +88,36 @@
       <Label fx:id="labBottomLeft" alignment="BOTTOM_RIGHT" layoutX="26.0" layoutY="322.0" prefHeight="76.0" prefWidth="222.0" style="-fx-background-color: #D3D3D3; -fx-border-color: #808080;" text="0" />
       <Label fx:id="labBottomRight" alignment="BOTTOM_RIGHT" layoutX="369.0" layoutY="322.0" prefHeight="76.0" prefWidth="222.0" style="-fx-background-color: #D3D3D3; -fx-border-color: #808080;" text="0" />
       <Label fx:id="labCardMoney" alignment="CENTER" layoutX="252.0" layoutY="451.0" prefHeight="26.0" prefWidth="107.0" style="-fx-background-color: #00BFFF;" text="0" />
-      <Text fx:id="textDataTopRight" layoutX="378.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Text>
-      <Text fx:id="textDataBottomleft" layoutX="36.0" layoutY="367.0" strokeType="OUTSIDE" strokeWidth="0.0">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Text>
-      <Text fx:id="textDataBottomRight" layoutX="378.0" layoutY="366.0" strokeType="OUTSIDE" strokeWidth="0.0">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Text>
       <TextFlow layoutX="26.0" layoutY="206.0" prefHeight="76.0" prefWidth="222.0">
          <children>
             <Text fx:id="textDataTopLeft" strokeType="OUTSIDE" strokeWidth="0.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+         </children>
+      </TextFlow>
+      <TextFlow layoutX="369.0" layoutY="206.0" prefHeight="76.0" prefWidth="222.0">
+         <children>
+            <Text fx:id="textDataTopRight" strokeType="OUTSIDE" strokeWidth="0.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+         </children>
+      </TextFlow>
+      <TextFlow layoutX="26.0" layoutY="322.0" prefHeight="76.0" prefWidth="222.0">
+         <children>
+            <Text fx:id="textDataBottomLeft" strokeType="OUTSIDE" strokeWidth="0.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+         </children>
+      </TextFlow>
+      <TextFlow layoutX="369.0" layoutY="322.0" prefHeight="76.0" prefWidth="222.0">
+         <children>
+            <Text fx:id="textDataBottomRight" strokeType="OUTSIDE" strokeWidth="0.0">
                <font>
                   <Font size="18.0" />
                </font>

@@ -27,22 +27,17 @@ import javafx.stage.Stage;
 import xucxac.data.*;
 import xucxac.consts.BoardGameConsts;
 import xucxac.database.ConnectionUtil;
+import xucxac.database.entites.ListPutMoney;
 import xucxac.database.entites.Player;
 import xucxac.database.entites.PutMoney;
 import xucxac.database.entites.RoomUser;
-import xucxac.mysql.table.Customers;
-import xucxac.mysql.table.ListPlayers;
-import xucxac.mysql.table.MoneyPuts;
-import xucxac.mysql.table.Rooms;
+import xucxac.mysql.table.*;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
-import java.util.Random;
-import java.util.ResourceBundle;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.*;
 
 import static xucxac.consts.BoardGameConsts.*;
 
@@ -158,7 +153,7 @@ public class BoardGameController implements Initializable {
     private Text textDataTopRight;
 
     @FXML
-    private Text textDataBottomleft;
+    private Text textDataBottomLeft;
 
     @FXML
     private Text textDataBottomRight;
@@ -195,7 +190,7 @@ public class BoardGameController implements Initializable {
     static ObservableList<Integer> dataList;
     static ObservableList<PutMoney> PutMoneyInBoardList;
     private Timer timer;
-
+    boolean countClickInRoll = false;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -207,26 +202,54 @@ public class BoardGameController implements Initializable {
         dataList = FXCollections.observableList(CurrentRoom.informationInRoom.getCustomerIds());
         table_information_board.setItems(dataList);
 
+        PutMoneyInBoard.listPutMoney = new ListPutMoney(MoneyPuts.getDataInPutMoney(CurrentRoom.informationInRoom.getIdPhong()));
+
+//        REFRESH DANH SÁCH NGƯỜI VÀO PHÒNG
         timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-
                 table_information_board.refresh();
             }
         }, 5000, 2000);
 
         PutMoneyInBoardList = FXCollections.observableList(PutMoneyInBoard.listPutMoney.getMoneyPuts());
-        textDataTopLeft.setText(PutMoneyInBoardList.toString());
+//        textDataTopLeft.setText(PutMoneyInBoardList.toString());
+
+//        REFRESH BÀN ĐẶT TIỀN
         timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                if()
-                textDataTopLeft.setText(PutMoneyInBoardList.toString());
+//                if (CurrentPutMoney.putMoney != null) {
+//                    System.out.println(CurrentPutMoney.putMoney.getIdPutMoney());
+//                    textDataTopLeft.setText(PutMoneyInBoardList.toString());
+                System.out.println("kq" + MoneyPuts.getIdCustomer(1, CurrentRoom.roomUser.getIdPhong()));
+                List<PutMoney> topLeftValues = new ArrayList<>();
+                List<PutMoney> topRightValues = new ArrayList<>();
+                List<PutMoney> bottomLeftValues = new ArrayList<>();
+                List<PutMoney> bottomRightValues = new ArrayList<>();
+
+                for (int i = 0; i < PutMoneyInBoardList.size(); i++) {
+                    PutMoney putMoney = PutMoneyInBoardList.get(i);
+                    if (putMoney.getIdPutMoney() == 1) {
+                        topLeftValues.add(putMoney);
+                    } else if (putMoney.getIdPutMoney() == 2) {
+                        topRightValues.add(putMoney);
+                    } else if (putMoney.getIdPutMoney() == 3) {
+                        bottomLeftValues.add(putMoney);
+                    } else if (putMoney.getIdPutMoney() == 4) {
+                        bottomRightValues.add(putMoney);
+                    }
+                }
+                textDataTopLeft.setText(topLeftValues.toString());
+                textDataTopRight.setText(topRightValues.toString());
+                textDataBottomLeft.setText(bottomLeftValues.toString());
+                textDataBottomRight.setText(bottomRightValues.toString());
                 if (PutMoneyInBoard.listPutMoney.getMoneyPuts().size() > 8) {
                     topLeft.setDisable(true);
                 }
+//                }
             }
         }, 5000, 2000);
 
@@ -236,6 +259,141 @@ public class BoardGameController implements Initializable {
         sumAccount = Integer.parseInt(String.valueOf(CurrentUser.player.getMoneyTotal()));
         CheckPlayerInformation();
 
+// REFRESH QUAY XÚC XẮC
+        timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                if (CurrentRoom.roomUser.getCustomerOwnerId() != CurrentUser.player.getId()
+                        && Dices.getClickInRoll(CurrentRoom.roomUser.getIdPhong()) == 1) {
+                    diceRandom();
+                    countClickInRoll = false;
+                    Dices.update(CurrentRoom.roomUser.getIdPhong(), countClickInRoll);
+//                    Dices.remove(CurrentRoom.roomUser.getIdPhong());
+                }
+
+            }
+        }, 10, 10);
+    }
+
+    //
+
+
+    @FXML
+    private void roll(ActionEvent event) {
+//        if (selectLabelTopLeft == 1 || selectLabelTopRight == 2 ||
+//                selectLabelBottomLeft == 3 || selectLabelBottomRight == 4) {
+        countClickInRoll = true;
+        diceRandom();
+//        } else {
+//            Alert alert = new Alert(Alert.AlertType.WARNING);
+//            alert.setTitle("THÔNG BÁO");
+//            alert.setHeaderText("Chưa có người chơi đặt cược.");
+//            alert.show();
+//        }
+    }
+    //==================================================================================================================
+
+    // QUAY XÚC XẮC
+    public void diceRandom() {
+//        if (sumAccount >= 500 && (selectTaiXiu == 1 || selectTaiXiu == 2) &&
+//                (selectLabelTopLeft == 1 || selectLabelTopRight == 2 ||
+//                        selectLabelBottomLeft == 3 || selectLabelBottomRight == 4)) {
+        rollButton.setDisable(true);
+        System.getProperty("User.dir");
+        Thread theard = new Thread() {
+            //            runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("Thread Running");
+                try {
+                    int index = 1;
+                    finalIndex = (random.nextInt(6) + 1);
+                    if (CurrentRoom.roomUser.getCustomerOwnerId() == CurrentUser.player.getId()) {
+                        System.out.println("kq xx:" + finalIndex);
+                        Dices.add(CurrentRoom.roomUser.getIdPhong(), finalIndex, countClickInRoll);
+                    }
+                    int[] arrRandom = {5, 2, 10, 8, 18, 15, 1, 11, 3, 7, 4, 9, 17, 1, 11, 20, 15, 13, 10, 20};
+                    for (int i = 0; i < 20; i++) {
+//                        index = (random.nextInt(6) + 1);
+                        index = (Dices.getNumberInDice(CurrentRoom.roomUser.getIdPhong()) + arrRandom[i]) % 6 + 1;
+
+                        String path = PATHIMAGES + index + ".png";
+//                            String path = PATHIMAGES + index + ".png";
+//                        String path = PATHIMAGES  + ((i%6)+1) + ".png";
+
+                        File file = new File(path);
+//                            System.out.println(file.exists());
+                        diceImage.setImage(new Image(file.toURI().toString()));
+//                        if (i <= 9) {
+//                            Thread.sleep(100);
+//                        } else {
+//                            Thread.sleep(100 * i);
+//                        }
+                        Thread.sleep(300);
+                    }
+//======================================================================================================================
+//                    if (CurrentRoom.roomUser.getCustomerOwnerId() == CurrentUser.player.getId()) {
+//                        finalIndex = index;
+//                        System.out.println("kq xx:" + finalIndex);
+//                        Dices.add(CurrentRoom.roomUser.getIdPhong(), finalIndex, countClickInRoll);
+//                            ==================================
+//                        Platform.runLater(new Runnable() {
+//                            @Override
+//                            public void run() {
+//                                lblResult.setText(String.valueOf(finalIndex));
+//                            }
+//                        });
+
+
+//                    } else {
+                    finalIndex = Dices.getNumberInDice(CurrentRoom.roomUser.getIdPhong());
+                    String path = PATHIMAGES + finalIndex + ".png";
+                    File file = new File(path);
+                    diceImage.setImage(new Image(file.toURI().toString()));
+//                    }
+//======================================================================================================================
+                    // xuất ra kết quả
+//                        Platform.runLater(new Runnable() {
+//                            @Override
+//                            public void run() {
+
+//                                getMessage(object)
+//                                alertNotification(message,);
+//                            }
+//                        });
+                    //=======================================
+                    // xuất ra kết quả
+                    Platform.runLater(new Runnable() {
+                        @Override
+                        public void run() {
+                            result();
+                            System.out.println("LAPpp");
+                        }
+                    });
+// xuất ra tổng tiền ở Label
+                    Platform.runLater(new Runnable() {
+                        @Override
+                        public void run() {
+                            labMoneyTotal.setText(String.valueOf(sumAccount));
+                        }
+                    });
+//==================================================================================================================
+                    rollButton.setDisable(false);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+        theard.start();
+        // quayXucXac = 1;
+//            System.out.println(sumAccount);
+//        } else {
+//            Alert alert = new Alert(Alert.AlertType.WARNING);
+//            alert.setTitle("THÔNG BÁO");
+//            alert.setHeaderText("Tiền trong tài khoản <500 hoặc chưa chọn 'Tài' 'Xỉu' hoặc chưa đặt cược.");
+//            alert.show();
+//        }
 
     }
 
@@ -243,11 +401,9 @@ public class BoardGameController implements Initializable {
         if (CurrentUser.player.getId() != CurrentRoom.roomUser.getCustomerOwnerId()) {
             rollButton.setVisible(false);
         } else {
-//        System.out.println(CurrentRoom.roomUser.getCustomerOwnerId());
-//        System.out.println(CurrentUser.player.getId());
-//        if (CurrentUser.player.getId() == CurrentRoom.roomUser.getCustomerOwnerId()) {
-//            topLeft.setVisible(false);
             allButtonNotVisible();
+            tai.setDisable(true);
+            xiu.setDisable(true);
         }
 
     }
@@ -284,84 +440,6 @@ public class BoardGameController implements Initializable {
 //        }
     }
 
-    @FXML
-    private void roll(ActionEvent event) {
-        if (sumAccount >= 500 && (selectTaiXiu == 1 || selectTaiXiu == 2) && (selectLabelTopLeft == 1 || selectLabelTopRight == 2 || selectLabelBottomLeft == 3 || selectLabelBottomRight == 4)) {
-            rollButton.setDisable(true);
-            System.getProperty("User.dir");
-            Thread theard = new Thread() {
-                //            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-//                    System.out.println("Thread Running");
-                    try {
-                        int index = 1;
-                        for (int i = 0; i < 15; i++) {
-                            index = (random.nextInt(6) + 1);
-                            String path = PATHIMAGES + index + ".png";
-//                        String path = PATHIMAGES  + ((i%6)+1) + ".png";
-
-                            File file = new File(path);
-//                            System.out.println(file.exists());
-                            diceImage.setImage(new Image(file.toURI().toString()));
-//                        if (i <= 9) {
-//                            Thread.sleep(100);
-//                        } else {
-//                            Thread.sleep(100 * i);
-//                        }
-                            Thread.sleep(100);
-                        }
-//======================================================================================================================
-                        finalIndex = index;
-//                        Platform.runLater(new Runnable() {
-//                            @Override
-//                            public void run() {
-//                                lblResult.setText(String.valueOf(finalIndex));
-//                            }
-//                        });
-//======================================================================================================================
-                        // xuất ra kết quả
-//                        Platform.runLater(new Runnable() {
-//                            @Override
-//                            public void run() {
-
-//                                getMessage(object)
-//                                alertNotification(message,);
-//                            }
-//                        });
-                        //=======================================
-                        // xuất ra kết quả
-                        Platform.runLater(new Runnable() {
-                            @Override
-                            public void run() {
-                                result();
-                            }
-                        });
-// xuất ra tổng tiền ở Label
-                        Platform.runLater(new Runnable() {
-                            @Override
-                            public void run() {
-                                labMoneyTotal.setText(String.valueOf(sumAccount));
-                            }
-                        });
-//==================================================================================================================
-                        rollButton.setDisable(false);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-            };
-            theard.start();
-            // quayXucXac = 1;
-//            System.out.println(sumAccount);
-        } else {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("THÔNG BÁO");
-            alert.setHeaderText("Tiền trong tài khoản <500 hoặc chưa chọn 'Tài' 'Xỉu' hoặc chưa đặt cược.");
-            alert.show();
-        }
-    }
-    //==================================================================================================================
 
     // xử lí chọn tài hoặc xỉu
     @FXML
@@ -393,8 +471,6 @@ public class BoardGameController implements Initializable {
 
     @FXML
     protected void clickTopLeft(MouseEvent event) {
-
-
         count = count + 1;
         int valueMoneyTopLeft = Integer.parseInt(labTopLeft.getText());
         if ((selectTaiXiu == 1 || selectTaiXiu == 2) && sumAccount >= 500 && sumAccount - valueMoneyTopLeft > 500) {
@@ -402,6 +478,8 @@ public class BoardGameController implements Initializable {
             PutMoney putMoney = new PutMoney(1, CurrentRoom.roomUser.getIdPhong(), CurrentUser.player.getId());
             CurrentPutMoney.putMoney = putMoney;
             textDataTopLeft.setText(PutMoneyInBoard.listPutMoney.getMoneyPuts().toString());
+
+
 //            if (PutMoneyInBoard.listPutMoney.getMoneyPuts().size() > 8) {
 //                topLeft.setDisable(true);
 //            }
@@ -432,8 +510,8 @@ public class BoardGameController implements Initializable {
         int valueMoneyTopRight = Integer.parseInt(labTopRight.getText());
         if ((selectTaiXiu == 1 || selectTaiXiu == 2) && sumAccount >= 1000 && sumAccount - valueMoneyTopRight > 1000) {
 
-            MoneyPuts.add(1, CurrentRoom.roomUser.getIdPhong(), CurrentUser.player.getId());
-            PutMoney putMoney = new PutMoney(1, CurrentRoom.roomUser.getIdPhong(), CurrentUser.player.getId());
+            MoneyPuts.add(2, CurrentRoom.roomUser.getIdPhong(), CurrentUser.player.getId());
+            PutMoney putMoney = new PutMoney(2, CurrentRoom.roomUser.getIdPhong(), CurrentUser.player.getId());
             CurrentPutMoney.putMoney = putMoney;
             textDataTopRight.setText(PutMoneyInBoard.listPutMoney.getMoneyPuts().toString());
             if (count > 5) {
@@ -456,6 +534,7 @@ public class BoardGameController implements Initializable {
             alert.setHeaderText("Hãy chọn 'TÀI' hoặc 'XỈU' trước khi đặt cược.\n" + "Tiền trong tài khoản <1000.");
             alert.show();
         }
+
     }
 
     //    //==================================================================================================================
@@ -467,10 +546,10 @@ public class BoardGameController implements Initializable {
         count = count + 1;
         int valueMoneyBottomLeft = Integer.parseInt(labBottomLeft.getText());
         if ((selectTaiXiu == 1 || selectTaiXiu == 2) && sumAccount >= 5000 && sumAccount - valueMoneyBottomLeft > 5000) {
-            MoneyPuts.add(1, CurrentRoom.roomUser.getIdPhong(), CurrentUser.player.getId());
-            PutMoney putMoney = new PutMoney(1, CurrentRoom.roomUser.getIdPhong(), CurrentUser.player.getId());
+            MoneyPuts.add(3, CurrentRoom.roomUser.getIdPhong(), CurrentUser.player.getId());
+            PutMoney putMoney = new PutMoney(3, CurrentRoom.roomUser.getIdPhong(), CurrentUser.player.getId());
             CurrentPutMoney.putMoney = putMoney;
-            textDataBottomleft.setText(PutMoneyInBoard.listPutMoney.getMoneyPuts().toString());
+            textDataBottomLeft.setText(PutMoneyInBoard.listPutMoney.getMoneyPuts().toString());
 //            if(count>5) {
             if (PutMoneyInBoard.listPutMoney.getMoneyPuts().size() > 8) {
                 bottomLeft.setDisable(true);
@@ -504,8 +583,8 @@ public class BoardGameController implements Initializable {
         System.out.println(count);
         int valueMoneyBottomRight = Integer.parseInt(labBottomRight.getText());
         if ((selectTaiXiu == 1 || selectTaiXiu == 2) && sumAccount >= 10000 && sumAccount - valueMoneyBottomRight > 10000) {
-            MoneyPuts.add(1, CurrentRoom.roomUser.getIdPhong(), CurrentUser.player.getId());
-            PutMoney putMoney = new PutMoney(1, CurrentRoom.roomUser.getIdPhong(), CurrentUser.player.getId());
+            MoneyPuts.add(4, CurrentRoom.roomUser.getIdPhong(), CurrentUser.player.getId());
+            PutMoney putMoney = new PutMoney(4, CurrentRoom.roomUser.getIdPhong(), CurrentUser.player.getId());
             CurrentPutMoney.putMoney = putMoney;
             textDataBottomRight.setText(PutMoneyInBoard.listPutMoney.getMoneyPuts().toString());
             if (count > 5) {
@@ -571,6 +650,7 @@ public class BoardGameController implements Initializable {
         alert.getDialogPane().getButtonTypes().add(ButtonType.OK);
         alert.setResizable(true);
         alert.showAndWait();
+
 //        allButtonNotDisable();
     }
 
@@ -580,6 +660,7 @@ public class BoardGameController implements Initializable {
 
     // xóa phòng
     public void back(ActionEvent event) throws IOException {
+        Dices.remove(CurrentRoom.roomUser.getIdPhong());
         ListPlayers.remove(CurrentUser.player.getId());
         MoneyPuts.remove(CurrentRoom.informationInRoom.getIdPhong());
         if (CurrentUser.player.getId() == CurrentRoom.roomUser.getCustomerOwnerId()) {

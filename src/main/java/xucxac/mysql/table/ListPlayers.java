@@ -90,6 +90,6 @@ public class ListPlayers {
 //        System.out.println(ListPlayers.getNumberOfPlayersInRoom(972302));
 //        ListPlayers.removeAll(373105);
 
-
+        getPlayersInRoom(406537);
     }
 }
