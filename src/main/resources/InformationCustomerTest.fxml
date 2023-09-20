@@ -1,0 +1,43 @@
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+
+<!--<?import javafx.scene.control.Button?>-->
+<!--<?import javafx.scene.control.ComboBox?>-->
+<!--<?import javafx.scene.control.Label?>-->
+<!--<?import javafx.scene.control.TextField?>-->
+<!--<?import javafx.scene.layout.AnchorPane?>-->
+<!--<?import javafx.scene.text.Font?>-->
+
+<!--<AnchorPane prefHeight="400.0" prefWidth="513.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="xucxac.InformationCustomer">-->
+<!--   <children>-->
+<!--      <Label layoutX="100.0" layoutY="109.0" text="ID">-->
+<!--         <font>-->
+<!--            <Font name="System Bold" size="14.0" />-->
+<!--         </font>-->
+<!--      </Label>-->
+<!--      <TextField fx:id="txtIdCustomer" layoutX="207.0" layoutY="106.0" prefHeight="26.0" prefWidth="210.0" promptText="Enter ID" />-->
+<!--      <Label alignment="CENTER" prefHeight="76.0" prefWidth="543.0" style="-fx-background-color: #16a085; -fx-border-color: #1abc9c; -fx-border-width: 1 1 4 1; -fx-text-fill: #ffffff;" text="INFORMATION CUSTOMER">-->
+<!--         <font>-->
+<!--            <Font name="Lucida Bright Italic" size="36.0" />-->
+<!--         </font>-->
+<!--      </Label>-->
+<!--      <Label layoutX="100.0" layoutY="171.0" text="NAME">-->
+<!--         <font>-->
+<!--            <Font name="System Bold" size="14.0" />-->
+<!--         </font>-->
+<!--      </Label>-->
+<!--      <Label layoutX="100.0" layoutY="237.0" text="GENDER">-->
+<!--         <font>-->
+<!--            <Font name="System Bold" size="14.0" />-->
+<!--         </font>-->
+<!--      </Label>-->
+<!--      <Label layoutX="95.0" layoutY="304.0" text="CARD MONEY">-->
+<!--         <font>-->
+<!--            <Font name="System Bold" size="14.0" />-->
+<!--         </font>-->
+<!--      </Label>-->
+<!--      <TextField fx:id="txtCardMoney" layoutX="207.0" layoutY="301.0" prefHeight="26.0" prefWidth="210.0" promptText="Enter Card Money" />-->
+<!--      <TextField fx:id="txtName" layoutX="207.0" layoutY="168.0" prefHeight="26.0" prefWidth="210.0" promptText="Enter Name" />-->
+<!--      <Button fx:id="bntInformationCustomer" layoutX="417.0" layoutY="349.0" mnemonicParsing="false" onAction="#OnActionInformationCustomer" prefHeight="26.0" prefWidth="82.0" text="OK" />-->
+<!--      <ComboBox fx:id="comboboxGender" layoutX="207.0" layoutY="234.0" prefHeight="26.0" prefWidth="210.0" promptText="Nam" />-->
+<!--   </children>-->
+<!--</AnchorPane>-->

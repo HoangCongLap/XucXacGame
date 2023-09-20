@@ -5,24 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cacf39b1-ea4a-418f-8cdd-f85c2659a27c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/xucxac/Main3.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/xucxac/data/CurrentDice.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/xucxac/database/Main3.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/xucxac/database/entites/Dice.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/xucxac/mysql/table/Dices.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/InformationCustomerTest.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/BoardGameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/BoardGameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/DataUpdateAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/DataUpdateAction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/InformationCustomer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/InformationCustomer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/RoomCreateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/RoomCreateController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/data/CurrentAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/data/CurrentAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/data/CurrentPutMoney.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/data/CurrentPutMoney.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/data/CurrentUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/data/CurrentUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/data/PutMoneyInBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/data/PutMoneyInBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/data/RoomManage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/data/RoomManage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/mysql/table/ListPlayers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/mysql/table/ListPlayers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/mysql/table/MoneyPuts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/mysql/table/MoneyPuts.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/mysql/table/Dices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/mysql/table/Dices.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/BoardGame.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/BoardGame.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/InformationCustomer.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/InformationCustomer.fxml" afterDir="false" />
     </list>
@@ -84,7 +71,7 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/PROJECT/intellijTrainningCode/XucXacGame&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/PROJECT/intellijTrainningCode/XucXacGame/src/main/resources&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -119,7 +106,7 @@
       <recent name="xucxac.mysql" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main3">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Dices" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="xucxac.mysql.table.Dices" />
       <module name="XucXac" />
@@ -211,10 +198,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main3" />
         <item itemvalue="Application.Main2" />
-        <item itemvalue="Application.MoneyPuts" />
+        <item itemvalue="Application.Main3" />
         <item itemvalue="Application.Dices" />
+        <item itemvalue="Application.MoneyPuts" />
         <item itemvalue="Application.ListPlayers" />
       </list>
     </recent_temporary>
@@ -265,7 +252,8 @@
       <workItem from="1694928981193" duration="25615000" />
       <workItem from="1695090190731" duration="1902000" />
       <workItem from="1695092395082" duration="7909000" />
-      <workItem from="1695122964096" duration="4344000" />
+      <workItem from="1695122964096" duration="8061000" />
+      <workItem from="1695134442091" duration="4911000" />
     </task>
     <servers />
   </component>

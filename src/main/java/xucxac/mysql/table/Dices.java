@@ -101,6 +101,6 @@ public class Dices {
 
     public static void main(String[] args) {
 //        add(406537,true);
-        System.out.println(getNumberInDice(823940));
+        remove(900166);
     }
 }

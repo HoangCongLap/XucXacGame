@@ -39,7 +39,7 @@ public class InformationCustomer implements Initializable {
 
     @FXML
     private ComboBox<String> comboboxGender;
-    private String[] list = {"male", "female"};
+    private String[] list = {"Male", "Female"};
 
     @FXML
     private TextField txtIdCustomer;
@@ -50,7 +50,7 @@ public class InformationCustomer implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         comboboxGender.getItems().addAll(list);
-        comboboxGender.setValue("Nam");
+        comboboxGender.setValue("Male");
     }
 
     @FXML
@@ -58,9 +58,10 @@ public class InformationCustomer implements Initializable {
         int idCustomer = Integer.parseInt(txtIdCustomer.getText());
         String name = txtName.getText();
         String gender = comboboxGender.getValue();
-        int cardMoney = Integer.parseInt(txtCardMoney.getText());
+//        int cardMoney = Integer.parseInt(txtCardMoney.getText());
         int idAccount = SignUpController.idAccount;
-        Player player = new Player(idCustomer, name, gender, cardMoney, 0, idAccount);
+//        Player player = new Player(idCustomer, name, gender, cardMoney, 0, idAccount);
+        Player player = new Player(idCustomer, name, gender, 0, 0, idAccount);
         insertCustomer(player);
 
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(LOGIN_XML_FILE));

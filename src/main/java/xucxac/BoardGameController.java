@@ -19,10 +19,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 import xucxac.data.*;
 import xucxac.consts.BoardGameConsts;
@@ -188,9 +186,11 @@ public class BoardGameController implements Initializable {
 
 
     static ObservableList<Integer> dataList;
-    static ObservableList<PutMoney> PutMoneyInBoardList;
+    static ObservableList<PutMoney> putMoneyInBoardList;
     private Timer timer;
     boolean countClickInRoll = false;
+
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -213,25 +213,23 @@ public class BoardGameController implements Initializable {
             }
         }, 5000, 2000);
 
-        PutMoneyInBoardList = FXCollections.observableList(PutMoneyInBoard.listPutMoney.getMoneyPuts());
+        putMoneyInBoardList = FXCollections.observableList(PutMoneyInBoard.listPutMoney.getMoneyPuts());
 //        textDataTopLeft.setText(PutMoneyInBoardList.toString());
 
 //        REFRESH BÀN ĐẶT TIỀN
+
+
+
         timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-//                if (CurrentPutMoney.putMoney != null) {
-//                    System.out.println(CurrentPutMoney.putMoney.getIdPutMoney());
-//                    textDataTopLeft.setText(PutMoneyInBoardList.toString());
-                System.out.println("kq" + MoneyPuts.getIdCustomer(1, CurrentRoom.roomUser.getIdPhong()));
                 List<PutMoney> topLeftValues = new ArrayList<>();
                 List<PutMoney> topRightValues = new ArrayList<>();
                 List<PutMoney> bottomLeftValues = new ArrayList<>();
                 List<PutMoney> bottomRightValues = new ArrayList<>();
-
-                for (int i = 0; i < PutMoneyInBoardList.size(); i++) {
-                    PutMoney putMoney = PutMoneyInBoardList.get(i);
+                for (int i = 0; i < putMoneyInBoardList.size(); i++) {
+                    PutMoney putMoney = putMoneyInBoardList.get(i);
                     if (putMoney.getIdPutMoney() == 1) {
                         topLeftValues.add(putMoney);
                     } else if (putMoney.getIdPutMoney() == 2) {
@@ -249,7 +247,7 @@ public class BoardGameController implements Initializable {
                 if (PutMoneyInBoard.listPutMoney.getMoneyPuts().size() > 8) {
                     topLeft.setDisable(true);
                 }
-//                }
+
             }
         }, 5000, 2000);
 
@@ -269,9 +267,9 @@ public class BoardGameController implements Initializable {
                     diceRandom();
                     countClickInRoll = false;
                     Dices.update(CurrentRoom.roomUser.getIdPhong(), countClickInRoll);
-//                    Dices.remove(CurrentRoom.roomUser.getIdPhong());
+                    MoneyPuts.remove(CurrentRoom.roomUser.getIdPhong());
                 }
-
+//                Dices.remove(CurrentRoom.roomUser.getIdPhong());
             }
         }, 10, 10);
     }
@@ -423,21 +421,22 @@ public class BoardGameController implements Initializable {
     //Tổng tiền trong Account
     @FXML
     protected void newAccount(ActionEvent event) {
-//        sumAccount = Integer.parseInt(textCardMoney.getText());
-//        if (sumAccount >= 500) {
-//            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-//            alert.setTitle("THÔNG BÁO");
-//            alert.setHeaderText("Nạp tiền thành công.");
-//            alert.setContentText("Tiền trong tài khoản: " + sumAccount);
-//            alert.show();
-//            System.out.println(sumAccount);
-//        } else {
-//            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-//            alert.setTitle("THÔNG BÁO");
-//            alert.setHeaderText("Nạp tiền không thành công.");
-//            alert.setContentText("Hãy Nạp lại tiền >= 500\n ");
-//            alert.show();
-//        }
+        sumAccount = sumAccount + Integer.parseInt(textCardMoney.getText());
+        labMoneyTotal.setText(String.valueOf(sumAccount));
+        Customers.updateMoneyTotal(CurrentUser.player.getId(), sumAccount);
+        if (sumAccount >= 500) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("THÔNG BÁO");
+            alert.setHeaderText("Nạp tiền thành công.");
+            alert.setContentText("Tiền trong tài khoản: " + sumAccount);
+            alert.show();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("THÔNG BÁO");
+            alert.setHeaderText("Nạp tiền không thành công.");
+            alert.setContentText("Hãy Nạp lại tiền >= 500\n ");
+            alert.show();
+        }
     }
 
 
@@ -490,6 +489,10 @@ public class BoardGameController implements Initializable {
                 Integer sum = Integer.parseInt(labTopLeft.getText()) + moneyTopLeft;
                 text = String.valueOf(sum);
             }
+
+//            System.out.println("size"+topLeftValues.size());
+
+
             labTopLeft.setText(text);
             selectLabelTopLeft = 1;
             buttonDisabledTopLeft();
