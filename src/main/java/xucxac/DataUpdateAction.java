@@ -33,6 +33,6 @@ public class DataUpdateAction extends TimerTask {
 //            ListPlayers.insert(139489,55);
 //        ListPlayers.insert(381934,30);
 //        Rooms.add(14, 22, 6);
-        MoneyPuts.add(1, 292865, 44);
+//        MoneyPuts.add(1, 292865, 44);
     }
 }

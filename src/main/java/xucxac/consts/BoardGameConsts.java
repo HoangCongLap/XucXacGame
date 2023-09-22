@@ -30,6 +30,10 @@ public class BoardGameConsts {
         return "-fx-color:red-fx-border; -fx-background-color: #d3d3d3;";
     }
 
+    public static final String setColorTaiXiu() {
+        return "-fx-color:red-fx-border; -fx-background-color: #d3d3d3;";
+    }
+
     public static final String PATHIMAGES = "src/main/resources/xucxac/images/dice";
 
     public class BettingValue {
@@ -79,9 +83,10 @@ public class BoardGameConsts {
         }
         return sumAccount;
     }
-    public static int ranDomIdPhong (){
+
+    public static int ranDomIdPhong() {
         Random ran = new Random();
-        int index = (ran.nextInt(100000,999999));
+        int index = (ran.nextInt(100000, 999999));
         return index;
     }
 

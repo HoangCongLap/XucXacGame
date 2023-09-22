@@ -5,6 +5,8 @@ public class PutMoney {
     private int idPhong;
     private int idCustomer;
 
+    private int taiOrXiu;
+
     public int getIdPutMoney() {
         return idPutMoney;
     }
@@ -15,6 +17,14 @@ public class PutMoney {
 
     public int getIdCustomer() {
         return idCustomer;
+    }
+
+    public int getTaiOrXiu() {
+        return taiOrXiu;
+    }
+
+    public void setTaiOrXiu(int taiOrXiu) {
+        this.taiOrXiu = taiOrXiu;
     }
 
     public void setIdPutMoney(int idPutMoney) {
@@ -29,14 +39,16 @@ public class PutMoney {
         this.idCustomer = idCustomer;
     }
 
-    public PutMoney(int idPutMoney, int idPhong, int idCustomer) {
+    public PutMoney(int idPutMoney, int idPhong, int idCustomer, int taiOrXiu) {
         this.idPutMoney = idPutMoney;
         this.idPhong = idPhong;
         this.idCustomer = idCustomer;
+        this.taiOrXiu = taiOrXiu;
     }
 
     @Override
     public String toString() {
         return String.valueOf(idCustomer);
     }
+
 }

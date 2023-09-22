@@ -169,6 +169,8 @@ public class BoardGameController implements Initializable {
     private int moneyTopRight = 1000;
     private int moneyBottomLeft = 5000;
     private int moneyBottomRight = 10000;
+    private int sumOwner = 0;
+
     ResultSet resultSet = null;
     PreparedStatement preparedStatement = null;
     Connection conn = ConnectionUtil.connectdb();
@@ -189,7 +191,6 @@ public class BoardGameController implements Initializable {
     static ObservableList<PutMoney> putMoneyInBoardList;
     private Timer timer;
     boolean countClickInRoll = false;
-
 
 
     @Override
@@ -219,7 +220,6 @@ public class BoardGameController implements Initializable {
 //        REFRESH BÀN ĐẶT TIỀN
 
 
-
         timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
@@ -232,12 +232,44 @@ public class BoardGameController implements Initializable {
                     PutMoney putMoney = putMoneyInBoardList.get(i);
                     if (putMoney.getIdPutMoney() == 1) {
                         topLeftValues.add(putMoney);
+                        if (CurrentUser.player.getId() == CurrentRoom.roomUser.getCustomerOwnerId()) {
+                            Platform.runLater(new Runnable() {
+                                @Override
+                                public void run() {
+                                    labTopLeft.setText(String.valueOf(topLeftValues.size() * 500));
+                                }
+                            });
+                        }
                     } else if (putMoney.getIdPutMoney() == 2) {
                         topRightValues.add(putMoney);
+                        if (CurrentUser.player.getId() == CurrentRoom.roomUser.getCustomerOwnerId()) {
+                            Platform.runLater(new Runnable() {
+                                @Override
+                                public void run() {
+                                    labTopRight.setText(String.valueOf(topRightValues.size() * 1000));
+                                }
+                            });
+                        }
                     } else if (putMoney.getIdPutMoney() == 3) {
                         bottomLeftValues.add(putMoney);
+                        if (CurrentUser.player.getId() == CurrentRoom.roomUser.getCustomerOwnerId()) {
+                            Platform.runLater(new Runnable() {
+                                @Override
+                                public void run() {
+                                    labBottomLeft.setText(String.valueOf(bottomLeftValues.size() * 5000));
+                                }
+                            });
+                        }
                     } else if (putMoney.getIdPutMoney() == 4) {
                         bottomRightValues.add(putMoney);
+                        if (CurrentUser.player.getId() == CurrentRoom.roomUser.getCustomerOwnerId()) {
+                            Platform.runLater(new Runnable() {
+                                @Override
+                                public void run() {
+                                    labBottomRight.setText(String.valueOf(bottomRightValues.size() * 10000));
+                                }
+                            });
+                        }
                     }
                 }
                 textDataTopLeft.setText(topLeftValues.toString());
@@ -267,15 +299,27 @@ public class BoardGameController implements Initializable {
                     diceRandom();
                     countClickInRoll = false;
                     Dices.update(CurrentRoom.roomUser.getIdPhong(), countClickInRoll);
-                    MoneyPuts.remove(CurrentRoom.roomUser.getIdPhong());
                 }
 //                Dices.remove(CurrentRoom.roomUser.getIdPhong());
             }
         }, 10, 10);
     }
 
-    //
-
+    public void refreshRoom() {
+        MoneyPuts.remove(CurrentRoom.roomUser.getIdPhong());
+        allButtonNotDisable();
+        if (CurrentUser.player.getId() != CurrentRoom.roomUser.getCustomerOwnerId()) {
+            tai.setDisable(false);
+            xiu.setDisable(false);
+        }
+        selectTaiXiu = 0;
+        this.tai.setStyle(setColorTaiXiu());
+        this.xiu.setStyle(setColorTaiXiu());
+        labTopLeft.setText(String.valueOf(0));
+        labTopRight.setText(String.valueOf(0));
+        labBottomLeft.setText(String.valueOf(0));
+        labBottomRight.setText(String.valueOf(0));
+    }
 
     @FXML
     private void roll(ActionEvent event) {
@@ -323,12 +367,13 @@ public class BoardGameController implements Initializable {
                         File file = new File(path);
 //                            System.out.println(file.exists());
                         diceImage.setImage(new Image(file.toURI().toString()));
-//                        if (i <= 9) {
+                        //== mở ======
+//                        if (i <= 15) {
 //                            Thread.sleep(100);
 //                        } else {
-//                            Thread.sleep(100 * i);
+//                            Thread.sleep(80 * i);
 //                        }
-                        Thread.sleep(300);
+                        Thread.sleep(200);
                     }
 //======================================================================================================================
 //                    if (CurrentRoom.roomUser.getCustomerOwnerId() == CurrentUser.player.getId()) {
@@ -366,7 +411,7 @@ public class BoardGameController implements Initializable {
                         @Override
                         public void run() {
                             result();
-                            System.out.println("LAPpp");
+
                         }
                     });
 // xuất ra tổng tiền ở Label
@@ -447,12 +492,13 @@ public class BoardGameController implements Initializable {
             Label selectedtLabel = (Label) event.getSource();
             selectedtLabel.setStyle("-fx-border-color:red; -fx-background-color: blue;");
             if (((Label) event.getSource()).getId().equals("tai")) {
-//                this.xiu.setStyle("-fx-color:red-fx-border; -fx-background-color: #d3d3d3;");
                 this.xiu.setStyle(colorTaiXiu());
                 selectTaiXiu = 2;
+                xiu.setDisable(true);
             } else {
                 this.tai.setStyle(colorTaiXiu());
                 selectTaiXiu = 1;
+                tai.setDisable(true);
             }
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -473,8 +519,8 @@ public class BoardGameController implements Initializable {
         count = count + 1;
         int valueMoneyTopLeft = Integer.parseInt(labTopLeft.getText());
         if ((selectTaiXiu == 1 || selectTaiXiu == 2) && sumAccount >= 500 && sumAccount - valueMoneyTopLeft > 500) {
-            MoneyPuts.add(1, CurrentRoom.roomUser.getIdPhong(), CurrentUser.player.getId());
-            PutMoney putMoney = new PutMoney(1, CurrentRoom.roomUser.getIdPhong(), CurrentUser.player.getId());
+            MoneyPuts.add(1, CurrentRoom.roomUser.getIdPhong(), CurrentUser.player.getId(), selectTaiXiu);
+            PutMoney putMoney = new PutMoney(1, CurrentRoom.roomUser.getIdPhong(), CurrentUser.player.getId(), selectTaiXiu);
             CurrentPutMoney.putMoney = putMoney;
             textDataTopLeft.setText(PutMoneyInBoard.listPutMoney.getMoneyPuts().toString());
 
@@ -513,8 +559,8 @@ public class BoardGameController implements Initializable {
         int valueMoneyTopRight = Integer.parseInt(labTopRight.getText());
         if ((selectTaiXiu == 1 || selectTaiXiu == 2) && sumAccount >= 1000 && sumAccount - valueMoneyTopRight > 1000) {
 
-            MoneyPuts.add(2, CurrentRoom.roomUser.getIdPhong(), CurrentUser.player.getId());
-            PutMoney putMoney = new PutMoney(2, CurrentRoom.roomUser.getIdPhong(), CurrentUser.player.getId());
+            MoneyPuts.add(2, CurrentRoom.roomUser.getIdPhong(), CurrentUser.player.getId(), selectTaiXiu);
+            PutMoney putMoney = new PutMoney(2, CurrentRoom.roomUser.getIdPhong(), CurrentUser.player.getId(), selectTaiXiu);
             CurrentPutMoney.putMoney = putMoney;
             textDataTopRight.setText(PutMoneyInBoard.listPutMoney.getMoneyPuts().toString());
             if (count > 5) {
@@ -549,8 +595,8 @@ public class BoardGameController implements Initializable {
         count = count + 1;
         int valueMoneyBottomLeft = Integer.parseInt(labBottomLeft.getText());
         if ((selectTaiXiu == 1 || selectTaiXiu == 2) && sumAccount >= 5000 && sumAccount - valueMoneyBottomLeft > 5000) {
-            MoneyPuts.add(3, CurrentRoom.roomUser.getIdPhong(), CurrentUser.player.getId());
-            PutMoney putMoney = new PutMoney(3, CurrentRoom.roomUser.getIdPhong(), CurrentUser.player.getId());
+            MoneyPuts.add(3, CurrentRoom.roomUser.getIdPhong(), CurrentUser.player.getId(), selectTaiXiu);
+            PutMoney putMoney = new PutMoney(3, CurrentRoom.roomUser.getIdPhong(), CurrentUser.player.getId(), selectTaiXiu);
             CurrentPutMoney.putMoney = putMoney;
             textDataBottomLeft.setText(PutMoneyInBoard.listPutMoney.getMoneyPuts().toString());
 //            if(count>5) {
@@ -586,8 +632,8 @@ public class BoardGameController implements Initializable {
         System.out.println(count);
         int valueMoneyBottomRight = Integer.parseInt(labBottomRight.getText());
         if ((selectTaiXiu == 1 || selectTaiXiu == 2) && sumAccount >= 10000 && sumAccount - valueMoneyBottomRight > 10000) {
-            MoneyPuts.add(4, CurrentRoom.roomUser.getIdPhong(), CurrentUser.player.getId());
-            PutMoney putMoney = new PutMoney(4, CurrentRoom.roomUser.getIdPhong(), CurrentUser.player.getId());
+            MoneyPuts.add(4, CurrentRoom.roomUser.getIdPhong(), CurrentUser.player.getId(), selectTaiXiu);
+            PutMoney putMoney = new PutMoney(4, CurrentRoom.roomUser.getIdPhong(), CurrentUser.player.getId(), selectTaiXiu);
             CurrentPutMoney.putMoney = putMoney;
             textDataBottomRight.setText(PutMoneyInBoard.listPutMoney.getMoneyPuts().toString());
             if (count > 5) {
@@ -637,24 +683,62 @@ public class BoardGameController implements Initializable {
         value4 = Integer.parseInt(labBottomRight.getText());
         Alert alert = new Alert(Alert.AlertType.NONE);
         alert.setTitle("KẾT QUẢ");
-        sumAccount = BoardGameConsts.result(value1, value2, value3, value4, finalIndex, selectLabelTopLeft, sumAccount, selectLabelTopRight, selectLabelBottomLeft, selectTaiXiu);
-        System.out.println("tien" + sumAccount);
-        Customers.updateMoneyTotal(CurrentUser.player.getId(), sumAccount);
 
+        System.out.println("id1:" + CurrentUser.player.getId());
+        System.out.println("id2:" + CurrentRoom.roomUser.getCustomerOwnerId());
+//        System.out.println("tien ban dau:"+ sumAccount);
 
-        if (finalIndex == 1 || finalIndex == 6) {
-            alert.setContentText("LOSE\n" + "Account: " + sumAccount);
-        } else if (finalIndex <= 3 && selectTaiXiu == 2 || finalIndex > 3 && selectTaiXiu == 1) {
-            alert.setContentText("LOSE\n" + "Account: " + sumAccount);
+        if (CurrentRoom.roomUser.getCustomerOwnerId() == CurrentUser.player.getId()) {
+            if (finalIndex == 1 || finalIndex == 6) {
+                sumAccount =sumAccount+ (value1 + value2 + value3 + value4);
+                alert.setContentText("WIN\n" + "Accountchu1: " + sumAccount);
+            } else if (finalIndex <= 3) {
+                if (MoneyPuts.getListTaiOrXiu(CurrentRoom.roomUser.getIdPhong(), 1).size() != 0) {
+                    sumAccount -= MoneyPuts.getListTaiOrXiu(CurrentRoom.roomUser.getIdPhong(), 1).size() * (value1
+                            + value2 + value3 + value4);
+                    alert.setContentText("LOSE\n" + "Accountchu2: " + sumAccount);
+                }
+                if (MoneyPuts.getListTaiOrXiu(CurrentRoom.roomUser.getIdPhong(), 2).size() != 0) {
+                    sumAccount += MoneyPuts.getListTaiOrXiu(CurrentRoom.roomUser.getIdPhong(), 2).size() * (value1
+                            + value2 + value3 + value4);
+                    alert.setContentText("WIN\n" + "Accountchu3: " + sumAccount);
+                }
+            } else {
+                sumAccount = BoardGameConsts.result(value1, value2, value3, value4, finalIndex,
+                        selectLabelTopLeft, sumAccount, selectLabelTopRight, selectLabelBottomLeft, selectTaiXiu);
+                if (MoneyPuts.getListTaiOrXiu(CurrentRoom.roomUser.getIdPhong(), 1).size() != 0) {
+                    sumAccount += MoneyPuts.getListTaiOrXiu(CurrentRoom.roomUser.getIdPhong(), 1).size() * (value1
+                            + value2 + value3 + value4);
+                    alert.setContentText("WIN\n" + "Accountchu4: " + sumAccount);
+                }
+                if (MoneyPuts.getListTaiOrXiu(CurrentRoom.roomUser.getIdPhong(), 2).size() != 0) {
+                    sumAccount -= MoneyPuts.getListTaiOrXiu(CurrentRoom.roomUser.getIdPhong(), 2).size() * (value1
+                            + value2 + value3 + value4);
+                    alert.setContentText("LOSE\n" + "Accountchu5: " + sumAccount);
+                }
+            }
         } else {
-            alert.setContentText("WIN\n" + "Account: " + sumAccount);
+            if (finalIndex == 1 || finalIndex == 6) {
+                    alert.setContentText("LOSE\n" + "Account1: " + sumAccount);
+            } else if (finalIndex <= 3 && selectTaiXiu == 2 || finalIndex > 3 && selectTaiXiu == 1) {
+                    alert.setContentText("LOSE\n" + "Account2: " + sumAccount);
+            } else {
+                alert.setContentText("WIN\n" + "Account3: " + sumAccount);
+            }
         }
+
+        Customers.updateMoneyTotal(CurrentUser.player.getId(), sumAccount);
         alert.setHeaderText("Số nút là: " + finalIndex);
-        alert.getDialogPane().getButtonTypes().add(ButtonType.OK);
+        alert.getDialogPane().
+
+                getButtonTypes().
+
+                add(ButtonType.OK);
         alert.setResizable(true);
         alert.showAndWait();
 
-//        allButtonNotDisable();
+        refreshRoom();
+
     }
 
     private Stage stage;
