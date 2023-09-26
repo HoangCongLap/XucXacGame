@@ -7,6 +7,8 @@
     <list default="true" id="cacf39b1-ea4a-418f-8cdd-f85c2659a27c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/BoardGameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/BoardGameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/RoomCreateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/RoomCreateController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/RoomCreate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/RoomCreate.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,7 +103,7 @@
       <recent name="xucxac.mysql" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main3">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Dices" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="xucxac.mysql.table.Dices" />
       <module name="XucXac" />
@@ -193,8 +195,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main3" />
         <item itemvalue="Application.Main2" />
+        <item itemvalue="Application.Main3" />
         <item itemvalue="Application.MoneyPuts" />
         <item itemvalue="Application.Dices" />
         <item itemvalue="Application.ListPlayers" />
@@ -252,6 +254,8 @@
       <workItem from="1695220181503" duration="28196000" />
       <workItem from="1695618054332" duration="727000" />
       <workItem from="1695633403223" duration="8343000" />
+      <workItem from="1695697401636" duration="3876000" />
+      <workItem from="1695723687698" duration="5888000" />
     </task>
     <servers />
   </component>
@@ -285,13 +289,8 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/xucxac/BoardGameController.java</url>
-          <line>416</line>
-          <option name="timeStamp" value="117" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/xucxac/BoardGameController.java</url>
-          <line>697</line>
-          <option name="timeStamp" value="118" />
+          <line>669</line>
+          <option name="timeStamp" value="120" />
         </line-breakpoint>
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.lang.StackOverflowError" package="java.lang" />

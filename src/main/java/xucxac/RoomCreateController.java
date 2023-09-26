@@ -92,9 +92,10 @@ public class RoomCreateController implements Initializable {
             public void run() {
                 tableV_inforAca.setItems(dataList);
                 tableV_inforAca.refresh();
+
             }
         }, 5000, 2000);
-        search_user();
+
 
 //        sửa
         tableV_inforAca.setRowFactory(tv -> new TableRow<RoomUser>() {
@@ -111,10 +112,11 @@ public class RoomCreateController implements Initializable {
                 }
             }
         });
+        search_user();
 
     }
 
-
+//    onMouseClicked="#search_user"
     @FXML
     void search_user() {
         FilteredList<RoomUser> filteredData = new FilteredList<>(dataList, b -> true);
