@@ -75,7 +75,7 @@ public class NumberOfPlayers {
         int soNguoi = limitPlayerInRoom;
         RoomUser roomUser = new RoomUser(idPhong, ownerRoomId, soNguoi);
         CurrentRoom.roomUser = roomUser;
-        System.out.println("check:" + soNguoi);
+//        System.out.println("check:" + soNguoi);
         CurrentRoom.informationInRoom= new InformationInRoom(idPhong,new ArrayList<>());
 
 /// tạo phòng và ghi xuống dbase

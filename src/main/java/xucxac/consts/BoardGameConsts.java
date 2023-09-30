@@ -45,7 +45,12 @@ public class BoardGameConsts {
 
     public static final int result(int value1, int value2, int value3, int value4, int finalIndex,
                                    int selectLabelTopLeft, int sumAccount, int selectLabelTopRight,
-                                   int selectLabelBottomLeft, int selectTaiXiu) {
+                                  int selectLabelBottomLeft, int selectTaiXiu) {
+        System.out.println("value1"+ value1+ ",value2"+ value2+ ",value3"+ value3+ ",value4"+ value4+ ",finalIndex:"+ finalIndex
+                + ",selectLabelTopLeft:"+ selectLabelTopLeft+ ",sumAccount:"+ sumAccount+ ",selectLabelTopRight:"+ selectLabelTopRight
+                + ",selectLabelBottomLeft:"+ selectLabelBottomLeft+ ",selectTaiXiu:"+ selectTaiXiu);
+
+
         if (finalIndex == 1 || finalIndex == 6) {
 
             if (selectLabelTopLeft == 1) {
@@ -57,6 +62,7 @@ public class BoardGameConsts {
             } else {
                 sumAccount -= value4;
             }
+
 //
         } else if (finalIndex <= 3 && selectTaiXiu == 2 || finalIndex > 3 && selectTaiXiu == 1) {
 

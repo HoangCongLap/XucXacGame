@@ -190,9 +190,11 @@ public class BoardGameController implements Initializable {
 
     static ObservableList<Integer> dataList;
     static ObservableList<PutMoney> putMoneyInBoardList;
-    private Timer timer;
+    private Timer timer1 = null;
+    private Timer timer2 = null;
+    private Timer timer3 = null;
     boolean countClickInRoll = false;
-
+    private static Boolean isStarted = false;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -207,8 +209,8 @@ public class BoardGameController implements Initializable {
         PutMoneyInBoard.listPutMoney = new ListPutMoney(MoneyPuts.getDataInPutMoney(CurrentRoom.informationInRoom.getIdPhong()));
 
 //        REFRESH DANH SÁCH NGƯỜI VÀO PHÒNG
-        timer = new Timer();
-        timer.schedule(new TimerTask() {
+        timer1 = new Timer();
+        timer1.schedule(new TimerTask() {
             @Override
             public void run() {
                 table_information_board.refresh();
@@ -221,8 +223,8 @@ public class BoardGameController implements Initializable {
 //        REFRESH BÀN ĐẶT TIỀN
 
 
-        timer = new Timer();
-        timer.schedule(new TimerTask() {
+        timer2 = new Timer();
+        timer2.schedule(new TimerTask() {
             @Override
             public void run() {
                 List<PutMoney> topLeftValues = new ArrayList<>();
@@ -290,20 +292,35 @@ public class BoardGameController implements Initializable {
         sumAccount = Integer.parseInt(String.valueOf(CurrentUser.player.getMoneyTotal()));
         CheckPlayerInformation();
 
+        if (timer3 == null) {
 // REFRESH QUAY XÚC XẮC
-        timer = new Timer();
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                if (CurrentRoom.roomUser.getCustomerOwnerId() != CurrentUser.player.getId()
-                        && Dices.getClickInRoll(CurrentRoom.roomUser.getIdPhong()) == 1) {
-                    diceRandom();
-                    countClickInRoll = false;
-                    Dices.update(CurrentRoom.roomUser.getIdPhong(), countClickInRoll);
-                }
+            synchronized (isStarted) {
+
+                if (!isStarted) {
+                    isStarted = true;
+
+                    timer3 = new Timer();
+                    timer3.schedule(new TimerTask() {
+                        @Override
+                        public void run() {
+                            if (CurrentRoom.roomUser.getCustomerOwnerId() != CurrentUser.player.getId()
+                                    && Dices.getClickInRoll(CurrentRoom.roomUser.getIdPhong()) == 1) {
+
+                                System.out.println("idplayer:" + CurrentUser.player.getId());
+                                diceRandom();
+                                countClickInRoll = false;
+                                Dices.update(CurrentRoom.roomUser.getIdPhong(), countClickInRoll);
+
+                            }
 //                Dices.remove(CurrentRoom.roomUser.getIdPhong());
+                        }
+                    }, 10, 10);
+                } else {
+                    System.out.println("ignore run:" + CurrentUser.player.getId());
+                }
+
             }
-        }, 10, 10);
+        }
     }
 
     public void refreshRoom() {
@@ -316,6 +333,10 @@ public class BoardGameController implements Initializable {
         selectTaiXiu = 0;
         this.tai.setStyle(setColorTaiXiu());
         this.xiu.setStyle(setColorTaiXiu());
+        selectLabelTopLeft = 0;
+        selectLabelTopRight = 0;
+        selectLabelBottomLeft = 0;
+        selectLabelBottomRight = 0;
         labTopLeft.setText(String.valueOf(0));
         labTopRight.setText(String.valueOf(0));
         labBottomLeft.setText(String.valueOf(0));
@@ -355,7 +376,6 @@ public class BoardGameController implements Initializable {
                     int index = 1;
                     finalIndex = (random.nextInt(6) + 1);
                     if (CurrentRoom.roomUser.getCustomerOwnerId() == CurrentUser.player.getId()) {
-                        System.out.println("kq xx:" + finalIndex);
                         Dices.add(CurrentRoom.roomUser.getIdPhong(), finalIndex, countClickInRoll);
                     }
                     int[] arrRandom = {5, 2, 10, 8, 18, 15, 1, 11, 3, 7, 4, 9, 17, 1, 11, 20, 15, 13, 10, 20};
@@ -635,7 +655,6 @@ public class BoardGameController implements Initializable {
     @FXML
     protected void clickBottomRight(MouseEvent event) {
         count = count + 1;
-        System.out.println(count);
         int valueMoneyBottomRight = Integer.parseInt(labBottomRight.getText());
         if ((selectTaiXiu == 1 || selectTaiXiu == 2) && sumAccount >= 10000 && sumAccount - valueMoneyBottomRight > 10000) {
             MoneyPuts.add(4, CurrentRoom.roomUser.getIdPhong(), CurrentUser.player.getId(), selectTaiXiu);
@@ -682,7 +701,7 @@ public class BoardGameController implements Initializable {
 //    public void alertNotification(int value) {
 
     public void result() {
-        int idPlayer= CurrentUser.player.getId();
+        int idPlayer = CurrentUser.player.getId();
 //        if(finalIndex!=0) {
         int value1, value2, value3, value4;
         value1 = Integer.parseInt(labTopLeft.getText());
@@ -692,68 +711,68 @@ public class BoardGameController implements Initializable {
         Alert alert = new Alert(Alert.AlertType.NONE);
         alert.setTitle("KẾT QUẢ");
 
-        System.out.println("id1:" + CurrentUser.player.getId());
-        System.out.println("id2:" + CurrentRoom.roomUser.getCustomerOwnerId());
-//        System.out.println("tien ban dau:"+ sumAccount);
+        if (isCallOnResultOwenr == false) {
 
-        if (CurrentRoom.roomUser.getCustomerOwnerId() == CurrentUser.player.getId()) {
-            if (isCallOnResultOwenr == false) {
+            if (CurrentRoom.roomUser.getCustomerOwnerId() == CurrentUser.player.getId()) {
+                System.out.println("chu:" + sumAccount);
                 if (finalIndex == 1 || finalIndex == 6) {
                     sumAccount = sumAccount + (value1 + value2 + value3 + value4);
-                    alert.setContentText("WIN\n" + "Account Owner"+"("+idPlayer+")"+": " + sumAccount);
+                    alert.setContentText("WIN\n" + "Account Owner" + "(" + idPlayer + ")" + ": " + sumAccount);
                 } else if (finalIndex <= 3) {
                     if (MoneyPuts.getListTaiOrXiu(CurrentRoom.roomUser.getIdPhong(), 1).size() != 0) {
 //                        sumAccount -= MoneyPuts.getListTaiOrXiu(CurrentRoom.roomUser.getIdPhong(), 1).size() * (value1
 //                                + value2 + value3 + value4);
                         sumAccount = sumAccount - (value1 + value2 + value3 + value4);
-                        alert.setContentText("LOSE\n" + "Account Owner"+"("+idPlayer+")"+": " + sumAccount);
+                        alert.setContentText("LOSE\n" + "Account Owner" + "(" + idPlayer + ")" + ": " + sumAccount);
                     }
                     if (MoneyPuts.getListTaiOrXiu(CurrentRoom.roomUser.getIdPhong(), 2).size() != 0) {
 //                        sumAccount += MoneyPuts.getListTaiOrXiu(CurrentRoom.roomUser.getIdPhong(), 2).size() * (value1
 //                                + value2 + value3 + value4);
                         sumAccount = sumAccount + (value1 + value2 + value3 + value4);
-                        alert.setContentText("WIN\n" + "Account Owner"+"("+idPlayer+")"+": " + sumAccount);
+                        alert.setContentText("WIN\n" + "Account Owner" + "(" + idPlayer + ")" + ": " + sumAccount);
                     }
                 } else {
                     if (MoneyPuts.getListTaiOrXiu(CurrentRoom.roomUser.getIdPhong(), 1).size() != 0) {
 //                        sumAccount += MoneyPuts.getListTaiOrXiu(CurrentRoom.roomUser.getIdPhong(), 1).size() * (value1
 //                                + value2 + value3 + value4);
                         sumAccount = sumAccount + (value1 + value2 + value3 + value4);
-                        alert.setContentText("WIN\n" + "Account Owner"+"("+idPlayer+")"+": " + sumAccount);
+                        alert.setContentText("WIN\n" + "Account Owner" + "(" + idPlayer + ")" + ": " + sumAccount);
                     }
                     if (MoneyPuts.getListTaiOrXiu(CurrentRoom.roomUser.getIdPhong(), 2).size() != 0) {
 //                        sumAccount -= MoneyPuts.getListTaiOrXiu(CurrentRoom.roomUser.getIdPhong(), 2).size() * (value1
 //                                + value2 + value3 + value4);
                         sumAccount = sumAccount - (value1 + value2 + value3 + value4);
-                        alert.setContentText("LOSE\n" + "Account Owner"+"("+idPlayer+")"+": " + sumAccount);
+                        alert.setContentText("LOSE\n" + "Account Owner" + "(" + idPlayer + ")" + ": " + sumAccount);
                     }
                 }
                 isCallOnResultOwenr = true;
-            }
-        } else {
-            sumAccount = BoardGameConsts.result(value1, value2, value3, value4, finalIndex,
-                    selectLabelTopLeft, sumAccount, selectLabelTopRight, selectLabelBottomLeft, selectTaiXiu);
-            if (finalIndex == 1 || finalIndex == 6) {
-                alert.setContentText("LOSE\n" + "Account "+"("+idPlayer+")"+": " + sumAccount);
-            } else if (finalIndex <= 3 && selectTaiXiu == 2 || finalIndex > 3 && selectTaiXiu == 1) {
-                alert.setContentText("LOSE\n" + "Account "+"("+idPlayer+")"+": " + sumAccount);
+
             } else {
-                alert.setContentText("WIN\n" + "Account "+"("+idPlayer+")"+": " + sumAccount);
+                System.out.println("nguoi choi:" + sumAccount);
+                sumAccount = BoardGameConsts.result(value1, value2, value3, value4, finalIndex,
+                        selectLabelTopLeft, sumAccount, selectLabelTopRight, selectLabelBottomLeft, selectTaiXiu);
+                System.out.println("nguoi choi da cong:" + sumAccount);
+                if (finalIndex == 1 || finalIndex == 6) {
+                    alert.setContentText("LOSE\n" + "Account " + "(" + idPlayer + ")" + ": " + sumAccount);
+                } else if (finalIndex <= 3 && selectTaiXiu == 2 || finalIndex > 3 && selectTaiXiu == 1) {
+                    alert.setContentText("LOSE\n" + "Account " + "(" + idPlayer + ")" + ": " + sumAccount);
+                } else {
+                    alert.setContentText("WIN\n" + "Account " + "(" + idPlayer + ")" + ": " + sumAccount);
+                }
             }
+
+            Customers.updateMoneyTotal(CurrentUser.player.getId(), sumAccount);
+            alert.setHeaderText("Số nút là: " + finalIndex);
+            alert.getDialogPane().
+
+                    getButtonTypes().
+
+                    add(ButtonType.OK);
+            alert.setResizable(true);
+            alert.showAndWait();
+            refreshRoom();
         }
 
-        Customers.updateMoneyTotal(CurrentUser.player.getId(), sumAccount);
-        alert.setHeaderText("Số nút là: " + finalIndex);
-        alert.getDialogPane().
-
-                getButtonTypes().
-
-                add(ButtonType.OK);
-        alert.setResizable(true);
-        alert.showAndWait();
-
-        refreshRoom();
-//        }
     }
 
     private Stage stage;

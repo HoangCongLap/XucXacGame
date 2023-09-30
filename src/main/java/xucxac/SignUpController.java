@@ -54,7 +54,7 @@ public class SignUpController implements Initializable {
         Connection conn = ConnectionUtil.connectdb();
         String sql = "INSERT INTO account(username, password,id) VALUES(?,?,?);\n";
         StringBuilder sb = new StringBuilder();
-        System.out.println("id Account:"+idAccount);
+//        System.out.println("id Account:"+idAccount);
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
             pst.setString(1, signUpUserName.getText());
