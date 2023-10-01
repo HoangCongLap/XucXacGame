@@ -6,11 +6,11 @@
 - Nếu số nút trên mặt xí ngầu từ 1 đến 3 => Kết quả là Xỉu.
 - Nếu số nút trên mặt xí ngầu từ 4 đến 6 => Kết quả là Tài .
 
-## 3.sơ đồ chức năng hệ thống:
+## 2. Sơ đồ chức năng hệ thống:
 
 ![example](img/function.PNG)
 
-## 4. Video
+## 3. Video
 
 Youtube: https://youtu.be/i829cIF_f38
 
