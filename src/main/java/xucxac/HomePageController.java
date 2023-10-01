@@ -1,12 +1,10 @@
 package xucxac;
 
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -17,9 +15,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import xucxac.data.CurrentAccount;
 import xucxac.data.CurrentRoom;
 import xucxac.data.CurrentUser;
 import xucxac.data.RoomManage;
@@ -41,11 +37,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-public class RoomCreateController implements Initializable {
+public class HomePageController implements Initializable {
 
     private static final String BOARDGAME_XML_FILE = "BoardGame.fxml";
     private static final String LOGIN_XML_FILE = "Login.fxml";
-    private static final String NUMBEROFPLAYERS = "NumberOfPlayers.fxml";
+    private static final String NUMBEROFPLAYERS = "CreateRoom.fxml";
     @FXML
     private TableView<RoomUser> tableV_inforAca;
 
@@ -193,7 +189,7 @@ public class RoomCreateController implements Initializable {
                     root = loader.load();
                 } catch (IOException ex) {
                     ex.printStackTrace();
-                    Logger.getLogger(RoomCreateController.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(HomePageController.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 scene = new Scene(root);

@@ -13,12 +13,10 @@ import javafx.stage.Stage;
 import xucxac.data.*;
 import xucxac.database.ConnectionUtil;
 import xucxac.database.entites.Account;
-import xucxac.database.entites.ListPutMoney;
 import xucxac.database.entites.ListRoom;
 import xucxac.database.entites.Player;
 
 import xucxac.mysql.table.Customers;
-import xucxac.mysql.table.MoneyPuts;
 import xucxac.mysql.table.Rooms;
 
 import java.io.IOException;
@@ -34,7 +32,7 @@ import static xucxac.mysql.table.Accounts.getAccount;
 public class LoginController implements Initializable {
 
     private static final String IFORMATIONCUSTOMER_XML_FILE = "InformationCustomer.fxml";
-    private static final String ROOMCREATE_XML_FILE = "RoomCreate.fxml";
+    private static final String ROOMCREATE_XML_FILE = "HomePage.fxml";
     private static final String SIGNUP_XML_FILE = "SignUp.fxml";
 
     static String id = null;

@@ -19,7 +19,7 @@ public class Main3 extends Application {
 
             Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Login.fxml"));
 //            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("BoardGame.fxml"));
-//            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("RoomCreate.fxml"));
+//            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("HomePage.fxml"));
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();

@@ -22,7 +22,7 @@ import java.util.ArrayList;
 
 import static xucxac.consts.BoardGameConsts.ranDomIdPhong;
 
-public class NumberOfPlayers {
+public class CreateRoomController {
     Connection conn = ConnectionUtil.connectdb();
 
     private static final String BOARDGAME_XML_FILE = "BoardGame.fxml";

@@ -42,7 +42,7 @@ import static xucxac.consts.BoardGameConsts.*;
 
 public class BoardGameController implements Initializable {
 
-    private static final String ROOMCREATE_XML_FILE = "RoomCreate.fxml";
+    private static final String ROOMCREATE_XML_FILE = "HomePage.fxml";
     @FXML
     private Label welcomeText;
     Random random = new Random();
