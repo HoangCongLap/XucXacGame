@@ -6,17 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="cacf39b1-ea4a-418f-8cdd-f85c2659a27c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/BoardGameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/BoardGameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/Main2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/Main2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/Main3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/Main3.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/NumberOfPlayers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/CreateRoomController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/RoomCreateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/HomePageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/database/Main3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/database/Main3.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xucxac/mysql/BoardGameControlleetest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xucxac/mysql/BoardGameControlleetest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/NumberOfPlayers.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/CreateRoom.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/RoomCreate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/HomePage.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -269,7 +258,8 @@
       <workItem from="1696041648348" duration="3104000" />
       <workItem from="1696123248689" duration="601000" />
       <workItem from="1696131585299" duration="1826000" />
-      <workItem from="1696139259326" duration="1211000" />
+      <workItem from="1696139259326" duration="1825000" />
+      <workItem from="1696380732481" duration="47000" />
     </task>
     <servers />
   </component>
