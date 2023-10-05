@@ -10,11 +10,11 @@
 
 ![example](img/function.PNG)
 
-## 4. Sơ đồ logic 
+## 3. Sơ đồ logic 
 
 ![example](img/soDoLogic.PNG)
 
-## 3. Video
+## 4. Video
 
 Youtube: https://youtu.be/i829cIF_f38
 
